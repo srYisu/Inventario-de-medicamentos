@@ -35,6 +35,7 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            label5 = new Label();
             SuspendLayout();
             // 
             // txtUsuario
@@ -98,11 +99,21 @@
             label4.TabIndex = 6;
             label4.Text = "¿Olvidaste tu contraseña?";
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(311, 536);
+            label5.Name = "label5";
+            label5.Size = new Size(23, 15);
+            label5.TabIndex = 7;
+            label5.Text = "ola";
+            // 
             // InicioDeSesion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(984, 611);
+            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -125,5 +136,6 @@
         private Label label2;
         private Label label3;
         private Label label4;
+        private Label label5;
     }
 }
