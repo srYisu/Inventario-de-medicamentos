@@ -35,6 +35,7 @@
             btnIniciarSesion = new Button();
             txtContrasena = new TextBox();
             txtUsuario = new TextBox();
+            label5 = new Label();
             SuspendLayout();
             // 
             // label4
@@ -97,11 +98,21 @@
             txtUsuario.Size = new Size(254, 23);
             txtUsuario.TabIndex = 21;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(88, 425);
+            label5.Name = "label5";
+            label5.Size = new Size(38, 15);
+            label5.TabIndex = 28;
+            label5.Text = "label5";
+            // 
             // FormInicioSesion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -124,5 +135,6 @@
         private Button btnIniciarSesion;
         private TextBox txtContrasena;
         private TextBox txtUsuario;
+        private Label label5;
     }
 }
