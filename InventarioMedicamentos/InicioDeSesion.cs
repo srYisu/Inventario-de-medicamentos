@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace InventarioMedicamentos
 {
-    public partial class InicioSesion : Form
+    public partial class InicioDeSesion : Form
     {
-        public InicioSesion()
+        public InicioDeSesion()
         {
             InitializeComponent();
         }
