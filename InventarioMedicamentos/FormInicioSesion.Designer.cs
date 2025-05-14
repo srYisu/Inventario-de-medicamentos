@@ -1,6 +1,6 @@
 ﻿namespace InventarioMedicamentos
 {
-    partial class InicioDeSesion
+    partial class FormInicioSesion
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,6 @@
             btnIniciarSesion = new Button();
             txtContrasena = new TextBox();
             txtUsuario = new TextBox();
-            label5 = new Label();
             SuspendLayout();
             // 
             // label4
@@ -44,7 +43,7 @@
             label4.Location = new Point(273, 360);
             label4.Name = "label4";
             label4.Size = new Size(141, 15);
-            label4.TabIndex = 20;
+            label4.TabIndex = 27;
             label4.Text = "¿Olvidaste tu contraseña?";
             // 
             // label3
@@ -54,7 +53,7 @@
             label3.Location = new Point(12, 9);
             label3.Name = "label3";
             label3.Size = new Size(769, 65);
-            label3.TabIndex = 19;
+            label3.TabIndex = 26;
             label3.Text = "IMSS BIENESTAR Puerto Peñasco";
             // 
             // label2
@@ -63,7 +62,7 @@
             label2.Location = new Point(272, 316);
             label2.Name = "label2";
             label2.Size = new Size(67, 15);
-            label2.TabIndex = 18;
+            label2.TabIndex = 25;
             label2.Text = "Contraseña";
             // 
             // label1
@@ -72,7 +71,7 @@
             label1.Location = new Point(272, 253);
             label1.Name = "label1";
             label1.Size = new Size(47, 15);
-            label1.TabIndex = 17;
+            label1.TabIndex = 24;
             label1.Text = "Usuario";
             // 
             // btnIniciarSesion
@@ -80,7 +79,7 @@
             btnIniciarSesion.Location = new Point(364, 389);
             btnIniciarSesion.Name = "btnIniciarSesion";
             btnIniciarSesion.Size = new Size(96, 23);
-            btnIniciarSesion.TabIndex = 16;
+            btnIniciarSesion.TabIndex = 23;
             btnIniciarSesion.Text = "Iniciar sesión";
             btnIniciarSesion.UseVisualStyleBackColor = true;
             // 
@@ -89,31 +88,20 @@
             txtContrasena.Location = new Point(273, 334);
             txtContrasena.Name = "txtContrasena";
             txtContrasena.Size = new Size(254, 23);
-            txtContrasena.TabIndex = 15;
+            txtContrasena.TabIndex = 22;
             // 
             // txtUsuario
             // 
             txtUsuario.Location = new Point(273, 271);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(254, 23);
-            txtUsuario.TabIndex = 14;
+            txtUsuario.TabIndex = 21;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(24, 424);
-            label5.Name = "label5";
-            label5.Size = new Size(23, 15);
-            label5.TabIndex = 21;
-            label5.Text = "ola";
-            label5.Click += label5_Click;
-            // 
-            // InicioDeSesion
+            // FormInicioSesion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -121,8 +109,8 @@
             Controls.Add(btnIniciarSesion);
             Controls.Add(txtContrasena);
             Controls.Add(txtUsuario);
-            Name = "InicioDeSesion";
-            Text = "InicioDeSesion";
+            Name = "FormInicioSesion";
+            Text = "FormInicioSesion";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -136,6 +124,5 @@
         private Button btnIniciarSesion;
         private TextBox txtContrasena;
         private TextBox txtUsuario;
-        private Label label5;
     }
 }

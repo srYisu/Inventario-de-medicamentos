@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace InventarioMedicamentos
 {
-    public partial class InicioDeSesion : Form
+    public partial class FormInicioSesion : Form
     {
-        public InicioDeSesion()
+        public FormInicioSesion()
         {
             InitializeComponent();
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
