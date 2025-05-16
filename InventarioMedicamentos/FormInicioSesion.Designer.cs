@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
@@ -36,6 +38,7 @@
             txtContrasena = new TextBox();
             txtUsuario = new TextBox();
             label5 = new Label();
+            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             SuspendLayout();
             // 
             // label4
@@ -107,11 +110,28 @@
             label5.TabIndex = 28;
             label5.Text = "label5";
             // 
+            // guna2Button1
+            // 
+            guna2Button1.CustomizableEdges = customizableEdges1;
+            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button1.Font = new Font("Segoe UI", 9F);
+            guna2Button1.ForeColor = Color.White;
+            guna2Button1.Location = new Point(82, 297);
+            guna2Button1.Name = "guna2Button1";
+            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2Button1.Size = new Size(63, 34);
+            guna2Button1.TabIndex = 29;
+            guna2Button1.Text = "guna2Button1";
+            // 
             // FormInicioSesion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(guna2Button1);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -136,5 +156,6 @@
         private TextBox txtContrasena;
         private TextBox txtUsuario;
         private Label label5;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }
