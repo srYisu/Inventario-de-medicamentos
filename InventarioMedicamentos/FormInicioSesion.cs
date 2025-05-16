@@ -51,5 +51,10 @@ namespace InventarioMedicamentos
                 MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void FormInicioSesion_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
