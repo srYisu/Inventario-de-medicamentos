@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
@@ -37,7 +35,7 @@
             btnIniciarSesion = new Button();
             txtContrasena = new TextBox();
             txtUsuario = new TextBox();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            label5 = new Label();
             SuspendLayout();
             // 
             // label4
@@ -100,28 +98,21 @@
             txtUsuario.Size = new Size(254, 23);
             txtUsuario.TabIndex = 21;
             // 
-            // guna2Button1
+            // label5
             // 
-            guna2Button1.CustomizableEdges = customizableEdges1;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.Font = new Font("Segoe UI", 9F);
-            guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(49, 341);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2Button1.Size = new Size(85, 24);
-            guna2Button1.TabIndex = 28;
-            guna2Button1.Text = "guna2Button1";
+            label5.AutoSize = true;
+            label5.Location = new Point(50, 187);
+            label5.Name = "label5";
+            label5.Size = new Size(38, 15);
+            label5.TabIndex = 28;
+            label5.Text = "label5";
             // 
             // FormInicioSesion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(guna2Button1);
+            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -144,6 +135,6 @@
         private Button btnIniciarSesion;
         private TextBox txtContrasena;
         private TextBox txtUsuario;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Label label5;
     }
 }
