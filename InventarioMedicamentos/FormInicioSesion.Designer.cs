@@ -37,7 +37,6 @@
             btnIniciarSesion = new Button();
             txtContrasena = new TextBox();
             txtUsuario = new TextBox();
-            label5 = new Label();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             SuspendLayout();
             // 
@@ -101,15 +100,6 @@
             txtUsuario.Size = new Size(254, 23);
             txtUsuario.TabIndex = 21;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(88, 425);
-            label5.Name = "label5";
-            label5.Size = new Size(38, 15);
-            label5.TabIndex = 28;
-            label5.Text = "label5";
-            // 
             // guna2Button1
             // 
             guna2Button1.CustomizableEdges = customizableEdges1;
@@ -119,11 +109,11 @@
             guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2Button1.Font = new Font("Segoe UI", 9F);
             guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(48, 335);
+            guna2Button1.Location = new Point(49, 341);
             guna2Button1.Name = "guna2Button1";
             guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2Button1.Size = new Size(180, 45);
-            guna2Button1.TabIndex = 29;
+            guna2Button1.Size = new Size(85, 24);
+            guna2Button1.TabIndex = 28;
             guna2Button1.Text = "guna2Button1";
             // 
             // FormInicioSesion
@@ -132,7 +122,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(guna2Button1);
-            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -155,7 +144,6 @@
         private Button btnIniciarSesion;
         private TextBox txtContrasena;
         private TextBox txtUsuario;
-        private Label label5;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }
