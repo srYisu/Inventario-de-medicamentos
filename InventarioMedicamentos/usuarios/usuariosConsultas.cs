@@ -10,45 +10,44 @@ namespace InventarioMedicamentos.usuarios
 {
     internal class usuariosConsultas
     {
-        private Conexion conexion;
+        private Conexion conn;
 
         public usuariosConsultas()
         {
-            conexion = new Conexion();
+            conn = new Conexion();
         }
-        public bool IniciarSesion(string usuario, string contraseña, out bool esAdministrador)
+        public bool IniciarSesion(string usuario, string contraseña, out string tipo)
         {
-            esAdministrador = false;
+            tipo = string.Empty;
 
-            using (MySqlConnection conn = conexion.ObtenerConexion())
+            using (MySqlConnection conexion = conn.ObtenerConexion())
             {
                 try
                 {
-                    conn.Open();
-                    string query = "SELECT permisoAdmin FROM usuarios WHERE usuario = @usuario AND contraseña = @contraseña";
+                    conexion.Open();
+                    string query = "SELECT tipo FROM usuarios WHERE nombre = @usuario AND contraseña = @contraseña";
 
-                    using (MySqlCommand comando = new MySqlCommand(query, conn))
+                    using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
                         comando.Parameters.AddWithValue("@usuario", usuario);
-                        comando.Parameters.AddWithValue("@contraseña", contraseña); // Si usas hash, aquí iría la contraseña hasheada
+                        comando.Parameters.AddWithValue("@contraseña", contraseña);
 
                         using (MySqlDataReader lector = comando.ExecuteReader())
                         {
                             if (lector.Read())
                             {
-                                esAdministrador = lector.GetBoolean("permisoAdmin");
-                                return true; // Usuario encontrado
+                                tipo = lector.GetString("tipo");
+                                return true;
                             }
                             else
                             {
-                                return false; // No encontrado
+                                return false;
                             }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Manejo de errores, por ejemplo:
                     Console.WriteLine("Error al iniciar sesión: " + ex.Message);
                     return false;
                 }

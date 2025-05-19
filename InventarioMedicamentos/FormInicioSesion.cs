@@ -16,14 +16,17 @@ namespace InventarioMedicamentos
     public partial class FormInicioSesion : Form
     {
         private usuariosConsultas usuarios;
+        private Conexion conexion;
         public FormInicioSesion()
         {
             InitializeComponent();
             usuarios = new usuariosConsultas();
+            conexion = new Conexion();
         }
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
+            //conexion.PruebaConexion();
             string contraseña = txtContrasena.Text;
             string usuario = txtUsuario.Text;
 
@@ -32,23 +35,29 @@ namespace InventarioMedicamentos
                 MessageBox.Show("Por favor, ingrese su usuario y contraseña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            bool esAdministrador;
-            bool acceso = usuarios.IniciarSesion(usuario, contraseña, out esAdministrador);
+            usuariosConsultas inicioSesion = new usuariosConsultas();
+            string rol;
 
-            if (acceso)
+            bool accesoConcedido = inicioSesion.IniciarSesion(usuario, contraseña, out rol);
+
+            if (accesoConcedido)
             {
-                if (esAdministrador)
+                switch (rol)
                 {
-                    MessageBox.Show("Bienvenido Administrador", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Bienvenido Usuario comun y corriente :D", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    case "Administrador":
+                        MessageBox.Show("Acceso concedido: puede gestionar todo el sistema.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    case "Supervisor":
+                        MessageBox.Show("Acceso concedido: puede gestionar el inventario.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        MessageBox.Show("Acceso concedido: puede retirar medicamentos.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
                 }
             }
             else
             {
-                MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Usuario o contraseña incorrectos.");
             }
         }
 
