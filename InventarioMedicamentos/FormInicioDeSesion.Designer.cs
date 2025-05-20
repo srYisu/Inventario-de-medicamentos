@@ -139,7 +139,7 @@
             // 
             pictureBoxLogo.CustomizableEdges = customizableEdges11;
             pictureBoxLogo.ImageRotate = 0F;
-            pictureBoxLogo.Location = new Point(464, 179);
+            pictureBoxLogo.Location = new Point(464, 91);
             pictureBoxLogo.Name = "pictureBoxLogo";
             pictureBoxLogo.ShadowDecoration.CustomizableEdges = customizableEdges12;
             pictureBoxLogo.Size = new Size(122, 126);
