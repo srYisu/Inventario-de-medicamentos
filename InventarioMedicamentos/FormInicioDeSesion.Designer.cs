@@ -39,8 +39,6 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -55,13 +53,11 @@
             txtUsuario = new Guna.UI2.WinForms.Guna2TextBox();
             panelNaranja = new Guna.UI2.WinForms.Guna2Panel();
             panelRojo = new Guna.UI2.WinForms.Guna2Panel();
-            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             panelNaranja.SuspendLayout();
             panelRojo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panelLogin
@@ -188,39 +184,26 @@
             // 
             // panelNaranja
             // 
-            panelNaranja.BackColor = Color.FromArgb(255, 128, 0);
+            panelNaranja.BackColor = Color.FromArgb(163, 126, 51);
             panelNaranja.Controls.Add(panelRojo);
-            panelNaranja.CustomizableEdges = customizableEdges15;
+            panelNaranja.CustomizableEdges = customizableEdges13;
             panelNaranja.Location = new Point(0, 0);
             panelNaranja.Name = "panelNaranja";
-            panelNaranja.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            panelNaranja.ShadowDecoration.CustomizableEdges = customizableEdges14;
             panelNaranja.Size = new Size(598, 92);
             panelNaranja.TabIndex = 7;
+            panelNaranja.Paint += panelNaranja_Paint;
             // 
             // panelRojo
             // 
-            panelRojo.BackColor = Color.Maroon;
-            panelRojo.Controls.Add(guna2PictureBox1);
+            panelRojo.BackColor = Color.FromArgb(105, 32, 58);
             panelRojo.Controls.Add(guna2HtmlLabel1);
-            panelRojo.CustomizableEdges = customizableEdges13;
+            panelRojo.CustomizableEdges = customizableEdges11;
             panelRojo.Location = new Point(0, 0);
             panelRojo.Name = "panelRojo";
-            panelRojo.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            panelRojo.ShadowDecoration.CustomizableEdges = customizableEdges12;
             panelRojo.Size = new Size(598, 84);
             panelRojo.TabIndex = 8;
-            // 
-            // guna2PictureBox1
-            // 
-            guna2PictureBox1.CustomizableEdges = customizableEdges11;
-            guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
-            guna2PictureBox1.ImageRotate = 0F;
-            guna2PictureBox1.Location = new Point(9, 7);
-            guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            guna2PictureBox1.Size = new Size(59, 68);
-            guna2PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            guna2PictureBox1.TabIndex = 6;
-            guna2PictureBox1.TabStop = false;
             // 
             // guna2HtmlLabel1
             // 
@@ -249,7 +232,6 @@
             panelNaranja.ResumeLayout(false);
             panelRojo.ResumeLayout(false);
             panelRojo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -264,7 +246,6 @@
         private Guna.UI2.WinForms.Guna2Panel panelNaranja;
         private Guna.UI2.WinForms.Guna2Panel panelRojo;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
     }

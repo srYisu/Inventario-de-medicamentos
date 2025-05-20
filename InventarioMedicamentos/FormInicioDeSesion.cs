@@ -31,7 +31,7 @@ namespace InventarioMedicamentos
 
         private void FormInicioDeSesion_Load(object sender, EventArgs e)
         {
-            this.BackColor = ColorTranslator.FromHtml("#8F8464");
+            this.BackColor = ColorTranslator.FromHtml("#394D44");
             AplicarEsquinasRedondeadas(panelLogin, 100);
             AplicarEsquinasRedondeadas(panelNaranja, 5);
             AplicarEsquinasRedondeadas(panelRojo, 5);
@@ -91,5 +91,9 @@ namespace InventarioMedicamentos
             control.Region = new Region(path);
         }
 
+        private void panelNaranja_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
