@@ -152,7 +152,7 @@
             btnLimpiar.FillColor = Color.FromArgb(164, 124, 44);
             btnLimpiar.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLimpiar.ForeColor = Color.White;
-            btnLimpiar.Location = new Point(223, 651);
+            btnLimpiar.Location = new Point(223, 426);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnLimpiar.Size = new Size(138, 29);
@@ -171,7 +171,7 @@
             btnEliminar.FillColor = Color.FromArgb(164, 124, 44);
             btnEliminar.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminar.ForeColor = Color.White;
-            btnEliminar.Location = new Point(79, 651);
+            btnEliminar.Location = new Point(79, 426);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnEliminar.Size = new Size(138, 29);
@@ -190,7 +190,7 @@
             btnEditar.FillColor = Color.FromArgb(164, 124, 44);
             btnEditar.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEditar.ForeColor = Color.White;
-            btnEditar.Location = new Point(223, 616);
+            btnEditar.Location = new Point(223, 391);
             btnEditar.Name = "btnEditar";
             btnEditar.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnEditar.Size = new Size(138, 29);
@@ -209,7 +209,7 @@
             btnAgregar.FillColor = Color.FromArgb(164, 124, 44);
             btnAgregar.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAgregar.ForeColor = Color.White;
-            btnAgregar.Location = new Point(79, 616);
+            btnAgregar.Location = new Point(79, 391);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnAgregar.Size = new Size(138, 29);
