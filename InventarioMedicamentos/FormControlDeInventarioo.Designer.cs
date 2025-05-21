@@ -46,14 +46,12 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             dgvMedicamentos = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -61,20 +59,18 @@
             btnEliminar = new Guna.UI2.WinForms.Guna2Button();
             btnEditar = new Guna.UI2.WinForms.Guna2Button();
             btnAgregar = new Guna.UI2.WinForms.Guna2Button();
-            guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            txtDescripcion = new Guna.UI2.WinForms.Guna2TextBox();
             guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            txtFechaDeCaducidad = new Guna.UI2.WinForms.Guna2TextBox();
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             txtFondoFijo = new Guna.UI2.WinForms.Guna2TextBox();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            txtUnidades = new Guna.UI2.WinForms.Guna2TextBox();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             txtMedicamento = new Guna.UI2.WinForms.Guna2TextBox();
             btnSalir = new Guna.UI2.WinForms.Guna2Button();
             panelNaranja = new Guna.UI2.WinForms.Guna2Panel();
             panelRojo = new Guna.UI2.WinForms.Guna2Panel();
-            guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblTitulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            dtpFechaCaducidad = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            cmbUnidades = new Guna.UI2.WinForms.Guna2ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvMedicamentos).BeginInit();
             panelNaranja.SuspendLayout();
             panelRojo.SuspendLayout();
@@ -156,7 +152,7 @@
             btnLimpiar.FillColor = Color.FromArgb(164, 124, 44);
             btnLimpiar.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLimpiar.ForeColor = Color.White;
-            btnLimpiar.Location = new Point(223, 645);
+            btnLimpiar.Location = new Point(223, 651);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnLimpiar.Size = new Size(138, 29);
@@ -175,7 +171,7 @@
             btnEliminar.FillColor = Color.FromArgb(164, 124, 44);
             btnEliminar.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminar.ForeColor = Color.White;
-            btnEliminar.Location = new Point(79, 645);
+            btnEliminar.Location = new Point(79, 651);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnEliminar.Size = new Size(138, 29);
@@ -194,7 +190,7 @@
             btnEditar.FillColor = Color.FromArgb(164, 124, 44);
             btnEditar.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEditar.ForeColor = Color.White;
-            btnEditar.Location = new Point(223, 610);
+            btnEditar.Location = new Point(223, 616);
             btnEditar.Name = "btnEditar";
             btnEditar.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnEditar.Size = new Size(138, 29);
@@ -213,7 +209,7 @@
             btnAgregar.FillColor = Color.FromArgb(164, 124, 44);
             btnAgregar.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAgregar.ForeColor = Color.White;
-            btnAgregar.Location = new Point(79, 610);
+            btnAgregar.Location = new Point(79, 616);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnAgregar.Size = new Size(138, 29);
@@ -221,69 +217,16 @@
             btnAgregar.Text = "Agregar";
             btnAgregar.Click += btnAgregar_Click;
             // 
-            // guna2HtmlLabel5
-            // 
-            guna2HtmlLabel5.BackColor = Color.Transparent;
-            guna2HtmlLabel5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2HtmlLabel5.ForeColor = Color.White;
-            guna2HtmlLabel5.Location = new Point(50, 347);
-            guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            guna2HtmlLabel5.Size = new Size(93, 23);
-            guna2HtmlLabel5.TabIndex = 37;
-            guna2HtmlLabel5.Text = "Descripción";
-            // 
-            // txtDescripcion
-            // 
-            txtDescripcion.BorderRadius = 6;
-            txtDescripcion.CustomizableEdges = customizableEdges9;
-            txtDescripcion.DefaultText = "";
-            txtDescripcion.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtDescripcion.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtDescripcion.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtDescripcion.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtDescripcion.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtDescripcion.Font = new Font("Segoe UI", 9F);
-            txtDescripcion.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtDescripcion.Location = new Point(50, 371);
-            txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.PlaceholderText = "";
-            txtDescripcion.SelectedText = "";
-            txtDescripcion.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            txtDescripcion.Size = new Size(352, 215);
-            txtDescripcion.TabIndex = 36;
-            txtDescripcion.TextChanged += txtDescripcion_TextChanged;
-            // 
             // guna2HtmlLabel4
             // 
             guna2HtmlLabel4.BackColor = Color.Transparent;
             guna2HtmlLabel4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel4.ForeColor = Color.White;
-            guna2HtmlLabel4.Location = new Point(50, 288);
+            guna2HtmlLabel4.Location = new Point(50, 294);
             guna2HtmlLabel4.Name = "guna2HtmlLabel4";
             guna2HtmlLabel4.Size = new Size(153, 23);
             guna2HtmlLabel4.TabIndex = 35;
             guna2HtmlLabel4.Text = "Fecha de caducidad";
-            // 
-            // txtFechaDeCaducidad
-            // 
-            txtFechaDeCaducidad.BorderRadius = 6;
-            txtFechaDeCaducidad.CustomizableEdges = customizableEdges11;
-            txtFechaDeCaducidad.DefaultText = "";
-            txtFechaDeCaducidad.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtFechaDeCaducidad.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtFechaDeCaducidad.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtFechaDeCaducidad.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtFechaDeCaducidad.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtFechaDeCaducidad.Font = new Font("Segoe UI", 9F);
-            txtFechaDeCaducidad.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtFechaDeCaducidad.Location = new Point(50, 312);
-            txtFechaDeCaducidad.Name = "txtFechaDeCaducidad";
-            txtFechaDeCaducidad.PlaceholderText = "";
-            txtFechaDeCaducidad.SelectedText = "";
-            txtFechaDeCaducidad.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            txtFechaDeCaducidad.Size = new Size(352, 29);
-            txtFechaDeCaducidad.TabIndex = 34;
-            txtFechaDeCaducidad.TextChanged += txtFechaDeCaducidad_TextChanged;
             // 
             // guna2HtmlLabel3
             // 
@@ -299,7 +242,7 @@
             // txtFondoFijo
             // 
             txtFondoFijo.BorderRadius = 6;
-            txtFondoFijo.CustomizableEdges = customizableEdges13;
+            txtFondoFijo.CustomizableEdges = customizableEdges9;
             txtFondoFijo.DefaultText = "";
             txtFondoFijo.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtFondoFijo.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -312,7 +255,7 @@
             txtFondoFijo.Name = "txtFondoFijo";
             txtFondoFijo.PlaceholderText = "";
             txtFondoFijo.SelectedText = "";
-            txtFondoFijo.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            txtFondoFijo.ShadowDecoration.CustomizableEdges = customizableEdges10;
             txtFondoFijo.Size = new Size(352, 29);
             txtFondoFijo.TabIndex = 32;
             txtFondoFijo.TextChanged += txtFondoFijo_TextChanged;
@@ -328,27 +271,6 @@
             guna2HtmlLabel2.TabIndex = 31;
             guna2HtmlLabel2.Text = "Unidades";
             // 
-            // txtUnidades
-            // 
-            txtUnidades.BorderRadius = 6;
-            txtUnidades.CustomizableEdges = customizableEdges15;
-            txtUnidades.DefaultText = "";
-            txtUnidades.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtUnidades.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtUnidades.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtUnidades.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtUnidades.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtUnidades.Font = new Font("Segoe UI", 9F);
-            txtUnidades.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtUnidades.Location = new Point(50, 254);
-            txtUnidades.Name = "txtUnidades";
-            txtUnidades.PlaceholderText = "";
-            txtUnidades.SelectedText = "";
-            txtUnidades.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            txtUnidades.Size = new Size(352, 29);
-            txtUnidades.TabIndex = 30;
-            txtUnidades.TextChanged += txtUnidades_TextChanged;
-            // 
             // guna2HtmlLabel1
             // 
             guna2HtmlLabel1.BackColor = Color.Transparent;
@@ -363,7 +285,7 @@
             // txtMedicamento
             // 
             txtMedicamento.BorderRadius = 6;
-            txtMedicamento.CustomizableEdges = customizableEdges17;
+            txtMedicamento.CustomizableEdges = customizableEdges11;
             txtMedicamento.DefaultText = "";
             txtMedicamento.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtMedicamento.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -376,7 +298,7 @@
             txtMedicamento.Name = "txtMedicamento";
             txtMedicamento.PlaceholderText = "";
             txtMedicamento.SelectedText = "";
-            txtMedicamento.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            txtMedicamento.ShadowDecoration.CustomizableEdges = customizableEdges12;
             txtMedicamento.Size = new Size(352, 29);
             txtMedicamento.TabIndex = 28;
             txtMedicamento.TextChanged += txtMedicamento_TextChanged;
@@ -384,7 +306,7 @@
             // btnSalir
             // 
             btnSalir.BorderRadius = 10;
-            btnSalir.CustomizableEdges = customizableEdges19;
+            btnSalir.CustomizableEdges = customizableEdges13;
             btnSalir.DisabledState.BorderColor = Color.DarkGray;
             btnSalir.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSalir.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -394,7 +316,7 @@
             btnSalir.ForeColor = Color.White;
             btnSalir.Location = new Point(12, 812);
             btnSalir.Name = "btnSalir";
-            btnSalir.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            btnSalir.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btnSalir.Size = new Size(84, 37);
             btnSalir.TabIndex = 43;
             btnSalir.Text = "Salir";
@@ -404,40 +326,79 @@
             // 
             panelNaranja.BackColor = Color.FromArgb(163, 126, 51);
             panelNaranja.Controls.Add(panelRojo);
-            panelNaranja.CustomizableEdges = customizableEdges23;
+            panelNaranja.CustomizableEdges = customizableEdges17;
             panelNaranja.Location = new Point(-4, 0);
             panelNaranja.Name = "panelNaranja";
-            panelNaranja.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            panelNaranja.ShadowDecoration.CustomizableEdges = customizableEdges18;
             panelNaranja.Size = new Size(1589, 92);
             panelNaranja.TabIndex = 44;
             // 
             // panelRojo
             // 
             panelRojo.BackColor = Color.FromArgb(105, 32, 58);
-            panelRojo.Controls.Add(guna2HtmlLabel6);
-            panelRojo.CustomizableEdges = customizableEdges21;
+            panelRojo.Controls.Add(lblTitulo);
+            panelRojo.CustomizableEdges = customizableEdges15;
             panelRojo.Location = new Point(0, 0);
             panelRojo.Name = "panelRojo";
-            panelRojo.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            panelRojo.ShadowDecoration.CustomizableEdges = customizableEdges16;
             panelRojo.Size = new Size(1597, 84);
             panelRojo.TabIndex = 8;
             // 
-            // guna2HtmlLabel6
+            // lblTitulo
             // 
-            guna2HtmlLabel6.BackColor = Color.Transparent;
-            guna2HtmlLabel6.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2HtmlLabel6.ForeColor = Color.White;
-            guna2HtmlLabel6.Location = new Point(509, 8);
-            guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            guna2HtmlLabel6.Size = new Size(575, 67);
-            guna2HtmlLabel6.TabIndex = 0;
-            guna2HtmlLabel6.Text = "CONTROL DE INVENTARIO";
+            lblTitulo.BackColor = Color.Transparent;
+            lblTitulo.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = Color.White;
+            lblTitulo.Location = new Point(509, 8);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(575, 67);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "CONTROL DE INVENTARIO";
+            // 
+            // dtpFechaCaducidad
+            // 
+            dtpFechaCaducidad.BackColor = Color.Transparent;
+            dtpFechaCaducidad.BorderRadius = 6;
+            dtpFechaCaducidad.Checked = true;
+            dtpFechaCaducidad.CustomizableEdges = customizableEdges19;
+            dtpFechaCaducidad.FillColor = Color.FromArgb(163, 126, 51);
+            dtpFechaCaducidad.Font = new Font("Segoe UI", 9F);
+            dtpFechaCaducidad.Format = DateTimePickerFormat.Long;
+            dtpFechaCaducidad.Location = new Point(50, 323);
+            dtpFechaCaducidad.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+            dtpFechaCaducidad.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+            dtpFechaCaducidad.Name = "dtpFechaCaducidad";
+            dtpFechaCaducidad.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            dtpFechaCaducidad.Size = new Size(352, 29);
+            dtpFechaCaducidad.TabIndex = 45;
+            dtpFechaCaducidad.Value = new DateTime(2025, 5, 20, 22, 49, 34, 431);
+            // 
+            // cmbUnidades
+            // 
+            cmbUnidades.BackColor = Color.Transparent;
+            cmbUnidades.BorderRadius = 6;
+            cmbUnidades.CustomizableEdges = customizableEdges21;
+            cmbUnidades.DrawMode = DrawMode.OwnerDrawFixed;
+            cmbUnidades.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbUnidades.FocusedColor = Color.FromArgb(94, 148, 255);
+            cmbUnidades.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cmbUnidades.Font = new Font("Segoe UI", 10F);
+            cmbUnidades.ForeColor = Color.FromArgb(68, 88, 112);
+            cmbUnidades.ItemHeight = 30;
+            cmbUnidades.Items.AddRange(new object[] { "AMP", "TAB" });
+            cmbUnidades.Location = new Point(50, 254);
+            cmbUnidades.Name = "cmbUnidades";
+            cmbUnidades.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            cmbUnidades.Size = new Size(352, 36);
+            cmbUnidades.TabIndex = 46;
             // 
             // FormControlDeInventarioo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
+            Controls.Add(cmbUnidades);
+            Controls.Add(dtpFechaCaducidad);
             Controls.Add(panelNaranja);
             Controls.Add(btnSalir);
             Controls.Add(dgvMedicamentos);
@@ -445,19 +406,16 @@
             Controls.Add(btnEliminar);
             Controls.Add(btnEditar);
             Controls.Add(btnAgregar);
-            Controls.Add(guna2HtmlLabel5);
-            Controls.Add(txtDescripcion);
             Controls.Add(guna2HtmlLabel4);
-            Controls.Add(txtFechaDeCaducidad);
             Controls.Add(guna2HtmlLabel3);
             Controls.Add(txtFondoFijo);
             Controls.Add(guna2HtmlLabel2);
-            Controls.Add(txtUnidades);
             Controls.Add(guna2HtmlLabel1);
             Controls.Add(txtMedicamento);
             Name = "FormControlDeInventarioo";
             Text = "FormControlDeInventarioo";
             Load += FormControlDeInventarioo_Load;
+            Resize += FormControlDeInventarioo_Resize;
             ((System.ComponentModel.ISupportInitialize)dgvMedicamentos).EndInit();
             panelNaranja.ResumeLayout(false);
             panelRojo.ResumeLayout(false);
@@ -473,19 +431,17 @@
         private Guna.UI2.WinForms.Guna2Button btnEliminar;
         private Guna.UI2.WinForms.Guna2Button btnEditar;
         private Guna.UI2.WinForms.Guna2Button btnAgregar;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
-        private Guna.UI2.WinForms.Guna2TextBox txtDescripcion;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
-        private Guna.UI2.WinForms.Guna2TextBox txtFechaDeCaducidad;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2TextBox txtFondoFijo;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
-        private Guna.UI2.WinForms.Guna2TextBox txtUnidades;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2TextBox txtMedicamento;
         private Guna.UI2.WinForms.Guna2Button btnSalir;
         private Guna.UI2.WinForms.Guna2Panel panelNaranja;
         private Guna.UI2.WinForms.Guna2Panel panelRojo;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblTitulo;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpFechaCaducidad;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbUnidades;
     }
 }

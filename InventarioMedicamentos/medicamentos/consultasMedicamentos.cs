@@ -19,7 +19,7 @@ namespace InventarioMedicamentos.medicamentos
         }
 
         // Método para agregar un medicamento
-        public bool GuardarMedicanmento(string descripcion, string unidad, int fondoFijo, TimeSpan fechaCaducidad)
+        public bool GuardarMedicanmento(string descripcion, string unidad, int fondoFijo, DateTime fechaCaducidad)
         {
             using (MySqlConnection conn = conexion.ObtenerConexion())
             {
@@ -56,7 +56,7 @@ namespace InventarioMedicamentos.medicamentos
         }
 
         // Método para actualizar un medicamento
-        public bool ActualizarMedicamento(int idMedicamento, string descripcion, string unidad, int fondoFijo, TimeSpan fechaCaducidad)
+        public bool ActualizarMedicamento(int idMedicamento, string descripcion, string unidad, int fondoFijo, DateTime fechaCaducidad)
         {
             using (MySqlConnection conn = conexion.ObtenerConexion())
             {
@@ -70,7 +70,7 @@ namespace InventarioMedicamentos.medicamentos
                     cmd.Parameters.AddWithValue("@descripcion", descripcion);
                     cmd.Parameters.AddWithValue("@unidad", unidad);
                     cmd.Parameters.AddWithValue("@fondoFijo", fondoFijo);
-                    cmd.Parameters.AddWithValue("@fecha_caducidad", fechaCaducidad);
+                    cmd.Parameters.AddWithValue("@fechaCaducidad", fechaCaducidad.ToString("yyyy-MM-dd"));
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
@@ -84,10 +84,10 @@ namespace InventarioMedicamentos.medicamentos
             {
                 conn.Open();
                 string query = @"SELECT id_medicamento AS ID, 
-                                    descripcion AS Descripción, 
+                                    descripcion AS Medicamento, 
                                     unidad AS Unidad, 
-                                    fondo_fijo AS Fondo Fijo, 
-                                    fecha_caducidad AS Fecha Caducidad
+                                    fondo_fijo AS 'Fondo Fijo', 
+                                    fecha_caducidad AS 'Fecha Caducidad'
                              FROM medicamentos";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
