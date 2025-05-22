@@ -1,0 +1,114 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace InventarioMedicamentos
+{
+    public partial class FormMenu : Form
+    {
+        public FormMenu()
+        {
+            InitializeComponent();
+        }
+
+        private void FormMenu_Load(object sender, EventArgs e)
+        {
+            this.BackColor = ColorTranslator.FromHtml("#394D44");
+            AplicarEsquinasRedondeadas(panelNaranja, 10);
+            AplicarEsquinasRedondeadas(panelRojo, 10);
+            AplicarEsquinasRedondeadas(panelControlDeInventario, 30);
+            AplicarEsquinasRedondeadas(panelInformes, 30);
+            lblInformes.Cursor = Cursors.Hand;
+        }
+        private void AplicarEsquinasRedondeadas(Panel panel, int radio)
+        {
+            panel.Paint += (s, e) =>
+            {
+                Graphics g = e.Graphics;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+
+                Rectangle rect = new Rectangle(0, 0, panel.Width, panel.Height);
+                GraphicsPath path = CrearRectanguloRedondeado(rect, radio);
+                panel.Region = new Region(path);
+            };
+
+            // Forzar el repintado para aplicar el cambio al cargar
+            panel.Invalidate();
+        }
+
+        private GraphicsPath CrearRectanguloRedondeado(Rectangle rect, int radio)
+        {
+            GraphicsPath path = new GraphicsPath();
+            int diametro = radio * 2;
+
+            // Esquinas redondeadas
+            path.StartFigure();
+            path.AddArc(rect.X, rect.Y, diametro, diametro, 180, 90); // Esquina superior izquierda
+            path.AddArc(rect.Right - diametro, rect.Y, diametro, diametro, 270, 90); // Superior derecha
+            path.AddArc(rect.Right - diametro, rect.Bottom - diametro, diametro, diametro, 0, 90); // Inferior derecha
+            path.AddArc(rect.X, rect.Bottom - diametro, diametro, diametro, 90, 90); // Inferior izquierda
+            path.CloseFigure();
+
+            return path;
+        }
+
+        private void panelControlDeInventario_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelInformes_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelControlDeInventario_Click(object sender, EventArgs e)
+        {
+            FormControlDeInventarioo formControlDeInventarioo = new FormControlDeInventarioo();  // Pasar Form1 como referencia
+            formControlDeInventarioo.Show();
+            this.Hide();
+        }
+
+        private void panelInformes_Click(object sender, EventArgs e)
+        {
+            FormInformes formInformes = new FormInformes();  // Pasar Form1 como referencia
+            formInformes.Show();
+            this.Hide();
+        }
+
+        private void PictureBoxInventario_Click(object sender, EventArgs e)
+        {
+            FormControlDeInventarioo formControlDeInventarioo = new FormControlDeInventarioo();
+            formControlDeInventarioo.Show();
+            this.Hide();
+        }
+
+        private void PictureBoxInformes_Click(object sender, EventArgs e)
+        {
+            FormInformes formInformes = new FormInformes();
+            formInformes.Show();
+            this.Hide();
+        }
+
+        private void lblControlDeInventario_Click(object sender, EventArgs e)
+        {
+            FormControlDeInventarioo formControlDeInventarioo = new FormControlDeInventarioo();
+            formControlDeInventarioo.Show();
+            this.Hide();
+        }
+
+        private void lblInformes_Click(object sender, EventArgs e)
+        {
+            FormInformes formInformes = new FormInformes();
+            formInformes.Show();
+            this.Hide();
+        }
+    }
+}
