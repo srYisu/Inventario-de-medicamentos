@@ -28,12 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FormInformes";
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInformes));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            PictureBoxSalir = new Guna.UI2.WinForms.Guna2PictureBox();
+            ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).BeginInit();
+            SuspendLayout();
+            // 
+            // PictureBoxSalir
+            // 
+            PictureBoxSalir.Cursor = Cursors.Hand;
+            PictureBoxSalir.CustomizableEdges = customizableEdges1;
+            PictureBoxSalir.Image = (Image)resources.GetObject("PictureBoxSalir.Image");
+            PictureBoxSalir.ImageRotate = 0F;
+            PictureBoxSalir.Location = new Point(12, 779);
+            PictureBoxSalir.Name = "PictureBoxSalir";
+            PictureBoxSalir.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            PictureBoxSalir.Size = new Size(70, 70);
+            PictureBoxSalir.SizeMode = PictureBoxSizeMode.StretchImage;
+            PictureBoxSalir.TabIndex = 48;
+            PictureBoxSalir.TabStop = false;
+            PictureBoxSalir.Click += PictureBoxSalir_Click;
+            // 
+            // FormInformes
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1584, 861);
+            Controls.Add(PictureBoxSalir);
+            Name = "FormInformes";
+            Text = "FormInformes";
+            Load += FormInformes_Load;
+            ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Guna.UI2.WinForms.Guna2PictureBox PictureBoxSalir;
     }
 }

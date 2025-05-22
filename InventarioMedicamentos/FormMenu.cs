@@ -23,8 +23,9 @@ namespace InventarioMedicamentos
             this.BackColor = ColorTranslator.FromHtml("#394D44");
             AplicarEsquinasRedondeadas(panelNaranja, 10);
             AplicarEsquinasRedondeadas(panelRojo, 10);
-            AplicarEsquinasRedondeadas(panelControlDeInventario, 30);
-            AplicarEsquinasRedondeadas(panelInformes, 30);
+            AplicarEsquinasRedondeadas(panelBotones, 30);
+            AplicarEsquinasRedondeadas(panelInventario, 25);
+            AplicarEsquinasRedondeadas(panelInformes, 25);
             lblInformes.Cursor = Cursors.Hand;
         }
         private void AplicarEsquinasRedondeadas(Panel panel, int radio)
@@ -59,30 +60,6 @@ namespace InventarioMedicamentos
             return path;
         }
 
-        private void panelControlDeInventario_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panelInformes_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panelControlDeInventario_Click(object sender, EventArgs e)
-        {
-            FormControlDeInventarioo formControlDeInventarioo = new FormControlDeInventarioo();  // Pasar Form1 como referencia
-            formControlDeInventarioo.Show();
-            this.Hide();
-        }
-
-        private void panelInformes_Click(object sender, EventArgs e)
-        {
-            FormInformes formInformes = new FormInformes();  // Pasar Form1 como referencia
-            formInformes.Show();
-            this.Hide();
-        }
-
         private void PictureBoxInventario_Click(object sender, EventArgs e)
         {
             FormControlDeInventarioo formControlDeInventarioo = new FormControlDeInventarioo();
@@ -108,6 +85,20 @@ namespace InventarioMedicamentos
         {
             FormInformes formInformes = new FormInformes();
             formInformes.Show();
+            this.Hide();
+        }
+
+        private void PictureBoxSalir_Click(object sender, EventArgs e)
+        {
+            FormInicioDeSesion formInicioDeSesion = new FormInicioDeSesion();
+            formInicioDeSesion.Show();
+            this.Hide();
+        }
+
+        private void labelInventario_Click(object sender, EventArgs e)
+        {
+            FormControlDeInventarioo formControlDeInventarioo = new FormControlDeInventarioo();
+            formControlDeInventarioo.Show();
             this.Hide();
         }
     }

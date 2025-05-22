@@ -39,6 +39,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -53,11 +55,13 @@
             txtUsuario = new Guna.UI2.WinForms.Guna2TextBox();
             panelNaranja = new Guna.UI2.WinForms.Guna2Panel();
             panelRojo = new Guna.UI2.WinForms.Guna2Panel();
+            PictureBoxCambiarContrasena = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             panelNaranja.SuspendLayout();
             panelRojo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)PictureBoxCambiarContrasena).BeginInit();
             SuspendLayout();
             // 
             // panelLogin
@@ -71,7 +75,7 @@
             panelLogin.Controls.Add(btnIniciarSesion);
             panelLogin.Controls.Add(txtUsuario);
             panelLogin.CustomizableEdges = customizableEdges9;
-            panelLogin.Location = new Point(157, 116);
+            panelLogin.Location = new Point(159, 116);
             panelLogin.Name = "panelLogin";
             panelLogin.ShadowDecoration.CustomizableEdges = customizableEdges10;
             panelLogin.Size = new Size(281, 383);
@@ -186,33 +190,46 @@
             // 
             panelNaranja.BackColor = Color.FromArgb(163, 126, 51);
             panelNaranja.Controls.Add(panelRojo);
-            panelNaranja.CustomizableEdges = customizableEdges13;
-            panelNaranja.Location = new Point(-2, 0);
+            panelNaranja.CustomizableEdges = customizableEdges15;
+            panelNaranja.Location = new Point(0, -9);
             panelNaranja.Name = "panelNaranja";
-            panelNaranja.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            panelNaranja.Size = new Size(601, 92);
-            panelNaranja.TabIndex = 7;
-            panelNaranja.Paint += panelNaranja_Paint;
+            panelNaranja.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            panelNaranja.Size = new Size(599, 101);
+            panelNaranja.TabIndex = 9;
             // 
             // panelRojo
             // 
             panelRojo.BackColor = Color.FromArgb(105, 32, 58);
+            panelRojo.Controls.Add(PictureBoxCambiarContrasena);
             panelRojo.Controls.Add(guna2HtmlLabel1);
-            panelRojo.CustomizableEdges = customizableEdges11;
+            panelRojo.CustomizableEdges = customizableEdges13;
             panelRojo.Location = new Point(0, 0);
             panelRojo.Name = "panelRojo";
-            panelRojo.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            panelRojo.Size = new Size(601, 84);
+            panelRojo.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            panelRojo.Size = new Size(599, 88);
             panelRojo.TabIndex = 8;
+            // 
+            // PictureBoxCambiarContrasena
+            // 
+            PictureBoxCambiarContrasena.CustomizableEdges = customizableEdges11;
+            PictureBoxCambiarContrasena.Image = (Image)resources.GetObject("PictureBoxCambiarContrasena.Image");
+            PictureBoxCambiarContrasena.ImageRotate = 0F;
+            PictureBoxCambiarContrasena.Location = new Point(1514, 12);
+            PictureBoxCambiarContrasena.Name = "PictureBoxCambiarContrasena";
+            PictureBoxCambiarContrasena.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            PictureBoxCambiarContrasena.Size = new Size(60, 60);
+            PictureBoxCambiarContrasena.SizeMode = PictureBoxSizeMode.StretchImage;
+            PictureBoxCambiarContrasena.TabIndex = 47;
+            PictureBoxCambiarContrasena.TabStop = false;
             // 
             // guna2HtmlLabel1
             // 
             guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel1.Font = new Font("Segoe UI Semibold", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel1.ForeColor = Color.White;
-            guna2HtmlLabel1.Location = new Point(163, 7);
+            guna2HtmlLabel1.Location = new Point(159, 15);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(277, 67);
+            guna2HtmlLabel1.Size = new Size(285, 67);
             guna2HtmlLabel1.TabIndex = 0;
             guna2HtmlLabel1.Text = "BIENVENIDO";
             // 
@@ -232,6 +249,7 @@
             panelNaranja.ResumeLayout(false);
             panelRojo.ResumeLayout(false);
             panelRojo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)PictureBoxCambiarContrasena).EndInit();
             ResumeLayout(false);
         }
 
@@ -243,10 +261,11 @@
         private Guna.UI2.WinForms.Guna2Button btnIniciarSesion;
         private Guna.UI2.WinForms.Guna2PictureBox pictureBoxLogo;
         private LinkLabel linkOlvidaste;
-        private Guna.UI2.WinForms.Guna2Panel panelNaranja;
-        private Guna.UI2.WinForms.Guna2Panel panelRojo;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private Guna.UI2.WinForms.Guna2Panel panelNaranja;
+        private Guna.UI2.WinForms.Guna2Panel panelRojo;
+        private Guna.UI2.WinForms.Guna2PictureBox PictureBoxCambiarContrasena;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
     }
 }

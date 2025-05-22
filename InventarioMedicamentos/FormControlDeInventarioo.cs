@@ -244,7 +244,7 @@ namespace InventarioMedicamentos
                 panelRojo.Size = new Size(1920, 84);
                 lblTitulo.Location = new Point(650, 8);
                 dgvMedicamentos.Size = new Size(1200, 800);
-                btnSalir.Location = new Point(25, 950);
+                PictureBoxSalir.Location = new Point(25, 950);
 
             }
             else if (this.WindowState == FormWindowState.Normal)
@@ -253,8 +253,15 @@ namespace InventarioMedicamentos
                 panelRojo.Size = new Size(1597, 84);
                 lblTitulo.Location = new Point(509, 8);
                 dgvMedicamentos.Size = new Size(862, 697);
-                btnSalir.Location = new Point(12, 812);
+                PictureBoxSalir.Location = new Point(12, 812);
             }
+        }
+
+        private void PictureBoxSalir_Click(object sender, EventArgs e)
+        {
+            FormInicioDeSesion formInicioDeSesion = new FormInicioDeSesion();
+            formInicioDeSesion.Show();
+            this.Hide();
         }
     }
 }
