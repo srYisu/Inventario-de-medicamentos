@@ -149,7 +149,7 @@
             btnLimpiar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnLimpiar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnLimpiar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnLimpiar.FillColor = Color.FromArgb(164, 124, 44);
+            btnLimpiar.FillColor = Color.FromArgb(22, 98, 86);
             btnLimpiar.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLimpiar.ForeColor = Color.White;
             btnLimpiar.Location = new Point(223, 426);
@@ -168,7 +168,7 @@
             btnEliminar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnEliminar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnEliminar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnEliminar.FillColor = Color.FromArgb(164, 124, 44);
+            btnEliminar.FillColor = Color.FromArgb(22, 98, 86);
             btnEliminar.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminar.ForeColor = Color.White;
             btnEliminar.Location = new Point(79, 426);
@@ -187,7 +187,7 @@
             btnEditar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnEditar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnEditar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnEditar.FillColor = Color.FromArgb(164, 124, 44);
+            btnEditar.FillColor = Color.FromArgb(22, 98, 86);
             btnEditar.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEditar.ForeColor = Color.White;
             btnEditar.Location = new Point(223, 391);
@@ -206,7 +206,7 @@
             btnAgregar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnAgregar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnAgregar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnAgregar.FillColor = Color.FromArgb(164, 124, 44);
+            btnAgregar.FillColor = Color.FromArgb(22, 98, 86);
             btnAgregar.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAgregar.ForeColor = Color.White;
             btnAgregar.Location = new Point(79, 391);
@@ -311,7 +311,7 @@
             btnSalir.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSalir.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSalir.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSalir.FillColor = Color.FromArgb(164, 124, 44);
+            btnSalir.FillColor = Color.FromArgb(22, 98, 86);
             btnSalir.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSalir.ForeColor = Color.White;
             btnSalir.Location = new Point(12, 812);
@@ -327,10 +327,10 @@
             panelNaranja.BackColor = Color.FromArgb(163, 126, 51);
             panelNaranja.Controls.Add(panelRojo);
             panelNaranja.CustomizableEdges = customizableEdges17;
-            panelNaranja.Location = new Point(-4, 0);
+            panelNaranja.Location = new Point(-1, 0);
             panelNaranja.Name = "panelNaranja";
             panelNaranja.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            panelNaranja.Size = new Size(1589, 92);
+            panelNaranja.Size = new Size(1586, 92);
             panelNaranja.TabIndex = 44;
             // 
             // panelRojo
@@ -341,7 +341,7 @@
             panelRojo.Location = new Point(0, 0);
             panelRojo.Name = "panelRojo";
             panelRojo.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            panelRojo.Size = new Size(1597, 84);
+            panelRojo.Size = new Size(1586, 84);
             panelRojo.TabIndex = 8;
             // 
             // lblTitulo
@@ -361,7 +361,7 @@
             dtpFechaCaducidad.BorderRadius = 6;
             dtpFechaCaducidad.Checked = true;
             dtpFechaCaducidad.CustomizableEdges = customizableEdges19;
-            dtpFechaCaducidad.FillColor = Color.FromArgb(163, 126, 51);
+            dtpFechaCaducidad.FillColor = Color.FromArgb(22, 98, 86);
             dtpFechaCaducidad.Font = new Font("Segoe UI", 9F);
             dtpFechaCaducidad.Format = DateTimePickerFormat.Long;
             dtpFechaCaducidad.Location = new Point(50, 323);

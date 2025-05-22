@@ -32,9 +32,9 @@ namespace InventarioMedicamentos
         private void FormInicioDeSesion_Load(object sender, EventArgs e)
         {
             this.BackColor = ColorTranslator.FromHtml("#394D44");
-            AplicarEsquinasRedondeadas(panelLogin, 100);
-            AplicarEsquinasRedondeadas(panelNaranja, 5);
-            AplicarEsquinasRedondeadas(panelRojo, 5);
+            AplicarEsquinasRedondeadas(panelLogin, 50);
+            AplicarEsquinasRedondeadas(panelNaranja, 10);
+            AplicarEsquinasRedondeadas(panelRojo, 10);
         }
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
@@ -79,16 +79,36 @@ namespace InventarioMedicamentos
 
         }
 
-        private void AplicarEsquinasRedondeadas(Control control, int radio)
+        private void AplicarEsquinasRedondeadas(Panel panel, int radio)
+        {
+            panel.Paint += (s, e) =>
+            {
+                Graphics g = e.Graphics;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+
+                Rectangle rect = new Rectangle(0, 0, panel.Width, panel.Height);
+                GraphicsPath path = CrearRectanguloRedondeado(rect, radio);
+                panel.Region = new Region(path);
+            };
+
+            // Forzar el repintado para aplicar el cambio al cargar
+            panel.Invalidate();
+        }
+
+        private GraphicsPath CrearRectanguloRedondeado(Rectangle rect, int radio)
         {
             GraphicsPath path = new GraphicsPath();
+            int diametro = radio * 2;
+
+            // Esquinas redondeadas
             path.StartFigure();
-            path.AddArc(new Rectangle(0, 0, radio, radio), 180, 90);
-            path.AddArc(new Rectangle(control.Width - radio, 0, radio, radio), 270, 90);
-            path.AddArc(new Rectangle(control.Width - radio, control.Height - radio, radio, radio), 0, 90);
-            path.AddArc(new Rectangle(0, control.Height - radio, radio, radio), 90, 90);
+            path.AddArc(rect.X, rect.Y, diametro, diametro, 180, 90); // Esquina superior izquierda
+            path.AddArc(rect.Right - diametro, rect.Y, diametro, diametro, 270, 90); // Superior derecha
+            path.AddArc(rect.Right - diametro, rect.Bottom - diametro, diametro, diametro, 0, 90); // Inferior derecha
+            path.AddArc(rect.X, rect.Bottom - diametro, diametro, diametro, 90, 90); // Inferior izquierda
             path.CloseFigure();
-            control.Region = new Region(path);
+
+            return path;
         }
 
         private void panelNaranja_Paint(object sender, PaintEventArgs e)

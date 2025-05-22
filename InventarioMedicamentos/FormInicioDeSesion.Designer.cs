@@ -187,10 +187,10 @@
             panelNaranja.BackColor = Color.FromArgb(163, 126, 51);
             panelNaranja.Controls.Add(panelRojo);
             panelNaranja.CustomizableEdges = customizableEdges13;
-            panelNaranja.Location = new Point(0, 0);
+            panelNaranja.Location = new Point(-2, 0);
             panelNaranja.Name = "panelNaranja";
             panelNaranja.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            panelNaranja.Size = new Size(598, 92);
+            panelNaranja.Size = new Size(601, 92);
             panelNaranja.TabIndex = 7;
             panelNaranja.Paint += panelNaranja_Paint;
             // 
@@ -202,7 +202,7 @@
             panelRojo.Location = new Point(0, 0);
             panelRojo.Name = "panelRojo";
             panelRojo.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            panelRojo.Size = new Size(598, 84);
+            panelRojo.Size = new Size(601, 84);
             panelRojo.TabIndex = 8;
             // 
             // guna2HtmlLabel1
