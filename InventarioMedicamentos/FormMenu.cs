@@ -101,5 +101,19 @@ namespace InventarioMedicamentos
             formControlDeInventarioo.Show();
             this.Hide();
         }
+
+        private void pbbtnCambiarContrasena_Click(object sender, EventArgs e)
+        {
+            FormCambiarContrasena formCambiarContrasena = new FormCambiarContrasena();
+            formCambiarContrasena.Show();
+            this.Hide();
+        }
+
+        private void pbbtnAgUsuariosAdmin_Click(object sender, EventArgs e)
+        {
+            FormAgUsuariosAdmin formAgUsuariosAdmin = new FormAgUsuariosAdmin();
+            formAgUsuariosAdmin.Show();
+            this.Hide();
+        }
     }
 }

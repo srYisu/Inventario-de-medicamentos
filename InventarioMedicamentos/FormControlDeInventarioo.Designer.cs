@@ -310,7 +310,7 @@
             panelNaranja.BackColor = Color.FromArgb(163, 126, 51);
             panelNaranja.Controls.Add(panelRojo);
             panelNaranja.CustomizableEdges = customizableEdges15;
-            panelNaranja.Location = new Point(-1, 0);
+            panelNaranja.Location = new Point(-1, -5);
             panelNaranja.Name = "panelNaranja";
             panelNaranja.ShadowDecoration.CustomizableEdges = customizableEdges16;
             panelNaranja.Size = new Size(1586, 92);

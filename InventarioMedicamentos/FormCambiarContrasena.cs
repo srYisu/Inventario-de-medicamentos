@@ -11,18 +11,26 @@ using System.Windows.Forms;
 
 namespace InventarioMedicamentos
 {
-    public partial class FormInformes : Form
+    public partial class FormCambiarContrasena : Form
     {
-        public FormInformes()
+        public FormCambiarContrasena()
         {
             InitializeComponent();
-            AplicarEsquinasRedondeadas(panelNaranja, 10);
-            AplicarEsquinasRedondeadas(panelRojo, 10);
         }
 
-        private void FormInformes_Load(object sender, EventArgs e)
+        private void PictureBoxSalir_Click(object sender, EventArgs e)
+        {
+            FormMenu formMenu = new FormMenu();
+            formMenu.Show();
+            this.Hide();
+        }
+
+        private void FormCambiarContrasena_Load(object sender, EventArgs e)
         {
             this.BackColor = ColorTranslator.FromHtml("#394D44");
+            AplicarEsquinasRedondeadas(panelNaranja, 10);
+            AplicarEsquinasRedondeadas(panelRojo, 10);
+            AplicarEsquinasRedondeadas(panelCambiarContrasena, 50);
         }
 
         private void AplicarEsquinasRedondeadas(Panel panel, int radio)
@@ -55,13 +63,6 @@ namespace InventarioMedicamentos
             path.CloseFigure();
 
             return path;
-        }
-
-        private void PictureBoxSalir_Click(object sender, EventArgs e)
-        {
-            FormMenu formMenu = new FormMenu();
-            formMenu.Show();
-            this.Hide();
         }
     }
 }

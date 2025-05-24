@@ -11,18 +11,19 @@ using System.Windows.Forms;
 
 namespace InventarioMedicamentos
 {
-    public partial class FormInformes : Form
+    public partial class FormAgUsuariosAdmin : Form
     {
-        public FormInformes()
+        public FormAgUsuariosAdmin()
         {
             InitializeComponent();
-            AplicarEsquinasRedondeadas(panelNaranja, 10);
-            AplicarEsquinasRedondeadas(panelRojo, 10);
         }
 
-        private void FormInformes_Load(object sender, EventArgs e)
+        private void FormAgUsuariosAdmin_Load(object sender, EventArgs e)
         {
             this.BackColor = ColorTranslator.FromHtml("#394D44");
+            AplicarEsquinasRedondeadas(panelNaranja, 10);
+            AplicarEsquinasRedondeadas(panelRojo, 10);
+            AplicarEsquinasRedondeadas(panelAnadirUsuario, 50);
         }
 
         private void AplicarEsquinasRedondeadas(Panel panel, int radio)

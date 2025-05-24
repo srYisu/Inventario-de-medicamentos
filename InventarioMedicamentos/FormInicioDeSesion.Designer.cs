@@ -150,6 +150,7 @@
             // btnIniciarSesion
             // 
             btnIniciarSesion.BorderRadius = 10;
+            btnIniciarSesion.Cursor = Cursors.Hand;
             btnIniciarSesion.CustomizableEdges = customizableEdges5;
             btnIniciarSesion.DisabledState.BorderColor = Color.DarkGray;
             btnIniciarSesion.DisabledState.CustomBorderColor = Color.DarkGray;
