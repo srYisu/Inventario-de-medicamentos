@@ -51,9 +51,9 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormControlDeInventarioo));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormControlDeInventarioo));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             dgvMedicamentos = new Guna.UI2.WinForms.Guna2DataGridView();
             btnLimpiar = new Guna.UI2.WinForms.Guna2Button();
@@ -69,9 +69,9 @@
             panelNaranja = new Guna.UI2.WinForms.Guna2Panel();
             panelRojo = new Guna.UI2.WinForms.Guna2Panel();
             lblTitulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            dtpFechaCaducidad = new Guna.UI2.WinForms.Guna2DateTimePicker();
             cmbUnidades = new Guna.UI2.WinForms.Guna2ComboBox();
             PictureBoxSalir = new Guna.UI2.WinForms.Guna2PictureBox();
+            txtFechaCaducidad = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvMedicamentos).BeginInit();
             panelNaranja.SuspendLayout();
             panelRojo.SuspendLayout();
@@ -338,29 +338,11 @@
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "CONTROL DE INVENTARIO";
             // 
-            // dtpFechaCaducidad
-            // 
-            dtpFechaCaducidad.BackColor = Color.Transparent;
-            dtpFechaCaducidad.BorderRadius = 6;
-            dtpFechaCaducidad.Checked = true;
-            dtpFechaCaducidad.CustomizableEdges = customizableEdges17;
-            dtpFechaCaducidad.FillColor = Color.FromArgb(164, 124, 44);
-            dtpFechaCaducidad.Font = new Font("Segoe UI", 9F);
-            dtpFechaCaducidad.Format = DateTimePickerFormat.Long;
-            dtpFechaCaducidad.Location = new Point(50, 323);
-            dtpFechaCaducidad.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
-            dtpFechaCaducidad.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
-            dtpFechaCaducidad.Name = "dtpFechaCaducidad";
-            dtpFechaCaducidad.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            dtpFechaCaducidad.Size = new Size(352, 29);
-            dtpFechaCaducidad.TabIndex = 45;
-            dtpFechaCaducidad.Value = new DateTime(2025, 5, 20, 22, 49, 34, 431);
-            // 
             // cmbUnidades
             // 
             cmbUnidades.BackColor = Color.Transparent;
             cmbUnidades.BorderRadius = 6;
-            cmbUnidades.CustomizableEdges = customizableEdges19;
+            cmbUnidades.CustomizableEdges = customizableEdges17;
             cmbUnidades.DrawMode = DrawMode.OwnerDrawFixed;
             cmbUnidades.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbUnidades.FocusedColor = Color.FromArgb(94, 148, 255);
@@ -371,33 +353,57 @@
             cmbUnidades.Items.AddRange(new object[] { "AMP", "TAB" });
             cmbUnidades.Location = new Point(50, 254);
             cmbUnidades.Name = "cmbUnidades";
-            cmbUnidades.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            cmbUnidades.ShadowDecoration.CustomizableEdges = customizableEdges18;
             cmbUnidades.Size = new Size(352, 36);
             cmbUnidades.TabIndex = 46;
             // 
             // PictureBoxSalir
             // 
             PictureBoxSalir.Cursor = Cursors.Hand;
-            PictureBoxSalir.CustomizableEdges = customizableEdges21;
+            PictureBoxSalir.CustomizableEdges = customizableEdges19;
             PictureBoxSalir.Image = (Image)resources.GetObject("PictureBoxSalir.Image");
             PictureBoxSalir.ImageRotate = 0F;
             PictureBoxSalir.Location = new Point(12, 779);
             PictureBoxSalir.Name = "PictureBoxSalir";
-            PictureBoxSalir.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            PictureBoxSalir.ShadowDecoration.CustomizableEdges = customizableEdges20;
             PictureBoxSalir.Size = new Size(70, 70);
             PictureBoxSalir.SizeMode = PictureBoxSizeMode.StretchImage;
             PictureBoxSalir.TabIndex = 48;
             PictureBoxSalir.TabStop = false;
             PictureBoxSalir.Click += PictureBoxSalir_Click;
             // 
+            // txtFechaCaducidad
+            // 
+            txtFechaCaducidad.BorderRadius = 6;
+            txtFechaCaducidad.CustomizableEdges = customizableEdges21;
+            txtFechaCaducidad.DefaultText = "";
+            txtFechaCaducidad.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtFechaCaducidad.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtFechaCaducidad.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtFechaCaducidad.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtFechaCaducidad.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtFechaCaducidad.Font = new Font("Segoe UI", 9F);
+            txtFechaCaducidad.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtFechaCaducidad.Location = new Point(50, 323);
+            txtFechaCaducidad.Name = "txtFechaCaducidad";
+            txtFechaCaducidad.PlaceholderText = "";
+            txtFechaCaducidad.SelectedText = "";
+            txtFechaCaducidad.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            txtFechaCaducidad.Size = new Size(352, 29);
+            txtFechaCaducidad.TabIndex = 49;
+            txtFechaCaducidad.TextChanged += txtFechaCaducidad_TextChanged;
+            txtFechaCaducidad.Enter += txtFechaCaducidad_Enter;
+            txtFechaCaducidad.KeyPress += txtFechaCaducidad_KeyPress;
+            txtFechaCaducidad.Leave += txtFechaCaducidad_Leave;
+            // 
             // FormControlDeInventarioo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
+            Controls.Add(txtFechaCaducidad);
             Controls.Add(PictureBoxSalir);
             Controls.Add(cmbUnidades);
-            Controls.Add(dtpFechaCaducidad);
             Controls.Add(panelNaranja);
             Controls.Add(dgvMedicamentos);
             Controls.Add(btnLimpiar);
@@ -439,8 +445,8 @@
         private Guna.UI2.WinForms.Guna2Panel panelNaranja;
         private Guna.UI2.WinForms.Guna2Panel panelRojo;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblTitulo;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpFechaCaducidad;
         private Guna.UI2.WinForms.Guna2ComboBox cmbUnidades;
         private Guna.UI2.WinForms.Guna2PictureBox PictureBoxSalir;
+        private Guna.UI2.WinForms.Guna2TextBox txtFechaCaducidad;
     }
 }

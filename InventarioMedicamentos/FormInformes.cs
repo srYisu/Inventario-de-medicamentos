@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InventarioMedicamentos.medicamentos;
+using InventarioMedicamentos.movimientos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,11 +15,16 @@ namespace InventarioMedicamentos
 {
     public partial class FormInformes : Form
     {
-        public FormInformes()
+        private FormPrincipal navegador;
+        private consultasMovimientos movimientos;
+        public FormInformes(FormPrincipal navegador)
         {
             InitializeComponent();
             AplicarEsquinasRedondeadas(panelNaranja, 10);
             AplicarEsquinasRedondeadas(panelRojo, 10);
+            this.navegador = navegador;
+            movimientos = new consultasMovimientos();
+            CargarMovimientos();
         }
 
         private void FormInformes_Load(object sender, EventArgs e)
@@ -56,12 +63,13 @@ namespace InventarioMedicamentos
 
             return path;
         }
-
+        private void CargarMovimientos()
+        {
+            dgvInformes.DataSource = movimientos.ConsultarMovimientos();
+        }
         private void PictureBoxSalir_Click(object sender, EventArgs e)
         {
-            FormMenu formMenu = new FormMenu();
-            formMenu.Show();
-            this.Hide();
+            navegador.NavegarA(new FormMenu(navegador));
         }
     }
 }

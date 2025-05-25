@@ -19,7 +19,7 @@ namespace InventarioMedicamentos.medicamentos
         }
 
         // Método para agregar un medicamento
-        public bool GuardarMedicanmento(string descripcion, string unidad, int fondoFijo, DateTime fechaCaducidad)
+        public int GuardarMedicanmento(string descripcion, string unidad, int fondoFijo, DateTime fechaCaducidad)
         {
             using (MySqlConnection conn = conexion.ObtenerConexion())
             {
@@ -33,7 +33,8 @@ namespace InventarioMedicamentos.medicamentos
                     cmd.Parameters.AddWithValue("@fondoFijo", fondoFijo);
                     cmd.Parameters.AddWithValue("@fechaCaducidad", fechaCaducidad);
 
-                    return cmd.ExecuteNonQuery() > 0;
+                    cmd.ExecuteNonQuery();
+                    return (int)cmd.LastInsertedId;
                 }
             }
         }
@@ -93,6 +94,26 @@ namespace InventarioMedicamentos.medicamentos
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
                 return dt;
+            }
+        }
+        
+        // Metodo para restar medicamentos
+        public bool RestarMedicamento(int idMedicamento, int nuevoValor)
+        {
+            using (MySqlConnection conn = conexion.ObtenerConexion())
+            {
+                conn.Open();
+
+                // Retira medicamentos
+                string queryRestar = @"UPDATE medicamentos 
+                                    SET fondo_fijo = @nuevoValor
+                                    WHERE id_medicamento = @idMedicamento";
+                using (MySqlCommand cmdRestar = new MySqlCommand(queryRestar, conn))
+                {
+                    cmdRestar.Parameters.AddWithValue("@idMedicamento", idMedicamento);
+                    cmdRestar.Parameters.AddWithValue("@nuevoValor", nuevoValor);
+                    return cmdRestar.ExecuteNonQuery() > 0;
+                }
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using InventarioMedicamentos.medicamentos;
+using InventarioMedicamentos.movimientos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,14 +16,18 @@ namespace InventarioMedicamentos
     public partial class FormControlDeInventarioo : Form
     {
         private consultasMedicamentos consultasMedicamentos;
+        private consultasMovimientos mov;
         private int medicamentoId = 0;
-        public FormControlDeInventarioo()
+        private FormPrincipal navegador;
+        public FormControlDeInventarioo(FormPrincipal navegador)
         {
             InitializeComponent();
             consultasMedicamentos = new consultasMedicamentos();
+            mov = new consultasMovimientos();
             CargarMedicamentos();
             AplicarEsquinasRedondeadas(panelNaranja, 10);
             AplicarEsquinasRedondeadas(panelRojo, 10);
+            this.navegador = navegador;
         }
         private void AplicarEsquinasRedondeadas(Panel panel, int radio)
         {
@@ -67,7 +72,8 @@ namespace InventarioMedicamentos
         {
             cmbUnidades.SelectedIndex = -1;
             txtFondoFijo.Clear();
-            dtpFechaCaducidad.Value = DateTime.Now;
+            txtFechaCaducidad.Text = "dd/mm/yyyy";
+            txtFechaCaducidad.ForeColor = Color.Gray;
             txtMedicamento.Clear();
         }
         private void GuardarMedicamento()
@@ -75,12 +81,17 @@ namespace InventarioMedicamentos
             string descripcion = txtMedicamento.Text;
             string unidad = cmbUnidades.Text;
             int fondoFijo = int.Parse(txtFondoFijo.Text);
-            DateTime fechaCaducidad = DateTime.Parse(dtpFechaCaducidad.Text);
+            DateTime fechaCaducidad = DateTime.Parse(txtFechaCaducidad.Text);
             try
             {
-                consultasMedicamentos.GuardarMedicanmento(descripcion, unidad, fondoFijo, fechaCaducidad);
+                int idUltimoMedicamento = consultasMedicamentos.GuardarMedicanmento(descripcion, unidad, fondoFijo, fechaCaducidad);
                 MessageBox.Show("Medicamento guardado correctamente.");
                 LimpiarCampos();
+                int idUsuario = 2;
+                DateTime fechaHora = DateTime.Now;
+                string tipo = "Recibido";
+                mov.GuardarMovimiento(idUltimoMedicamento, idUsuario, fechaHora, tipo, fondoFijo);
+
                 CargarMedicamentos();
             }
             catch (Exception ex)
@@ -121,7 +132,8 @@ namespace InventarioMedicamentos
                 txtMedicamento.Text = row.Cells[1].Value.ToString();
                 cmbUnidades.Text = row.Cells[2].Value.ToString();
                 txtFondoFijo.Text = row.Cells[3].Value.ToString();
-                dtpFechaCaducidad.Value = DateTime.Parse(row.Cells[4].Value.ToString());
+                txtFechaCaducidad.Text = row.Cells[4].Value.ToString();
+                txtFechaCaducidad.ForeColor = Color.Black;
                 medicamentoId = Convert.ToInt32(row.Cells[0].Value);
             }
             else
@@ -134,7 +146,7 @@ namespace InventarioMedicamentos
             string descripcion = txtMedicamento.Text;
             string unidad = cmbUnidades.Text;
             int fondoFijo = int.Parse(txtFondoFijo.Text);
-            DateTime fechaCaducidad = DateTime.Parse(dtpFechaCaducidad.Text);
+            DateTime fechaCaducidad = DateTime.Parse(txtFechaCaducidad.Text);
             try
             {
                 consultasMedicamentos.ActualizarMedicamento(medicamentoId, descripcion, unidad, fondoFijo, fechaCaducidad);
@@ -152,6 +164,8 @@ namespace InventarioMedicamentos
         private void FormControlDeInventarioo_Load(object sender, EventArgs e)
         {
             this.BackColor = ColorTranslator.FromHtml("#394D44");
+            txtFechaCaducidad.ForeColor = Color.Gray;
+            txtFechaCaducidad.Text = "dd/mm/yyyy";
         }
 
         private void txtMedicamento_TextChanged(object sender, EventArgs e)
@@ -259,9 +273,49 @@ namespace InventarioMedicamentos
 
         private void PictureBoxSalir_Click(object sender, EventArgs e)
         {
-            FormMenu formMenu = new FormMenu();
-            formMenu.Show();
-            this.Hide();
+            navegador.NavegarA(new FormMenu(navegador));
+        }
+
+        private void txtFechaCaducidad_TextChanged(object sender, EventArgs e)
+        {
+            string texto = txtFechaCaducidad.Text.Replace("/", ""); // Elimina las barras existentes
+            if (texto.Length > 8) texto = texto.Substring(0, 8); // Máximo 8 dígitos
+
+            // Agrega las barras automáticamente
+            if (texto.Length >= 5)
+                txtFechaCaducidad.Text = texto.Insert(2, "/").Insert(5, "/");
+            else if (texto.Length >= 3)
+                txtFechaCaducidad.Text = texto.Insert(2, "/");
+            else
+                txtFechaCaducidad.Text = texto;
+
+            txtFechaCaducidad.SelectionStart = txtFechaCaducidad.Text.Length; // Mantén el cursor al final
+        }
+
+        private void txtFechaCaducidad_Enter(object sender, EventArgs e)
+        {
+            if (txtFechaCaducidad.Text == "dd/mm/yyyy")
+            {
+                txtFechaCaducidad.Text = "";
+                txtFechaCaducidad.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtFechaCaducidad_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtFechaCaducidad.Text))
+            {
+                txtFechaCaducidad.ForeColor = Color.Gray;
+                txtFechaCaducidad.Text = "dd/mm/yyyy";
+            }
+        }
+
+        private void txtFechaCaducidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -13,9 +13,12 @@ namespace InventarioMedicamentos
 {
     public partial class FormMenu : Form
     {
-        public FormMenu()
+        AbrirForms open = new AbrirForms();
+        private FormPrincipal navegador;
+        public FormMenu(FormPrincipal navegador)
         {
             InitializeComponent();
+            this.navegador = navegador;
         }
 
         private void FormMenu_Load(object sender, EventArgs e)
@@ -62,30 +65,23 @@ namespace InventarioMedicamentos
 
         private void PictureBoxInventario_Click(object sender, EventArgs e)
         {
-            FormControlDeInventarioo formControlDeInventarioo = new FormControlDeInventarioo();
-            formControlDeInventarioo.Show();
-            this.Hide();
+            navegador.NavegarA(new FormControlDeInventarioo(navegador));
+
         }
 
         private void PictureBoxInformes_Click(object sender, EventArgs e)
         {
-            FormInformes formInformes = new FormInformes();
-            formInformes.Show();
-            this.Hide();
+            navegador.NavegarA(new FormInformes(navegador));
         }
 
         private void lblControlDeInventario_Click(object sender, EventArgs e)
         {
-            FormControlDeInventarioo formControlDeInventarioo = new FormControlDeInventarioo();
-            formControlDeInventarioo.Show();
-            this.Hide();
+            navegador.NavegarA(new FormControlDeInventarioo(navegador));
         }
 
         private void lblInformes_Click(object sender, EventArgs e)
         {
-            FormInformes formInformes = new FormInformes();
-            formInformes.Show();
-            this.Hide();
+            navegador.NavegarA(new FormInformes(navegador));
         }
 
         private void PictureBoxSalir_Click(object sender, EventArgs e)
@@ -97,9 +93,7 @@ namespace InventarioMedicamentos
 
         private void labelInventario_Click(object sender, EventArgs e)
         {
-            FormControlDeInventarioo formControlDeInventarioo = new FormControlDeInventarioo();
-            formControlDeInventarioo.Show();
-            this.Hide();
+            navegador.NavegarA(new FormControlDeInventarioo(navegador));
         }
 
         private void pbbtnCambiarContrasena_Click(object sender, EventArgs e)

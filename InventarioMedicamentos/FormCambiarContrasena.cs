@@ -20,8 +20,8 @@ namespace InventarioMedicamentos
 
         private void PictureBoxSalir_Click(object sender, EventArgs e)
         {
-            FormMenu formMenu = new FormMenu();
-            formMenu.Show();
+          //  FormMenu formMenu = new FormMenu();
+          //  formMenu.Show();
             this.Hide();
         }
 
