@@ -1,5 +1,6 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using InventarioMedicamentos.medicamentos;
+using InventarioMedicamentos.movimientos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,12 +17,14 @@ namespace InventarioMedicamentos
     public partial class RetiroMedicamentos : Form
     {
         private consultasMedicamentos consultasMedicamentos;
+        private consultasMovimientos mov;
         private int medicamentoId = 0;
         private int cantidadDisponible = 0;
         public RetiroMedicamentos()
         {
             InitializeComponent();
             consultasMedicamentos = new consultasMedicamentos();
+            mov = new consultasMovimientos();
             CargarMedicamentos();
             AplicarEsquinasRedondeadas(panelNaranja, 10);
             AplicarEsquinasRedondeadas(panelRojo, 10);
@@ -95,25 +98,37 @@ namespace InventarioMedicamentos
 
         private void btnRetirar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtMedicamento.Text) || string.IsNullOrEmpty(txtCantidadRetirar.Text) || string.IsNullOrEmpty(txtUnidades.Text))
+            if (string.IsNullOrEmpty(txtMedicamento.Text)  ||
+    string.IsNullOrEmpty(txtUnidades.Text))
             {
-                MessageBox.Show("Por favor seleccione un medicamento de la tabla", "Error", buttons: MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor seleccione un medicamento de la tabla", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // ❗ Detener ejecución si faltan campos
+            }
 
+            int retiro;
+            if (!int.TryParse(txtCantidadRetirar.Text, out retiro) || retiro <= 0 || retiro > cantidadDisponible)
+            {
+                MessageBox.Show("Por favor ingrese una cantidad válida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // ❗ Detener ejecución si la cantidad no es válida
+            }
+
+            int resultado = cantidadDisponible - retiro;
+
+            if (consultasMedicamentos.RestarMedicamento(medicamentoId, resultado))
+            {
+                // Aquí podrías agregar también el movimiento
+                int idUsuario = 2; // Ejemplo, puede venir del login
+                string tipo = "Utilizado";
+                DateTime fechaHora = DateTime.Now;
+                mov.GuardarMovimiento(medicamentoId, idUsuario, fechaHora, tipo, retiro);
+
+                MessageBox.Show("Retiro exitoso", "Medicamento retirado");
+                CargarMedicamentos();
+                LimpiarCampos();
             }
             else
             {
-                int retiro = Convert.ToInt32(txtCantidadRetirar.Text);
-                if (retiro < 0 || retiro > cantidadDisponible)
-                {
-                    MessageBox.Show("Por favor ingrese una cantidad valida", "Error", buttons: MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                int resultado = cantidadDisponible - retiro;
-                if (consultasMedicamentos.RestarMedicamento(medicamentoId, resultado))
-                {
-                    MessageBox.Show("Retiro exitoso", "Medicamento retirado");
-                    CargarMedicamentos();
-                    LimpiarCampos();
-                }
+                MessageBox.Show("Error al retirar el medicamento.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
