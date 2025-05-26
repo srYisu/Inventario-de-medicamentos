@@ -79,18 +79,43 @@ namespace InventarioMedicamentos.medicamentos
         }
 
         // Método para consultar todos los medicamentos
-        public DataTable ConsultarProfesores()
+        public DataTable ConsultarMedicamentos(string filtroNombre = "", string filtroUnidad = "")
         {
             using (MySqlConnection conn = conexion.ObtenerConexion())
             {
                 conn.Open();
                 string query = @"SELECT id_medicamento AS ID, 
-                                    descripcion AS Medicamento, 
-                                    unidad AS Unidad, 
-                                    fondo_fijo AS 'Fondo Fijo', 
-                                    fecha_caducidad AS 'Fecha Caducidad'
-                             FROM medicamentos";
-                MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                        descripcion AS Medicamento, 
+                        unidad AS Unidad, 
+                        fondo_fijo AS 'Fondo Fijo', 
+                        fecha_caducidad AS 'Fecha Caducidad'
+                 FROM medicamentos WHERE 1=1"; // Truco para facilitar añadir condiciones
+
+                if (!string.IsNullOrEmpty(filtroNombre))
+                {
+                    query += " AND descripcion LIKE CONCAT(@filtroNombre, '%')";
+                }
+
+                if (!string.IsNullOrEmpty(filtroUnidad))
+                {
+                    query += " AND unidad = @filtroUnidad";
+                }
+
+                query += " ORDER BY descripcion";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                if (!string.IsNullOrEmpty(filtroNombre))
+                {
+                    cmd.Parameters.AddWithValue("@filtroNombre", filtroNombre);
+                }
+
+                if (!string.IsNullOrEmpty(filtroUnidad))
+                {
+                    cmd.Parameters.AddWithValue("@filtroUnidad", filtroUnidad);
+                }
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
                 return dt;

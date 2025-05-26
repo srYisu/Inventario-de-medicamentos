@@ -16,11 +16,12 @@ namespace InventarioMedicamentos
 {
     public partial class RetiroMedicamentos : Form
     {
+        private FormPrincipal navegador;
         private consultasMedicamentos consultasMedicamentos;
         private consultasMovimientos mov;
         private int medicamentoId = 0;
         private int cantidadDisponible = 0;
-        public RetiroMedicamentos()
+        public RetiroMedicamentos(FormPrincipal navegador)
         {
             InitializeComponent();
             consultasMedicamentos = new consultasMedicamentos();
@@ -28,7 +29,7 @@ namespace InventarioMedicamentos
             CargarMedicamentos();
             AplicarEsquinasRedondeadas(panelNaranja, 10);
             AplicarEsquinasRedondeadas(panelRojo, 10);
-
+            this.navegador = navegador;
         }
         private void AplicarEsquinasRedondeadas(Panel panel, int radio)
         {
@@ -63,7 +64,7 @@ namespace InventarioMedicamentos
         }
         private void CargarMedicamentos()
         {
-            dgvMedicamentos.DataSource = consultasMedicamentos.ConsultarProfesores();
+            dgvMedicamentos.DataSource = consultasMedicamentos.ConsultarMedicamentos();
         }
         private void LimpiarCampos()
         {
@@ -98,7 +99,7 @@ namespace InventarioMedicamentos
 
         private void btnRetirar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtMedicamento.Text)  ||
+            if (string.IsNullOrEmpty(txtMedicamento.Text) ||
     string.IsNullOrEmpty(txtUnidades.Text))
             {
                 MessageBox.Show("Por favor seleccione un medicamento de la tabla", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -134,12 +135,64 @@ namespace InventarioMedicamentos
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             LimpiarCampos();
+        }
+
+        private void txtBuscador_TextChanged(object sender, EventArgs e)
+        {
+            string textoBusqueda = txtBuscador.Text.Trim();
+            dgvMedicamentos.DataSource = consultasMedicamentos.ConsultarMedicamentos(textoBusqueda);
+        }
+
+        private void dgvMedicamentos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Verifica que sea la columna de fecha de caducidad
+            if (dgvMedicamentos.Columns[e.ColumnIndex].Name == "Fecha Caducidad" && e.Value != null)
+            {
+                try
+                {
+                    DateTime fechaCaducidad;
+                    if (DateTime.TryParse(e.Value.ToString(), out fechaCaducidad))
+                    {
+                        TimeSpan diferencia = fechaCaducidad - DateTime.Now;
+
+                        // Semaforización
+                        if (diferencia.TotalDays < 182) // Rojo: menos de 30 días
+                        {
+                            e.CellStyle.BackColor = Color.LightCoral;
+                            e.CellStyle.ForeColor = Color.DarkRed;
+                            e.CellStyle.Font = new Font(dgvMedicamentos.Font, FontStyle.Bold);
+                            e.CellStyle.SelectionBackColor = Color.LightCoral;
+                        }
+                        else if (diferencia.TotalDays < 365) // Amarillo: entre 30 y 90 días
+                        {
+                            e.CellStyle.BackColor = Color.LightGoldenrodYellow;
+                            e.CellStyle.ForeColor = Color.DarkGoldenrod;
+                            e.CellStyle.SelectionBackColor = Color.LightGoldenrodYellow;
+                        }
+                        else // Verde: más de 90 días
+                        {
+                            e.CellStyle.BackColor = Color.LightGreen;
+                            e.CellStyle.ForeColor = Color.DarkGreen;
+                            e.CellStyle.SelectionBackColor = Color.LightGreen;
+                        }
+                    }
+                }
+                catch
+                {
+                    // Manejo de error por si la conversión falla
+                }
+            }
+        }
+
+        private void PictureBoxSalir_Click(object sender, EventArgs e)
+        {
+            navegador.NavegarA(new FormMenu(navegador));
         }
     }
 }

@@ -55,6 +55,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             dgvMedicamentos = new Guna.UI2.WinForms.Guna2DataGridView();
             btnLimpiar = new Guna.UI2.WinForms.Guna2Button();
             btnEliminar = new Guna.UI2.WinForms.Guna2Button();
@@ -72,6 +74,7 @@
             cmbUnidades = new Guna.UI2.WinForms.Guna2ComboBox();
             PictureBoxSalir = new Guna.UI2.WinForms.Guna2PictureBox();
             txtFechaCaducidad = new Guna.UI2.WinForms.Guna2TextBox();
+            txtBusqueda = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvMedicamentos).BeginInit();
             panelNaranja.SuspendLayout();
             panelRojo.SuspendLayout();
@@ -142,6 +145,7 @@
             dgvMedicamentos.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgvMedicamentos.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dgvMedicamentos.CellContentClick += dgvMedicamentos_CellContentClick;
+            dgvMedicamentos.CellFormatting += dgvMedicamentos_CellFormatting;
             // 
             // btnLimpiar
             // 
@@ -396,11 +400,33 @@
             txtFechaCaducidad.KeyPress += txtFechaCaducidad_KeyPress;
             txtFechaCaducidad.Leave += txtFechaCaducidad_Leave;
             // 
+            // txtBusqueda
+            // 
+            txtBusqueda.BorderRadius = 6;
+            txtBusqueda.CustomizableEdges = customizableEdges23;
+            txtBusqueda.DefaultText = "";
+            txtBusqueda.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtBusqueda.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtBusqueda.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtBusqueda.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtBusqueda.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtBusqueda.Font = new Font("Segoe UI", 9F);
+            txtBusqueda.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtBusqueda.Location = new Point(694, 93);
+            txtBusqueda.Name = "txtBusqueda";
+            txtBusqueda.PlaceholderText = "";
+            txtBusqueda.SelectedText = "";
+            txtBusqueda.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            txtBusqueda.Size = new Size(352, 29);
+            txtBusqueda.TabIndex = 50;
+            txtBusqueda.TextChanged += txtBusqueda_TextChanged;
+            // 
             // FormControlDeInventarioo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
+            Controls.Add(txtBusqueda);
             Controls.Add(txtFechaCaducidad);
             Controls.Add(PictureBoxSalir);
             Controls.Add(cmbUnidades);
@@ -448,5 +474,6 @@
         private Guna.UI2.WinForms.Guna2ComboBox cmbUnidades;
         private Guna.UI2.WinForms.Guna2PictureBox PictureBoxSalir;
         private Guna.UI2.WinForms.Guna2TextBox txtFechaCaducidad;
+        private Guna.UI2.WinForms.Guna2TextBox txtBusqueda;
     }
 }

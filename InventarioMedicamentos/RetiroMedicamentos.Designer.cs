@@ -49,6 +49,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelNaranja = new Guna.UI2.WinForms.Guna2Panel();
             panelRojo = new Guna.UI2.WinForms.Guna2Panel();
             lblTitulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -62,6 +64,7 @@
             PictureBoxSalir = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             txtUnidades = new Guna.UI2.WinForms.Guna2TextBox();
+            txtBuscador = new Guna.UI2.WinForms.Guna2TextBox();
             panelNaranja.SuspendLayout();
             panelRojo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMedicamentos).BeginInit();
@@ -165,6 +168,7 @@
             dgvMedicamentos.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgvMedicamentos.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dgvMedicamentos.CellClick += dgvMedicamentos_CellClick;
+            dgvMedicamentos.CellFormatting += dgvMedicamentos_CellFormatting;
             // 
             // btnCancelar
             // 
@@ -279,6 +283,7 @@
             PictureBoxSalir.SizeMode = PictureBoxSizeMode.StretchImage;
             PictureBoxSalir.TabIndex = 64;
             PictureBoxSalir.TabStop = false;
+            PictureBoxSalir.Click += PictureBoxSalir_Click;
             // 
             // guna2HtmlLabel2
             // 
@@ -311,11 +316,33 @@
             txtUnidades.Size = new Size(352, 29);
             txtUnidades.TabIndex = 65;
             // 
+            // txtBuscador
+            // 
+            txtBuscador.BorderRadius = 6;
+            txtBuscador.CustomizableEdges = customizableEdges17;
+            txtBuscador.DefaultText = "";
+            txtBuscador.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtBuscador.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtBuscador.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtBuscador.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtBuscador.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtBuscador.Font = new Font("Segoe UI", 9F);
+            txtBuscador.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtBuscador.Location = new Point(694, 106);
+            txtBuscador.Name = "txtBuscador";
+            txtBuscador.PlaceholderText = "";
+            txtBuscador.SelectedText = "";
+            txtBuscador.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            txtBuscador.Size = new Size(352, 29);
+            txtBuscador.TabIndex = 67;
+            txtBuscador.TextChanged += txtBuscador_TextChanged;
+            // 
             // RetiroMedicamentos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
+            Controls.Add(txtBuscador);
             Controls.Add(guna2HtmlLabel2);
             Controls.Add(txtUnidades);
             Controls.Add(PictureBoxSalir);
@@ -359,5 +386,6 @@
         private Guna.UI2.WinForms.Guna2PictureBox PictureBoxSalir;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2TextBox txtUnidades;
+        private Guna.UI2.WinForms.Guna2TextBox txtBuscador;
     }
 }

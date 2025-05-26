@@ -53,6 +53,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             PictureBoxSalir = new Guna.UI2.WinForms.Guna2PictureBox();
             lblInformes = new Label();
             PictureBoxInformes = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -71,6 +75,9 @@
             panelCambiarContrasena = new Guna.UI2.WinForms.Guna2Panel();
             pbbtnCambiarContrasena = new Guna.UI2.WinForms.Guna2PictureBox();
             lblTitulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            PictureBoxRetiros = new Guna.UI2.WinForms.Guna2PictureBox();
+            lblRetiros = new Label();
             ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PictureBoxInformes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PictureBoxInventario).BeginInit();
@@ -83,6 +90,8 @@
             ((System.ComponentModel.ISupportInitialize)pbbtnAgUsuariosAdmin).BeginInit();
             panelCambiarContrasena.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbbtnCambiarContrasena).BeginInit();
+            guna2Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)PictureBoxRetiros).BeginInit();
             SuspendLayout();
             // 
             // PictureBoxSalir
@@ -176,7 +185,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label2.Location = new Point(436, 184);
+            label2.Location = new Point(436, 49);
             label2.Name = "label2";
             label2.Size = new Size(202, 37);
             label2.TabIndex = 52;
@@ -186,7 +195,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.Location = new Point(300, 154);
+            label1.Location = new Point(300, 19);
             label1.Name = "label1";
             label1.Size = new Size(474, 37);
             label1.TabIndex = 51;
@@ -200,7 +209,7 @@
             panelInformes.Cursor = Cursors.Hand;
             panelInformes.CustomizableEdges = customizableEdges7;
             panelInformes.FillColor = Color.FromArgb(164, 124, 44);
-            panelInformes.Location = new Point(609, 245);
+            panelInformes.Location = new Point(608, 136);
             panelInformes.Name = "panelInformes";
             panelInformes.ShadowDecoration.CustomizableEdges = customizableEdges8;
             panelInformes.Size = new Size(300, 300);
@@ -215,7 +224,7 @@
             panelInventario.Cursor = Cursors.Hand;
             panelInventario.CustomizableEdges = customizableEdges9;
             panelInventario.FillColor = Color.FromArgb(164, 124, 44);
-            panelInventario.Location = new Point(166, 245);
+            panelInventario.Location = new Point(166, 136);
             panelInventario.Name = "panelInventario";
             panelInventario.ShadowDecoration.CustomizableEdges = customizableEdges10;
             panelInventario.Size = new Size(300, 300);
@@ -320,11 +329,56 @@
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "MENÚ PRINCIPAL";
             // 
+            // guna2Panel1
+            // 
+            guna2Panel1.BackColor = Color.White;
+            guna2Panel1.Controls.Add(PictureBoxRetiros);
+            guna2Panel1.Controls.Add(lblRetiros);
+            guna2Panel1.Cursor = Cursors.Hand;
+            guna2Panel1.CustomizableEdges = customizableEdges27;
+            guna2Panel1.FillColor = Color.FromArgb(164, 124, 44);
+            guna2Panel1.Location = new Point(116, 424);
+            guna2Panel1.Name = "guna2Panel1";
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            guna2Panel1.Size = new Size(275, 293);
+            guna2Panel1.TabIndex = 53;
+            // 
+            // PictureBoxRetiros
+            // 
+            PictureBoxRetiros.BackColor = Color.Transparent;
+            PictureBoxRetiros.Cursor = Cursors.Hand;
+            PictureBoxRetiros.CustomizableEdges = customizableEdges25;
+            PictureBoxRetiros.Image = (Image)resources.GetObject("PictureBoxRetiros.Image");
+            PictureBoxRetiros.ImageRotate = 0F;
+            PictureBoxRetiros.Location = new Point(60, 21);
+            PictureBoxRetiros.Name = "PictureBoxRetiros";
+            PictureBoxRetiros.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            PictureBoxRetiros.Size = new Size(180, 180);
+            PictureBoxRetiros.SizeMode = PictureBoxSizeMode.StretchImage;
+            PictureBoxRetiros.TabIndex = 48;
+            PictureBoxRetiros.TabStop = false;
+            PictureBoxRetiros.Click += PictureBoxRetiros_Click;
+            // 
+            // lblRetiros
+            // 
+            lblRetiros.AutoSize = true;
+            lblRetiros.BackColor = Color.Transparent;
+            lblRetiros.Cursor = Cursors.Hand;
+            lblRetiros.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            lblRetiros.ForeColor = Color.White;
+            lblRetiros.Location = new Point(72, 224);
+            lblRetiros.Name = "lblRetiros";
+            lblRetiros.Size = new Size(125, 45);
+            lblRetiros.TabIndex = 48;
+            lblRetiros.Text = "Retiros";
+            lblRetiros.Click += lblRetiros_Click;
+            // 
             // FormMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
+            Controls.Add(guna2Panel1);
             Controls.Add(panelNaranja);
             Controls.Add(panelBotones);
             Name = "FormMenu";
@@ -346,6 +400,9 @@
             ((System.ComponentModel.ISupportInitialize)pbbtnAgUsuariosAdmin).EndInit();
             panelCambiarContrasena.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pbbtnCambiarContrasena).EndInit();
+            guna2Panel1.ResumeLayout(false);
+            guna2Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)PictureBoxRetiros).EndInit();
             ResumeLayout(false);
         }
 
@@ -368,5 +425,8 @@
         private Guna.UI2.WinForms.Guna2PictureBox pbbtnAgUsuariosAdmin;
         private Guna.UI2.WinForms.Guna2Panel panelCambiarContrasena;
         private Guna.UI2.WinForms.Guna2PictureBox pbbtnCambiarContrasena;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2PictureBox PictureBoxRetiros;
+        private Label lblRetiros;
     }
 }

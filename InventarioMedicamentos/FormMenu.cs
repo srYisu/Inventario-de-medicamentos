@@ -109,5 +109,15 @@ namespace InventarioMedicamentos
             formAgUsuariosAdmin.Show();
             this.Hide();
         }
+
+        private void PictureBoxRetiros_Click(object sender, EventArgs e)
+        {
+            navegador.NavegarA(new RetiroMedicamentos(navegador));
+        }
+
+        private void lblRetiros_Click(object sender, EventArgs e)
+        {
+            navegador.NavegarA(new RetiroMedicamentos(navegador));
+        }
     }
 }

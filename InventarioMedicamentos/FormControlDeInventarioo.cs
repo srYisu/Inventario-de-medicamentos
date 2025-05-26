@@ -66,7 +66,7 @@ namespace InventarioMedicamentos
         }
         private void CargarMedicamentos()
         {
-            dgvMedicamentos.DataSource = consultasMedicamentos.ConsultarProfesores();
+            dgvMedicamentos.DataSource = consultasMedicamentos.ConsultarMedicamentos();
         }
         private void LimpiarCampos()
         {
@@ -315,6 +315,103 @@ namespace InventarioMedicamentos
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            string textoBusqueda = txtBusqueda.Text.Trim();
+            dgvMedicamentos.DataSource = consultasMedicamentos.ConsultarMedicamentos(textoBusqueda);
+        }
+
+        private void dgvMedicamentos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Verifica que sea la columna de fecha de caducidad
+            if (dgvMedicamentos.Columns[e.ColumnIndex].Name == "Fecha Caducidad" && e.Value != null)
+            {
+                try
+                {
+                    DateTime fechaCaducidad;
+                    if (DateTime.TryParse(e.Value.ToString(), out fechaCaducidad))
+                    {
+                        TimeSpan diferencia = fechaCaducidad - DateTime.Now;
+                        DataGridViewRow row = dgvMedicamentos.Rows[e.RowIndex];
+
+                        // Semaforización
+                        // Orden CORRECTO de condiciones (de más específica a más general)
+                        if (diferencia.TotalDays < 0) // Ya caducó
+                        {
+                            // Aplicar estilo negro a toda la fila
+                            foreach (DataGridViewCell cell in row.Cells)
+                            {
+                                cell.Style.BackColor = Color.Black;
+                                cell.Style.ForeColor = Color.White;
+                                cell.Style.Font = new Font(dgvMedicamentos.Font, FontStyle.Bold);
+                                cell.Style.SelectionBackColor = Color.Black;
+                                cell.Style.SelectionForeColor = Color.White;
+                            }
+                            e.Value = "⚠️ " + fechaCaducidad.ToString("dd/MM/yyyy") + " (CADUCADO)";
+                        }
+                        else if (diferencia.TotalDays < 182) // Menos de 6 meses (pero no caducado)
+                        {
+                            e.CellStyle.BackColor = Color.LightCoral;
+                            e.CellStyle.ForeColor = Color.DarkRed;
+                            e.CellStyle.Font = new Font(dgvMedicamentos.Font, FontStyle.Bold);
+                            e.CellStyle.SelectionBackColor = Color.LightCoral;
+                        }
+                        else if (diferencia.TotalDays < 365) // Entre 6-12 meses
+                        {
+                            e.CellStyle.BackColor = Color.LightGoldenrodYellow;
+                            e.CellStyle.ForeColor = Color.DarkGoldenrod;
+                            e.CellStyle.SelectionBackColor = Color.LightGoldenrodYellow;
+                        }
+                        else // Más de 1 año
+                        {
+                            e.CellStyle.BackColor = Color.LightGreen;
+                            e.CellStyle.ForeColor = Color.DarkGreen;
+                            e.CellStyle.SelectionBackColor = Color.LightGreen;
+                        }
+                    }
+                }
+                catch
+                {
+                    // Manejo de error por si la conversión falla
+                }
+            }
+            // Verifica que sea la columna de fecha de caducidad
+            if (dgvMedicamentos.Columns[e.ColumnIndex].Name == "Fondo Fijo" && e.Value != null)
+            {
+                try
+                {
+                    int cantidad = Convert.ToInt32(e.Value);
+
+                        // Semaforización
+                        if (cantidad <= 3) // Rojo: menos de 3 
+                        {
+                            //e.CellStyle.BackColor = Color.LightCoral;
+                            e.CellStyle.ForeColor = Color.DarkRed;
+                            e.CellStyle.Font = new Font(dgvMedicamentos.Font, FontStyle.Bold);
+                            e.CellStyle.SelectionBackColor = Color.LightCoral;
+                            e.Value = "⚠️ " + cantidad.ToString()+ "(CRÍTICO)";
+                        }
+                        else if (cantidad < 6) // Amarillo: entre 3 y 9 
+                        {
+                          //  e.CellStyle.BackColor = Color.LightGoldenrodYellow;
+                            e.CellStyle.ForeColor = Color.DarkGoldenrod;
+                            e.CellStyle.SelectionBackColor = Color.LightGoldenrodYellow;
+                            e.Value = "❕ " + cantidad.ToString();
+                        }
+                        else // Verde: más de 9 
+                        {
+                        //    e.CellStyle.BackColor = Color.LightGreen;
+                            e.CellStyle.ForeColor = Color.DarkGreen;
+                            e.CellStyle.SelectionBackColor = Color.LightGreen;
+                        }
+                    
+                }
+                catch
+                {
+                }
             }
         }
     }
