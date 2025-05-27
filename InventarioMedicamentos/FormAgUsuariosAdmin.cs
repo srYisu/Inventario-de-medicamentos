@@ -21,6 +21,7 @@ namespace InventarioMedicamentos
             InitializeComponent();
             consultas = new usuariosConsultas();
             this.navegador = navegador;
+            CargarTabla();
         }
 
         private void FormAgUsuariosAdmin_Load(object sender, EventArgs e)
@@ -96,6 +97,7 @@ namespace InventarioMedicamentos
 
             bool resultado = consultas.GuardarUsuario(nombre, correo, tipo, contrasena);
             LimpiarCampos();
+            CargarTabla();
             if (resultado)
             {
                 MessageBox.Show("Usuario guardado correctamente.");
@@ -105,10 +107,101 @@ namespace InventarioMedicamentos
                 MessageBox.Show("Error al guardar el usuario. Por favor, intente nuevamente.");
             }
         }
+        private void CargarTabla()
+        {
+            dgvUsuarios.DataSource = consultas.ConsultarUsuarios();
+            // Hacer todas las celdas de solo lectura
+            dgvUsuarios.ReadOnly = true;
 
+            // Deshabilitar edición directamente en el control
+            dgvUsuarios.EditMode = DataGridViewEditMode.EditProgrammatically;
+
+            // Opcional: Deshabilitar el menú contextual que podría permitir edición
+            dgvUsuarios.ContextMenuStrip = null;
+            AgregarBotonesAccion();
+            AjustarAnchoColumnas();
+        }
+        private void AgregarBotonesAccion()
+        {
+            // Configuración común para ambos botones
+            Action<DataGridViewButtonColumn, string, string> configurarBoton = (col, texto, nombre) =>
+            {
+                col.Name = nombre;
+                col.Text = texto;
+                col.HeaderText = "Acción";
+                col.UseColumnTextForButtonValue = true;
+                col.Width = 80;
+                col.FlatStyle = FlatStyle.Flat;
+                col.DefaultCellStyle.BackColor = nombre == "Editar" ? Color.LightBlue : Color.LightCoral;
+                col.DefaultCellStyle.ForeColor = Color.Black;
+            };
+
+            // Botón Editar
+            DataGridViewButtonColumn colEditar = new DataGridViewButtonColumn();
+            configurarBoton(colEditar, "Editar", "Editar");
+            dgvUsuarios.Columns.Add(colEditar);
+
+            // Botón Eliminar
+            DataGridViewButtonColumn colEliminar = new DataGridViewButtonColumn();
+            configurarBoton(colEliminar, "Eliminar", "Eliminar");
+            dgvUsuarios.Columns.Add(colEliminar);
+        }
+        private void AjustarAnchoColumnas()
+        {
+            // Ajustar automáticamente el ancho de las columnas de datos
+            dgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Fijar un ancho específico para las columnas de botones
+            dgvUsuarios.Columns["Editar"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvUsuarios.Columns["Eliminar"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+        }
+        private void EliminarUsuario(int idUsuario)
+        {
+            // Confirmar antes de eliminar
+            DialogResult result = MessageBox.Show(
+                $"¿Está seguro que desea eliminar el usuario con ID: {idUsuario}?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    //int id = Convert.ToInt32(dgvUsuarios.SelectedRows[0].Cells[0].Value);
+                    consultas.EliminarUsuario(idUsuario);
+                    MessageBox.Show("Usuario eliminado correctamente");
+                    CargarTabla(); // Recargar datos después de eliminar
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al eliminar usuario: {ex.Message}");
+                }
+            }
+        }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             GuardarUsuario();
+        }
+
+        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            // Verificar que el click no sea en el encabezado y que sea en nuestras columnas de botones
+            if (e.RowIndex >= 0)
+            {
+                // Obtener el ID del usuario de la fila clickeada
+                int idUsuario = Convert.ToInt32(dgvUsuarios.SelectedRows[0].Cells[0].Value);
+
+                if (dgvUsuarios.Columns[e.ColumnIndex].Name == "Editar")
+                {
+                    MessageBox.Show($"Funcionalidad de edición no implementada para el usuario con ID: {idUsuario}");
+                }
+                else if (dgvUsuarios.Columns[e.ColumnIndex].Name == "Eliminar")
+                {
+                    EliminarUsuario(idUsuario);
+                }
+            }
         }
     }
 }

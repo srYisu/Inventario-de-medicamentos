@@ -29,6 +29,7 @@ namespace InventarioMedicamentos
             AplicarEsquinasRedondeadas(panelBotones, 30);
             AplicarEsquinasRedondeadas(panelInventario, 25);
             AplicarEsquinasRedondeadas(panelInformes, 25);
+            AplicarEsquinasRedondeadas(pnlRetiros, 25);
             lblInformes.Cursor = Cursors.Hand;
         }
         private void AplicarEsquinasRedondeadas(Panel panel, int radio)

@@ -57,23 +57,62 @@ namespace InventarioMedicamentos.medicamentos
         }
 
         // Método para actualizar un medicamento
-        public bool ActualizarMedicamento(int idMedicamento, string descripcion, string unidad, int fondoFijo, DateTime fechaCaducidad)
+        public bool ActualizarMedicamento(int idMedicamento, string descripcion, string unidad, int nuevoFondoFijo, DateTime fechaCaducidad, int idUsuario)
         {
             using (MySqlConnection conn = conexion.ObtenerConexion())
             {
                 conn.Open();
-                string query = @"UPDATE medicamentos
-                             SET descripcion = @descripcion, unidad = @unidad, fondo_fijo = @fondoFijo, fecha_caducidad = @fechaCaducidad
-                             WHERE id_medicamento = @idMedicamento";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+
+                // Primero obtenemos el fondo fijo actual
+                int fondoFijoActual;
+                string queryGetCurrent = "SELECT fondo_fijo FROM medicamentos WHERE id_medicamento = @idMedicamento";
+                using (MySqlCommand cmd = new MySqlCommand(queryGetCurrent, conn))
+                {
+                    cmd.Parameters.AddWithValue("@idMedicamento", idMedicamento);
+                    fondoFijoActual = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+
+                // Calculamos la diferencia
+                int diferencia = nuevoFondoFijo - fondoFijoActual;
+                string tipoMovimiento = diferencia > 0 ? "Ingreso" : "Retiro";
+                int cantidadMovimiento = Math.Abs(diferencia);
+
+                // Actualizamos el medicamento
+                string queryUpdate = @"UPDATE medicamentos
+                            SET descripcion = @descripcion, 
+                                unidad = @unidad, 
+                                fondo_fijo = @fondoFijo, 
+                                fecha_caducidad = @fechaCaducidad
+                            WHERE id_medicamento = @idMedicamento";
+                using (MySqlCommand cmd = new MySqlCommand(queryUpdate, conn))
                 {
                     cmd.Parameters.AddWithValue("@idMedicamento", idMedicamento);
                     cmd.Parameters.AddWithValue("@descripcion", descripcion);
                     cmd.Parameters.AddWithValue("@unidad", unidad);
-                    cmd.Parameters.AddWithValue("@fondoFijo", fondoFijo);
+                    cmd.Parameters.AddWithValue("@fondoFijo", nuevoFondoFijo);
                     cmd.Parameters.AddWithValue("@fechaCaducidad", fechaCaducidad.ToString("yyyy-MM-dd"));
 
-                    return cmd.ExecuteNonQuery() > 0;
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    // Si hubo cambio en el fondo fijo y la actualización fue exitosa, registramos el movimiento
+                    if (diferencia != 0 && rowsAffected > 0)
+                    {
+                        string queryMovimiento = @"INSERT INTO movimientos (id_medicamento, id_usuario, fecha, tipo_movimiento, cantidad)
+                                        VALUES (@idMedicamento, @idUsuario, @fecha, @tipo, @cantidad)";
+
+                        using (MySqlCommand cmdMov = new MySqlCommand(queryMovimiento, conn))
+                        {
+                            cmdMov.Parameters.AddWithValue("@idMedicamento", idMedicamento);
+                            cmdMov.Parameters.AddWithValue("@idUsuario", idUsuario);
+                            cmdMov.Parameters.AddWithValue("@fecha", DateTime.Now.ToString("yyyy-MM-dd"));
+                            cmdMov.Parameters.AddWithValue("@tipo", tipoMovimiento);
+                            cmdMov.Parameters.AddWithValue("@cantidad", cantidadMovimiento);
+
+                            cmdMov.ExecuteNonQuery();
+                        }
+                    }
+
+                    return rowsAffected > 0;
                 }
             }
         }

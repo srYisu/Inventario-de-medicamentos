@@ -1,5 +1,7 @@
 ﻿using InventarioMedicamentos.medicamentos;
 using InventarioMedicamentos.movimientos;
+using MySql.Data.MySqlClient;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,11 +12,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using InventarioMedicamentos.conexion;
 
 namespace InventarioMedicamentos
 {
     public partial class FormInformes : Form
     {
+        private exportarInforme exportar;
+        private Conexion conexion;
         private FormPrincipal navegador;
         private consultasMovimientos movimientos;
         public FormInformes(FormPrincipal navegador)
@@ -23,6 +28,8 @@ namespace InventarioMedicamentos
             AplicarEsquinasRedondeadas(panelNaranja, 10);
             AplicarEsquinasRedondeadas(panelRojo, 10);
             this.navegador = navegador;
+            exportar = new exportarInforme();
+            conexion = new Conexion();
             movimientos = new consultasMovimientos();
             CargarMovimientos();
             dtpDesde.Value = DateTime.Now;
@@ -86,6 +93,7 @@ namespace InventarioMedicamentos
         {
             DateTime desde = dtpDesde.Value;
             DateTime hasta = dtpHasta.Value;
+
             string movimiento = "";
             if (string.IsNullOrEmpty(cmbTIpoOperacion.Text))
             {
@@ -108,6 +116,91 @@ namespace InventarioMedicamentos
         private void guna2HtmlLabel1_Click(object sender, EventArgs e)
         {
 
+        }
+
+
+        public void ExportarYEnviarMovimientos(DateTime fechaDesde, DateTime fechaHasta, string destinatario, string tipoMovimiento = "")
+        {
+            string rutaExcel = "";
+            try
+            {
+                // Query base
+                string query = @"SELECT 
+                        m.id_movimiento AS ID, 
+                        med.descripcion AS 'Medicamento', 
+                        u.nombre AS 'Usuario', 
+                        DATE_FORMAT(m.fecha, '%d/%m/%Y') AS 'Fecha', 
+                        m.tipo_movimiento AS 'Movimiento',
+                        m.cantidad AS Cantidad
+                     FROM movimientos m
+                     INNER JOIN medicamentos med ON m.id_medicamento = med.id_medicamento
+                     INNER JOIN usuarios u ON m.id_usuario = u.id_usuario
+                     WHERE m.fecha BETWEEN @desde AND @hasta";
+
+                // Agregar filtro por tipo si es necesario
+                if (!string.IsNullOrEmpty(tipoMovimiento) && tipoMovimiento != "Ambos")
+                {
+                    query += " AND m.tipo_movimiento = @tipoMovimiento";
+                }
+
+                // Ruta temporal para el archivo
+                rutaExcel = Path.Combine(Path.GetTempPath(), $"Movimientos_{DateTime.Now:yyyyMMddHHmmss}.xlsx");
+
+                // Exportar a Excel
+                using (var conn = conexion.ObtenerConexion())
+                {
+                    conn.Open();
+                    var cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@desde", fechaDesde);
+                    cmd.Parameters.AddWithValue("@hasta", fechaHasta.AddDays(1).AddSeconds(-1));
+
+                    if (!string.IsNullOrEmpty(tipoMovimiento) && tipoMovimiento != "Ambos")
+                    {
+                        cmd.Parameters.AddWithValue("@tipoMovimiento", tipoMovimiento);
+                    }
+
+                    var dataTable = new DataTable();
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        dataTable.Load(reader);
+                    }
+
+                    ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+                    using (var package = new ExcelPackage())
+                    {
+                        var worksheet = package.Workbook.Worksheets.Add("Datos");
+                        worksheet.Cells["A1"].LoadFromDataTable(dataTable, true);
+                        package.SaveAs(new FileInfo(rutaExcel));
+                    }
+                }
+
+                // Enviar por correo
+                exportar.EnviarCorreoConExcel(rutaExcel, destinatario);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al exportar y enviar movimientos: " + ex.Message);
+            }
+            finally
+            {
+                // Intentar eliminar el archivo temporal
+                if (File.Exists(rutaExcel))
+                {
+                    try
+                    {
+                        File.Delete(rutaExcel);
+                    }
+                    catch { /* Ignorar errores de eliminación */ }
+                }
+            }
+        }
+        private void btnDescargarInforme_Click(object sender, EventArgs e)
+        {
+            DateTime desde = dtpDesde.Value;
+            DateTime hasta = dtpHasta.Value;
+            string destinatario = "sr.elyisus@gmail.com";
+            string tipoMovimiento = cmbTIpoOperacion.SelectedItem != null ? cmbTIpoOperacion.SelectedItem.ToString() : "Ambos";
+            ExportarYEnviarMovimientos(desde, hasta, destinatario, tipoMovimiento);
         }
     }
 }

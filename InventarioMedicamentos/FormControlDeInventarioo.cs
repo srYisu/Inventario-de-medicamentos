@@ -179,7 +179,8 @@ namespace InventarioMedicamentos
                 DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar este medicamento?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-                    int id = Convert.ToInt32(dgvMedicamentos.SelectedRows[0].Cells[0].Value);
+                    DataGridViewRow row = dgvMedicamentos.SelectedRows[0];
+                    int id = Convert.ToInt32(row.Cells[0].Value); ;
                     try
                     {
                         consultasMedicamentos.EliminarMedicamento(id);
@@ -218,11 +219,17 @@ namespace InventarioMedicamentos
         {
             string descripcion = txtMedicamento.Text;
             string unidad = cmbUnidades.Text;
-            int fondoFijo = int.Parse(txtFondoFijo.Text);
+            int nuevoFondoFijo = int.Parse(txtFondoFijo.Text);
             DateTime fechaCaducidad = DateTime.Parse(txtFechaCaducidad.Text);
+
             try
             {
-                consultasMedicamentos.ActualizarMedicamento(medicamentoId, descripcion, unidad, fondoFijo, fechaCaducidad);
+                // Necesitas obtener el ID del usuario que está realizando la edición
+                int idUsuario = /* Obtener el ID del usuario actual */2;
+
+                // Modifica el método ActualizarMedicamento para aceptar el idUsuario
+                consultasMedicamentos.ActualizarMedicamento(medicamentoId, descripcion, unidad, nuevoFondoFijo, fechaCaducidad, idUsuario);
+
                 MessageBox.Show("Medicamento editado correctamente.");
                 LimpiarCampos();
                 CargarMedicamentos();
@@ -231,7 +238,6 @@ namespace InventarioMedicamentos
             {
                 MessageBox.Show("Error al editar el medicamento: " + ex.Message);
             }
-
         }
 
         private void FormControlDeInventarioo_Load(object sender, EventArgs e)

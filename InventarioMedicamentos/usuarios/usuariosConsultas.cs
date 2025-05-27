@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,6 +70,39 @@ namespace InventarioMedicamentos.usuarios
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
+            }
+        }
+        // Método para eliminar un medicamento
+        public bool EliminarUsuario(int idUsuario)
+        {
+            using (MySqlConnection conn = conexion.ObtenerConexion())
+            {
+                conn.Open();
+
+                // Elimina
+                string queryEliminar = @"DELETE FROM usurios WHERE id_usuario = @idUsuario";
+                using (MySqlCommand cmdEliminar = new MySqlCommand(queryEliminar, conn))
+                {
+                    cmdEliminar.Parameters.AddWithValue("@idMedicamento", idUsuario);
+                    return cmdEliminar.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+        public DataTable ConsultarUsuarios()
+        {
+            using (MySqlConnection conn = conexion.ObtenerConexion())
+            {
+                conn.Open();
+                string query = @"SELECT id_usuario AS ID, 
+                            nombre AS 'Usuario', 
+                            correo AS 'Correo Electronico', 
+                            tipo AS 'Tipo', 
+                            contraseña AS 'Contrasena'
+                     FROM usuarios";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
             }
         }
     }
