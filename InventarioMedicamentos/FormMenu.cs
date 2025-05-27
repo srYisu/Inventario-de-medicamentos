@@ -105,9 +105,7 @@ namespace InventarioMedicamentos
 
         private void pbbtnAgUsuariosAdmin_Click(object sender, EventArgs e)
         {
-            FormAgUsuariosAdmin formAgUsuariosAdmin = new FormAgUsuariosAdmin();
-            formAgUsuariosAdmin.Show();
-            this.Hide();
+            navegador.NavegarA(new FormAgUsuariosAdmin(navegador));
         }
 
         private void PictureBoxRetiros_Click(object sender, EventArgs e)

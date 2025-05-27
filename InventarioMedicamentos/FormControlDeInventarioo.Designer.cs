@@ -412,7 +412,7 @@
             txtBusqueda.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBusqueda.Font = new Font("Segoe UI", 9F);
             txtBusqueda.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBusqueda.Location = new Point(694, 93);
+            txtBusqueda.Location = new Point(694, 103);
             txtBusqueda.Name = "txtBusqueda";
             txtBusqueda.PlaceholderText = "";
             txtBusqueda.SelectedText = "";

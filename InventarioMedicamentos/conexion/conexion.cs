@@ -9,7 +9,7 @@ namespace InventarioMedicamentos.conexion
 {
     internal class Conexion
     {
-        private const string connectionString = $"server=localhost;user=root;password=asereje;database=control_medicamentos";
+        private const string connectionString = $"server=localhost;user=root;password=;database=control_medicamentos";
         //método para probar la conexión a la base de datos
         public void PruebaConexion()
         {

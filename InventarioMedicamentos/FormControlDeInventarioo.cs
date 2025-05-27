@@ -78,27 +78,100 @@ namespace InventarioMedicamentos
         }
         private void GuardarMedicamento()
         {
-            string descripcion = txtMedicamento.Text;
-            string unidad = cmbUnidades.Text;
-            int fondoFijo = int.Parse(txtFondoFijo.Text);
-            DateTime fechaCaducidad = DateTime.Parse(txtFechaCaducidad.Text);
+            // Validar campos obligatorios
+            if (string.IsNullOrWhiteSpace(txtMedicamento.Text))
+            {
+                MessageBox.Show("Debe ingresar una descripción para el medicamento.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtMedicamento.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(cmbUnidades.Text) || cmbUnidades.SelectedIndex < 0)
+            {
+                MessageBox.Show("Debe seleccionar una unidad de medida válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbUnidades.Focus();
+                return;
+            }
+
+            // Validar fondo fijo
+            if (!int.TryParse(txtFondoFijo.Text, out int fondoFijo) || fondoFijo <= 0)
+            {
+                MessageBox.Show("El fondo fijo debe ser un número entero positivo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtFondoFijo.SelectAll();
+                txtFondoFijo.Focus();
+                return;
+            }
+
+            // Validar fecha de caducidad
+            if (!DateTime.TryParse(txtFechaCaducidad.Text, out DateTime fechaCaducidad))
+            {
+                MessageBox.Show("Formato de fecha inválido. Use el formato dd/MM/yyyy.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtFechaCaducidad.SelectAll();
+                txtFechaCaducidad.Focus();
+                return;
+            }
+
+            if (fechaCaducidad.Date <= DateTime.Today)
+            {
+                MessageBox.Show("La fecha de caducidad debe ser posterior al día actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtFechaCaducidad.SelectAll();
+                txtFechaCaducidad.Focus();
+                return;
+            }
+
             try
             {
-                int idUltimoMedicamento = consultasMedicamentos.GuardarMedicanmento(descripcion, unidad, fondoFijo, fechaCaducidad);
-                MessageBox.Show("Medicamento guardado correctamente.");
-                LimpiarCampos();
-                int idUsuario = 2;
+                // Obtener valores limpios
+                string descripcion = txtMedicamento.Text.Trim();
+                string unidad = cmbUnidades.Text.Trim();
+
+                // Guardar medicamento
+                int idUltimoMedicamento = consultasMedicamentos.GuardarMedicamento(descripcion, unidad, fondoFijo, fechaCaducidad);
+
+                if (idUltimoMedicamento <= 0)
+                {
+                    MessageBox.Show("No se pudo obtener el ID del medicamento guardado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Registrar movimiento (deberías obtener el ID de usuario real)
+                int idUsuario = 2; // Implementar esta función
+                if (idUsuario <= 0)
+                {
+                    MessageBox.Show("No se pudo identificar al usuario actual.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    idUsuario = 2; // Valor por defecto solo si es aceptable
+                }
+
                 DateTime fechaHora = DateTime.Now;
                 string tipo = "Ingreso";
-                mov.GuardarMovimiento(idUltimoMedicamento, 2, fechaHora, tipo, fondoFijo);
 
+                bool movimientoGuardado = mov.GuardarMovimiento(idUltimoMedicamento, idUsuario, fechaHora, tipo, fondoFijo);
+
+                if (!movimientoGuardado)
+                {
+                    MessageBox.Show("El medicamento se guardó pero hubo un problema al registrar el movimiento.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                // Mostrar éxito y actualizar
+                MessageBox.Show("Medicamento guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimpiarCampos();
                 CargarMedicamentos();
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show($"Error de formato: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show("El valor ingresado es demasiado grande.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al guardar el medicamento: " + ex.Message);
+                MessageBox.Show($"Error inesperado al guardar el medicamento: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Considera registrar el error en un log: Logger.Error(ex, "Error en GuardarMedicamento");
             }
         }
+
         private void EliminarMedicamento()
         {
             if (dgvMedicamentos.SelectedRows.Count > 0)

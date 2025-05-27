@@ -38,13 +38,18 @@ namespace InventarioMedicamentos.movimientos
             using (MySqlConnection conn = conexion.ObtenerConexion())
             {
                 conn.Open();
-                string query = @"SELECT id_movimiento AS ID, 
-                                    id_medicamento AS 'ID Medicamento', 
-                                    id_usuario AS 'ID Usuario', 
-                                    fecha AS 'Fecha', 
-                                    tipo_movimiento AS 'Movimiento',
-                                    cantidad AS Cantidad
-                             FROM movimientos";
+                string query = @"SELECT 
+                            m.id_movimiento AS ID, 
+                            med.descripcion AS 'Medicamento', 
+                            u.nombre AS 'Usuario', 
+                            m.fecha AS 'Fecha', 
+                            m.tipo_movimiento AS 'Movimiento',
+                            m.cantidad AS Cantidad
+                        FROM movimientos m
+                        INNER JOIN medicamentos med ON m.id_medicamento = med.id_medicamento
+                        INNER JOIN usuarios u ON m.id_usuario = u.id_usuario
+                        ORDER BY m.fecha DESC";
+
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -58,42 +63,36 @@ namespace InventarioMedicamentos.movimientos
             {
                 conn.Open();
 
-                // Base de la consulta
-                string query = @"SELECT id_movimiento AS ID, 
-                                id_medicamento AS 'ID Medicamento', 
-                                id_usuario AS 'ID Usuario', 
-                                fecha AS 'Fecha', 
-                                tipo_movimiento AS 'Movimiento',
-                                cantidad AS Cantidad
-                         FROM movimientos
-                         WHERE fecha BETWEEN @desde AND @hasta";
+                // Base de la consulta con JOINs para obtener nombres
+                string query = @"SELECT 
+                            m.id_movimiento AS ID, 
+                            med.descripcion AS 'Medicamento', 
+                            u.nombre AS 'Usuario', 
+                            m.fecha AS 'Fecha', 
+                            m.tipo_movimiento AS 'Movimiento',
+                            m.cantidad AS Cantidad
+                         FROM movimientos m
+                         INNER JOIN medicamentos med ON m.id_medicamento = med.id_medicamento
+                         INNER JOIN usuarios u ON m.id_usuario = u.id_usuario
+                         WHERE m.fecha BETWEEN @desde AND @hasta";
 
-                // Agrega condición por tipo de operación si se especifica
-                if (operacion == "Ambos")
+                // Agrega condición por tipo de operación si se especifica (excepto para "Ambos")
+                if (!string.IsNullOrEmpty(operacion) && operacion != "Ambos")
                 {
-                     query = @"SELECT id_movimiento AS ID, 
-                                id_medicamento AS 'ID Medicamento', 
-                                id_usuario AS 'ID Usuario', 
-                                fecha AS 'Fecha', 
-                                tipo_movimiento AS 'Movimiento',
-                                cantidad AS Cantidad
-                         FROM movimientos
-                         WHERE fecha BETWEEN @desde AND @hasta";
-                }
-                else if (!string.IsNullOrEmpty(operacion))
-                {
-                    query += " AND tipo_movimiento = @operacion";
+                    query += " AND m.tipo_movimiento = @operacion";
                 }
 
+                // Crear y configurar el comando SQL
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@desde", desde.Date);
-                cmd.Parameters.AddWithValue("@hasta", hasta.Date);
+                cmd.Parameters.AddWithValue("@hasta", hasta.Date.AddDays(1).AddSeconds(-1)); // Para incluir todo el día hasta
 
-                if (!string.IsNullOrEmpty(operacion))
+                if (!string.IsNullOrEmpty(operacion) && operacion != "Ambos")
                 {
                     cmd.Parameters.AddWithValue("@operacion", operacion);
                 }
 
+                // Ejecutar consulta y devolver resultados
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);

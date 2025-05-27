@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventarioMedicamentos.usuarios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,13 @@ namespace InventarioMedicamentos
 {
     public partial class FormAgUsuariosAdmin : Form
     {
-        public FormAgUsuariosAdmin()
+        usuariosConsultas consultas;
+        private FormPrincipal navegador;
+        public FormAgUsuariosAdmin(FormPrincipal navegador)
         {
             InitializeComponent();
+            consultas = new usuariosConsultas();
+            this.navegador = navegador;
         }
 
         private void FormAgUsuariosAdmin_Load(object sender, EventArgs e)
@@ -60,9 +65,50 @@ namespace InventarioMedicamentos
 
         private void PictureBoxSalir_Click(object sender, EventArgs e)
         {
-       //     FormMenu formMenu = new FormMenu();
-       //     formMenu.Show();
-            this.Hide();
+            navegador.NavegarA(new FormMenu(navegador));
+        }
+        void LimpiarCampos()
+        {
+            txtConfirmarContrasena.Clear();
+            txtContrasena.Clear();
+            txtCorreoElectrónico.Clear();
+            txtNombreDeUsuario.Clear();
+            cmbTipoDeUsuario.SelectedIndex = -1;
+        }
+        void GuardarUsuario()
+        {
+            if (string.IsNullOrEmpty(txtNombreDeUsuario.Text) || string.IsNullOrEmpty(txtCorreoElectrónico.Text)
+                || string.IsNullOrEmpty(cmbTipoDeUsuario.Text) || string.IsNullOrEmpty(txtContrasena.Text)
+                || string.IsNullOrEmpty(txtConfirmarContrasena.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos.");
+                return;
+            }
+            else if (txtContrasena.Text != txtConfirmarContrasena.Text)
+            {
+                MessageBox.Show("Las contraseñas no coinciden. Por favor, intente nuevamente.");
+                return;
+            }
+            string nombre = txtNombreDeUsuario.Text;
+            string correo = txtCorreoElectrónico.Text;
+            string tipo = cmbTipoDeUsuario.SelectedItem.ToString();
+            string contrasena = txtContrasena.Text;
+
+            bool resultado = consultas.GuardarUsuario(nombre, correo, tipo, contrasena);
+            LimpiarCampos();
+            if (resultado)
+            {
+                MessageBox.Show("Usuario guardado correctamente.");
+            }
+            else
+            {
+                MessageBox.Show("Error al guardar el usuario. Por favor, intente nuevamente.");
+            }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            GuardarUsuario();
         }
     }
 }

@@ -25,6 +25,8 @@ namespace InventarioMedicamentos
             this.navegador = navegador;
             movimientos = new consultasMovimientos();
             CargarMovimientos();
+            dtpDesde.Value = DateTime.Now;
+            dtpHasta.Value = DateTime.Now;
         }
 
         private void FormInformes_Load(object sender, EventArgs e)
@@ -66,6 +68,14 @@ namespace InventarioMedicamentos
         private void CargarMovimientos()
         {
             dgvInformes.DataSource = movimientos.ConsultarMovimientos();
+            // Hacer todas las celdas de solo lectura
+            dgvInformes.ReadOnly = true;
+
+            // Deshabilitar edición directamente en el control
+            dgvInformes.EditMode = DataGridViewEditMode.EditProgrammatically;
+
+            // Opcional: Deshabilitar el menú contextual que podría permitir edición
+            dgvInformes.ContextMenuStrip = null;
         }
         private void PictureBoxSalir_Click(object sender, EventArgs e)
         {
@@ -76,10 +86,27 @@ namespace InventarioMedicamentos
         {
             DateTime desde = dtpDesde.Value;
             DateTime hasta = dtpHasta.Value;
+            string movimiento = "";
+            if (string.IsNullOrEmpty(cmbTIpoOperacion.Text))
+            {
+                movimiento = "Ambos";
+            }
+            else { movimiento = cmbTIpoOperacion.SelectedItem.ToString(); }
 
-            string movimiento = cmbTIpoOperacion.SelectedItem.ToString();
+            dgvInformes.DataSource = movimientos.ConsultarMovimientosConFiltro(desde, hasta, movimiento);
+            // Hacer todas las celdas de solo lectura
+            dgvInformes.ReadOnly = true;
 
-            dgvInformes.DataSource = movimientos.ConsultarMovimientosConFiltro(desde,hasta,movimiento);
+            // Deshabilitar edición directamente en el control
+            dgvInformes.EditMode = DataGridViewEditMode.EditProgrammatically;
+
+            // Opcional: Deshabilitar el menú contextual que podría permitir edición
+            dgvInformes.ContextMenuStrip = null;
+
+        }
+
+        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
+        {
 
         }
     }

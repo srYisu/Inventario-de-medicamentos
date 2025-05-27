@@ -19,7 +19,7 @@ namespace InventarioMedicamentos.medicamentos
         }
 
         // Método para agregar un medicamento
-        public int GuardarMedicanmento(string descripcion, string unidad, int fondoFijo, DateTime fechaCaducidad)
+        public int GuardarMedicamento(string descripcion, string unidad, int fondoFijo, DateTime fechaCaducidad)
         {
             using (MySqlConnection conn = conexion.ObtenerConexion())
             {

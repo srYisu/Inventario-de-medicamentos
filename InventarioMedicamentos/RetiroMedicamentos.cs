@@ -65,6 +65,14 @@ namespace InventarioMedicamentos
         private void CargarMedicamentos()
         {
             dgvMedicamentos.DataSource = consultasMedicamentos.ConsultarMedicamentos();
+            // Hacer todas las celdas de solo lectura
+            dgvMedicamentos.ReadOnly = true;
+
+            // Deshabilitar edición directamente en el control
+            dgvMedicamentos.EditMode = DataGridViewEditMode.EditProgrammatically;
+
+            // Opcional: Deshabilitar el menú contextual que podría permitir edición
+            dgvMedicamentos.ContextMenuStrip = null;
         }
         private void LimpiarCampos()
         {
@@ -119,7 +127,7 @@ namespace InventarioMedicamentos
             {
                 // Aquí podrías agregar también el movimiento
                 int idUsuario = 2; // Ejemplo, puede venir del login
-                string tipo = "Egreso";
+                string tipo = "Retiro";
                 DateTime fechaHora = DateTime.Now;
                 mov.GuardarMovimiento(medicamentoId, idUsuario, fechaHora, tipo, retiro);
 
