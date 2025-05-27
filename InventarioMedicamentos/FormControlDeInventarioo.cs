@@ -89,8 +89,8 @@ namespace InventarioMedicamentos
                 LimpiarCampos();
                 int idUsuario = 2;
                 DateTime fechaHora = DateTime.Now;
-                string tipo = "Recibido";
-                mov.GuardarMovimiento(idUltimoMedicamento, idUsuario, fechaHora, tipo, fondoFijo);
+                string tipo = "Ingreso";
+                mov.GuardarMovimiento(idUltimoMedicamento, 2, fechaHora, tipo, fondoFijo);
 
                 CargarMedicamentos();
             }

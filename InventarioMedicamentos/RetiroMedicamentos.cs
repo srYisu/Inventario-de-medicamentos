@@ -119,7 +119,7 @@ namespace InventarioMedicamentos
             {
                 // Aquí podrías agregar también el movimiento
                 int idUsuario = 2; // Ejemplo, puede venir del login
-                string tipo = "Utilizado";
+                string tipo = "Egreso";
                 DateTime fechaHora = DateTime.Now;
                 mov.GuardarMovimiento(medicamentoId, idUsuario, fechaHora, tipo, retiro);
 

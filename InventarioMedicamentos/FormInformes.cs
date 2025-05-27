@@ -71,5 +71,16 @@ namespace InventarioMedicamentos
         {
             navegador.NavegarA(new FormMenu(navegador));
         }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            DateTime desde = dtpDesde.Value;
+            DateTime hasta = dtpHasta.Value;
+
+            string movimiento = cmbTIpoOperacion.SelectedItem.ToString();
+
+            dgvInformes.DataSource = movimientos.ConsultarMovimientosConFiltro(desde,hasta,movimiento);
+
+        }
     }
 }
