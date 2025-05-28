@@ -126,7 +126,7 @@ namespace InventarioMedicamentos
                 string unidad = cmbUnidades.Text.Trim();
 
                 // Guardar medicamento
-                int idUltimoMedicamento = consultasMedicamentos.GuardarMedicamento(descripcion, unidad, fondoFijo, fechaCaducidad);
+                int idUltimoMedicamento = consultasMedicamentos.GuardarMedicamento(descripcion, unidad, fondoFijo, fechaCaducidad, 1);
 
                 if (idUltimoMedicamento <= 0)
                 {
@@ -168,7 +168,6 @@ namespace InventarioMedicamentos
             catch (Exception ex)
             {
                 MessageBox.Show($"Error inesperado al guardar el medicamento: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                // Considera registrar el error en un log: Logger.Error(ex, "Error en GuardarMedicamento");
             }
         }
 
@@ -180,7 +179,7 @@ namespace InventarioMedicamentos
                 if (result == DialogResult.Yes)
                 {
                     DataGridViewRow row = dgvMedicamentos.SelectedRows[0];
-                    int id = Convert.ToInt32(row.Cells[0].Value); ;
+                    int id = Convert.ToInt32(row.Cells[0].Value);
                     try
                     {
                         consultasMedicamentos.EliminarMedicamento(id);

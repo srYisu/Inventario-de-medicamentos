@@ -19,19 +19,20 @@ namespace InventarioMedicamentos.medicamentos
         }
 
         // Método para agregar un medicamento
-        public int GuardarMedicamento(string descripcion, string unidad, int fondoFijo, DateTime fechaCaducidad)
+        public int GuardarMedicamento(string descripcion, string unidad, int fondoFijo, DateTime fechaCaducidad, int disponiblee)
         {
             using (MySqlConnection conn = conexion.ObtenerConexion())
             {
                 conn.Open();
-                string query = @"INSERT INTO medicamentos (descripcion, unidad, fondo_fijo, fecha_caducidad) 
-                             VALUES (@descripcion, @unidad, @fondoFijo, @fechaCaducidad)";
+                string query = @"INSERT INTO medicamentos (descripcion, unidad, fondo_fijo, fecha_caducidad, disponible) 
+                             VALUES (@descripcion, @unidad, @fondoFijo, @fechaCaducidad, @disponiblee)";
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@descripcion", descripcion);
                     cmd.Parameters.AddWithValue("@unidad", unidad);
                     cmd.Parameters.AddWithValue("@fondoFijo", fondoFijo);
                     cmd.Parameters.AddWithValue("@fechaCaducidad", fechaCaducidad);
+                    cmd.Parameters.AddWithValue("@disponiblee", disponiblee);
 
                     cmd.ExecuteNonQuery();
                     return (int)cmd.LastInsertedId;
@@ -44,17 +45,19 @@ namespace InventarioMedicamentos.medicamentos
         {
             using (MySqlConnection conn = conexion.ObtenerConexion())
             {
-                conn.Open();
+                conn.Open(); 
 
                 // Elimina
-                string queryEliminar = @"DELETE FROM medicamentos WHERE id_medicamento = @idMedicamento";
+                string queryEliminar = @"UPDATE medicamentos SET disponible = 0 WHERE id_medicamento = @idMedicamento";
                 using (MySqlCommand cmdEliminar = new MySqlCommand(queryEliminar, conn))
                 {
+                    //cmdEliminar.Parameters.AddWithValue("@idMedicamento", idMedicamento);
                     cmdEliminar.Parameters.AddWithValue("@idMedicamento", idMedicamento);
                     return cmdEliminar.ExecuteNonQuery() > 0;
                 }
             }
         }
+
 
         // Método para actualizar un medicamento
         public bool ActualizarMedicamento(int idMedicamento, string descripcion, string unidad, int nuevoFondoFijo, DateTime fechaCaducidad, int idUsuario)
@@ -128,7 +131,7 @@ namespace InventarioMedicamentos.medicamentos
                         unidad AS Unidad, 
                         fondo_fijo AS 'Fondo Fijo', 
                         fecha_caducidad AS 'Fecha Caducidad'
-                 FROM medicamentos WHERE 1=1"; // Truco para facilitar añadir condiciones
+                 FROM medicamentos WHERE disponible = 1"; // Truco para facilitar añadir condiciones
 
                 if (!string.IsNullOrEmpty(filtroNombre))
                 {

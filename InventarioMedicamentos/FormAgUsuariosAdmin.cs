@@ -16,6 +16,7 @@ namespace InventarioMedicamentos
     {
         usuariosConsultas consultas;
         private FormPrincipal navegador;
+        int usuarioID;
         public FormAgUsuariosAdmin(FormPrincipal navegador)
         {
             InitializeComponent();
@@ -75,6 +76,7 @@ namespace InventarioMedicamentos
             txtCorreoElectrónico.Clear();
             txtNombreDeUsuario.Clear();
             cmbTipoDeUsuario.SelectedIndex = -1;
+            usuarioID = 0; // Reiniciar el ID del usuario
         }
         void GuardarUsuario()
         {
@@ -95,7 +97,7 @@ namespace InventarioMedicamentos
             string tipo = cmbTipoDeUsuario.SelectedItem.ToString();
             string contrasena = txtContrasena.Text;
 
-            bool resultado = consultas.GuardarUsuario(nombre, correo, tipo, contrasena);
+            bool resultado = consultas.GuardarUsuario(nombre, correo, tipo, contrasena, 1);
             LimpiarCampos();
             CargarTabla();
             if (resultado)
@@ -109,6 +111,7 @@ namespace InventarioMedicamentos
         }
         private void CargarTabla()
         {
+
             dgvUsuarios.DataSource = consultas.ConsultarUsuarios();
             // Hacer todas las celdas de solo lectura
             dgvUsuarios.ReadOnly = true;
@@ -118,48 +121,15 @@ namespace InventarioMedicamentos
 
             // Opcional: Deshabilitar el menú contextual que podría permitir edición
             dgvUsuarios.ContextMenuStrip = null;
-            AgregarBotonesAccion();
-            AjustarAnchoColumnas();
         }
-        private void AgregarBotonesAccion()
+        private void EliminarUsuario()
         {
-            // Configuración común para ambos botones
-            Action<DataGridViewButtonColumn, string, string> configurarBoton = (col, texto, nombre) =>
-            {
-                col.Name = nombre;
-                col.Text = texto;
-                col.HeaderText = "Acción";
-                col.UseColumnTextForButtonValue = true;
-                col.Width = 80;
-                col.FlatStyle = FlatStyle.Flat;
-                col.DefaultCellStyle.BackColor = nombre == "Editar" ? Color.LightBlue : Color.LightCoral;
-                col.DefaultCellStyle.ForeColor = Color.Black;
-            };
+            DataGridViewRow row = dgvUsuarios.SelectedRows[0];
+            int id = Convert.ToInt32(row.Cells[0].Value);
 
-            // Botón Editar
-            DataGridViewButtonColumn colEditar = new DataGridViewButtonColumn();
-            configurarBoton(colEditar, "Editar", "Editar");
-            dgvUsuarios.Columns.Add(colEditar);
-
-            // Botón Eliminar
-            DataGridViewButtonColumn colEliminar = new DataGridViewButtonColumn();
-            configurarBoton(colEliminar, "Eliminar", "Eliminar");
-            dgvUsuarios.Columns.Add(colEliminar);
-        }
-        private void AjustarAnchoColumnas()
-        {
-            // Ajustar automáticamente el ancho de las columnas de datos
-            dgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            // Fijar un ancho específico para las columnas de botones
-            dgvUsuarios.Columns["Editar"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dgvUsuarios.Columns["Eliminar"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-        }
-        private void EliminarUsuario(int idUsuario)
-        {
             // Confirmar antes de eliminar
             DialogResult result = MessageBox.Show(
-                $"¿Está seguro que desea eliminar el usuario con ID: {idUsuario}?",
+                $"¿Está seguro que desea eliminar el usuario con ID: {id}?",
                 "Confirmar eliminación",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
@@ -169,7 +139,7 @@ namespace InventarioMedicamentos
                 try
                 {
                     //int id = Convert.ToInt32(dgvUsuarios.SelectedRows[0].Cells[0].Value);
-                    consultas.EliminarUsuario(idUsuario);
+                    consultas.EliminarUsuario(id);
                     MessageBox.Show("Usuario eliminado correctamente");
                     CargarTabla(); // Recargar datos después de eliminar
                 }
@@ -179,28 +149,106 @@ namespace InventarioMedicamentos
                 }
             }
         }
+        private void LlenarCampos()
+        {
+            if (dgvUsuarios.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvUsuarios.SelectedRows[0];
+                txtNombreDeUsuario.Text = row.Cells[1].Value.ToString();
+                txtCorreoElectrónico.Text = row.Cells[2].Value.ToString();
+                cmbTipoDeUsuario.Text = row.Cells[3].Value.ToString();
+                usuarioID = Convert.ToInt32(row.Cells[0].Value);
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un medicamento para editar.");
+            }
+        }
+        private void ActualizarUsuario()
+        {
+            if (string.IsNullOrEmpty(txtNombreDeUsuario.Text) || string.IsNullOrEmpty(txtCorreoElectrónico.Text)
+     || string.IsNullOrEmpty(cmbTipoDeUsuario.Text) || string.IsNullOrEmpty(txtContrasena.Text)
+     || string.IsNullOrEmpty(txtConfirmarContrasena.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos.");
+                return;
+            }
+            else if (txtContrasena.Text != txtConfirmarContrasena.Text)
+            {
+                MessageBox.Show("Las contraseñas no coinciden. Por favor, intente nuevamente.");
+                return;
+            }
+            string nombre = txtNombreDeUsuario.Text;
+            string correo = txtCorreoElectrónico.Text;
+            string tipo = cmbTipoDeUsuario.SelectedItem.ToString();
+            string contrasena = txtContrasena.Text;
+            bool resultado = consultas.ActualizarUsuario(usuarioID, nombre, correo, tipo, contrasena, 1);
+            LimpiarCampos();
+            CargarTabla();
+            if (resultado)
+            {
+                MessageBox.Show("Usuario actualizado correctamente.");
+            }
+            else
+            {
+                MessageBox.Show("Error al actualizar el usuario. Por favor, intente nuevamente.");
+            }
+        }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            GuardarUsuario();
+            if (btnAgregar.Text == "Agregar")
+            {
+                GuardarUsuario();
+                LimpiarCampos();
+            }
+            else if (btnAgregar.Text == "Actualizar")
+            {
+                ActualizarUsuario();
+                btnAgregar.Text = "Agregar";
+                btnEditar.Text = "Editar";
+                btnEliminar.Visible = true;
+                btnLimpiarCampos.Visible = true;
+                LimpiarCampos();
+            }
         }
 
         private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            // Verificar que el click no sea en el encabezado y que sea en nuestras columnas de botones
-            if (e.RowIndex >= 0)
-            {
-                // Obtener el ID del usuario de la fila clickeada
-                int idUsuario = Convert.ToInt32(dgvUsuarios.SelectedRows[0].Cells[0].Value);
+        }
 
-                if (dgvUsuarios.Columns[e.ColumnIndex].Name == "Editar")
-                {
-                    MessageBox.Show($"Funcionalidad de edición no implementada para el usuario con ID: {idUsuario}");
-                }
-                else if (dgvUsuarios.Columns[e.ColumnIndex].Name == "Eliminar")
-                {
-                    EliminarUsuario(idUsuario);
-                }
+        private void panelAnadirUsuario_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            EliminarUsuario();
+        }
+
+        private void btnLimpiarCampos_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (btnEditar.Text == "Editar")
+            {
+                btnAgregar.Text = "Actualizar";
+                btnEditar.Text = "Cancelar";
+                btnEliminar.Visible = false;
+                btnLimpiarCampos.Visible = false;
+                LlenarCampos();
+            }
+            else if (btnEditar.Text == "Cancelar")
+            {
+                btnEditar.Text = "Editar";
+                btnAgregar.Text = "Agregar";
+                btnEliminar.Visible = true;
+                btnLimpiarCampos.Visible = true;
+                LimpiarCampos();
             }
         }
     }

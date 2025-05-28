@@ -26,7 +26,7 @@ namespace InventarioMedicamentos.usuarios
                 try
                 {
                     conn.Open();
-                    string query = "SELECT tipo FROM usuarios WHERE nombre = @usuario AND contraseña = @contraseña";
+                    string query = "SELECT tipo FROM usuarios WHERE nombre = @usuario AND contraseña = @contraseña AND disponible = 1";
 
                     using (MySqlCommand comando = new MySqlCommand(query, conn))
                     {
@@ -54,19 +54,20 @@ namespace InventarioMedicamentos.usuarios
                 }
             }
         }
-        public bool GuardarUsuario(string nombre, string correo, string tipo, string contrasena)
+        public bool GuardarUsuario(string nombre, string correo, string tipo, string contrasena, int disp)
         {
             using (MySqlConnection conn = conexion.ObtenerConexion())
             {
                 conn.Open();
-                string query = @"INSERT INTO usuarios (nombre, correo, tipo, contraseña) 
-                             VALUES (@nombre, @correo, @tipo, @contrasena)";
+                string query = @"INSERT INTO usuarios (nombre, correo, tipo, contraseña, disponible) 
+                             VALUES (@nombre, @correo, @tipo, @contrasena, @disp)";
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@nombre", nombre);
                     cmd.Parameters.AddWithValue("@correo", correo);
                     cmd.Parameters.AddWithValue("@tipo", tipo);
                     cmd.Parameters.AddWithValue("@contrasena", contrasena);
+                    cmd.Parameters.AddWithValue("@disp", disp);
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
@@ -80,10 +81,10 @@ namespace InventarioMedicamentos.usuarios
                 conn.Open();
 
                 // Elimina
-                string queryEliminar = @"DELETE FROM usurios WHERE id_usuario = @idUsuario";
+                string queryEliminar = @"UPDATE usuarios SET disponible = 0 WHERE id_usuario = @idUsuario";
                 using (MySqlCommand cmdEliminar = new MySqlCommand(queryEliminar, conn))
                 {
-                    cmdEliminar.Parameters.AddWithValue("@idMedicamento", idUsuario);
+                    cmdEliminar.Parameters.AddWithValue("@idUsuario", idUsuario);
                     return cmdEliminar.ExecuteNonQuery() > 0;
                 }
             }
@@ -98,11 +99,41 @@ namespace InventarioMedicamentos.usuarios
                             correo AS 'Correo Electronico', 
                             tipo AS 'Tipo', 
                             contraseña AS 'Contrasena'
-                     FROM usuarios";
+                     FROM usuarios WHERE disponible = 1";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
+                foreach (DataRow row in dt.Rows)
+                {
+                    row["Contrasena"] = "********"; // Ocultar contraseñas
+                }
                 return dt;
+            }
+        }
+        public bool ActualizarUsuario(int idUsuario, string nombre, string correo, string tipo, string contrasena, int disponible)
+        {
+            using (MySqlConnection conn = conexion.ObtenerConexion())
+            {
+                conn.Open();
+                string query = @"UPDATE usuarios 
+                         SET nombre = @nombre, 
+                             correo = @correo, 
+                             tipo = @tipo, 
+                             contraseña = @contrasena, 
+                             disponible = @disponible 
+                         WHERE id_usuario = @idUsuario";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    cmd.Parameters.AddWithValue("@nombre", nombre);
+                    cmd.Parameters.AddWithValue("@correo", correo);
+                    cmd.Parameters.AddWithValue("@tipo", tipo);
+                    cmd.Parameters.AddWithValue("@contrasena", contrasena);
+                    cmd.Parameters.AddWithValue("@disponible", disponible);
+
+                    return cmd.ExecuteNonQuery() > 0;
+                }
             }
         }
     }
