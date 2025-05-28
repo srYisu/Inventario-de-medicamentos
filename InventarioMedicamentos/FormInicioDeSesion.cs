@@ -31,6 +31,7 @@ namespace InventarioMedicamentos
             this.MaximizeBox = false; // Desactiva el botón de maximizar
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.navegador = navegador;
+            txtContrasena.UseSystemPasswordChar = true; // Oculta la contraseña al escribir
         }
 
         private void FormInicioDeSesion_Load(object sender, EventArgs e)
@@ -56,19 +57,22 @@ namespace InventarioMedicamentos
             string rolUsuarioEnUso;
             int idUsuarioEnUso;
             string correoEnUso;
+            string contrasenaEnUso;
 
-            bool accesoConcedido = inicioSesion.IniciarSesion(usuario, contraseña, out rolUsuarioEnUso, out idUsuarioEnUso, out correoEnUso);
+            bool accesoConcedido = inicioSesion.IniciarSesion(usuario, contraseña, out rolUsuarioEnUso, out idUsuarioEnUso, out correoEnUso, out contrasenaEnUso);
 
             if (accesoConcedido)
             {
+                MessageBox.Show("Inicio de sesión exitoso.");
                 UsuarioActual.IdUsuario = idUsuarioEnUso;
                 UsuarioActual.RolUsuario = rolUsuarioEnUso;
                 UsuarioActual.correo = correoEnUso;
+                UsuarioActual.contrasena = contrasenaEnUso;
                 navegador.NavegarA(new FormMenu(navegador));
             }
             else
             {
-                Console.WriteLine("Usuario o contraseña incorrectos.");
+                MessageBox.Show("Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

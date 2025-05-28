@@ -97,7 +97,7 @@
             PictureBoxSalir.CustomizableEdges = customizableEdges1;
             PictureBoxSalir.Image = (Image)resources.GetObject("PictureBoxSalir.Image");
             PictureBoxSalir.ImageRotate = 0F;
-            PictureBoxSalir.Location = new Point(40, 737);
+            PictureBoxSalir.Location = new Point(12, 779);
             PictureBoxSalir.Name = "PictureBoxSalir";
             PictureBoxSalir.ShadowDecoration.CustomizableEdges = customizableEdges2;
             PictureBoxSalir.Size = new Size(70, 70);

@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,12 @@ namespace InventarioMedicamentos.usuarios
         {
             conexion = new Conexion();
         }
-        public bool IniciarSesion(string usuario, string contraseña, out string tipo, out int id, out string correo)
+        public bool IniciarSesion(string usuario, string contraseña, out string tipo, out int id, out string correo, out string contrasena)
         {
             tipo = string.Empty;
             id = -1; // Valor por defecto (invalido)
             correo = string.Empty; // Valor por defecto (invalido)
+            contrasena = string.Empty; // Valor por defecto (invalido)
 
             using (MySqlConnection conn = conexion.ObtenerConexion())
             {
@@ -29,7 +31,7 @@ namespace InventarioMedicamentos.usuarios
                 {
                     conn.Open();
                     // Consulta modificada para obtener tanto 'tipo' como 'id_usuario'
-                    string query = @"SELECT id_usuario, tipo, correo 
+                    string query = @"SELECT id_usuario, tipo, correo, contraseña 
                             FROM usuarios 
                             WHERE nombre = @usuario 
                             AND contraseña = @contraseña 
@@ -48,6 +50,7 @@ namespace InventarioMedicamentos.usuarios
                                 id = lector.GetInt32("id_usuario");
                                 tipo = lector.GetString("tipo");
                                 correo = lector.GetString("correo");
+                                contrasena = lector.GetString("contraseña");
                                 return true;
                             }
                             else

@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using InventarioMedicamentos.conexion;
+using InventarioMedicamentos.usuarios;
 
 namespace InventarioMedicamentos
 {
@@ -34,6 +35,7 @@ namespace InventarioMedicamentos
             CargarMovimientos();
             dtpDesde.Value = DateTime.Now;
             dtpHasta.Value = DateTime.Now;
+            lblEstado.Visible = false;
         }
 
         private void FormInformes_Load(object sender, EventArgs e)
@@ -119,13 +121,15 @@ namespace InventarioMedicamentos
         }
 
 
-        public void ExportarYEnviarMovimientos(DateTime fechaDesde, DateTime fechaHasta, string destinatario, string tipoMovimiento = "")
+        public async Task ExportarYEnviarMovimientos(DateTime fechaDesde, DateTime fechaHasta, string destinatario, string tipoMovimiento = "")
         {
-            string rutaExcel = "";
-            try
+            await Task.Run(() =>
             {
-                // Query base
-                string query = @"SELECT 
+                string rutaExcel = "";
+                try
+                {
+                    // Query base
+                    string query = @"SELECT 
                         m.id_movimiento AS ID, 
                         med.descripcion AS 'Medicamento', 
                         u.nombre AS 'Usuario', 
@@ -137,70 +141,91 @@ namespace InventarioMedicamentos
                      INNER JOIN usuarios u ON m.id_usuario = u.id_usuario
                      WHERE m.fecha BETWEEN @desde AND @hasta";
 
-                // Agregar filtro por tipo si es necesario
-                if (!string.IsNullOrEmpty(tipoMovimiento) && tipoMovimiento != "Ambos")
-                {
-                    query += " AND m.tipo_movimiento = @tipoMovimiento";
-                }
-
-                // Ruta temporal para el archivo
-                rutaExcel = Path.Combine(Path.GetTempPath(), $"Movimientos_{DateTime.Now:yyyyMMddHHmmss}.xlsx");
-
-                // Exportar a Excel
-                using (var conn = conexion.ObtenerConexion())
-                {
-                    conn.Open();
-                    var cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@desde", fechaDesde);
-                    cmd.Parameters.AddWithValue("@hasta", fechaHasta.AddDays(1).AddSeconds(-1));
-
+                    // Agregar filtro por tipo si es necesario
                     if (!string.IsNullOrEmpty(tipoMovimiento) && tipoMovimiento != "Ambos")
                     {
-                        cmd.Parameters.AddWithValue("@tipoMovimiento", tipoMovimiento);
+                        query += " AND m.tipo_movimiento = @tipoMovimiento";
                     }
 
-                    var dataTable = new DataTable();
-                    using (var reader = cmd.ExecuteReader())
+                    // Ruta temporal para el archivo
+                    rutaExcel = Path.Combine(Path.GetTempPath(), $"Movimientos_{DateTime.Now:yyyyMMddHHmmss}.xlsx");
+
+                    // Exportar a Excel
+                    using (var conn = conexion.ObtenerConexion())
                     {
-                        dataTable.Load(reader);
+                        conn.Open();
+                        var cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@desde", fechaDesde);
+                        cmd.Parameters.AddWithValue("@hasta", fechaHasta.AddDays(1).AddSeconds(-1));
+
+                        if (!string.IsNullOrEmpty(tipoMovimiento) && tipoMovimiento != "Ambos")
+                        {
+                            cmd.Parameters.AddWithValue("@tipoMovimiento", tipoMovimiento);
+                        }
+
+                        var dataTable = new DataTable();
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            dataTable.Load(reader);
+                        }
+
+                        ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+                        using (var package = new ExcelPackage())
+                        {
+                            var worksheet = package.Workbook.Worksheets.Add("Datos");
+                            worksheet.Cells["A1"].LoadFromDataTable(dataTable, true);
+                            package.SaveAs(new FileInfo(rutaExcel));
+                        }
                     }
 
-                    ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
-                    using (var package = new ExcelPackage())
+                    // Enviar por correo
+                     exportar.EnviarCorreoConExcel(rutaExcel, destinatario);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al exportar y enviar movimientos: " + ex.Message);
+                }
+                finally
+                {
+                    // Intentar eliminar el archivo temporal
+                    if (File.Exists(rutaExcel))
                     {
-                        var worksheet = package.Workbook.Worksheets.Add("Datos");
-                        worksheet.Cells["A1"].LoadFromDataTable(dataTable, true);
-                        package.SaveAs(new FileInfo(rutaExcel));
+                        try
+                        {
+                            File.Delete(rutaExcel);
+                        }
+                        catch { /* Ignorar errores de eliminación */ }
                     }
                 }
+            }
+            );
+                
+        }
+        private async void btnDescargarInforme_Click(object sender, EventArgs e)
+        {
+            lblEstado.Text = "Exportando y enviando...";
+            lblEstado.Visible = true;
+            btnDescargarInforme.Enabled = false;
 
-                // Enviar por correo
-                exportar.EnviarCorreoConExcel(rutaExcel, destinatario);
+            DateTime desde = dtpDesde.Value;
+            DateTime hasta = dtpHasta.Value;
+            string destinatario = UsuarioActual.correo;
+            string tipoMovimiento = cmbTIpoOperacion.SelectedItem != null ? cmbTIpoOperacion.SelectedItem.ToString() : "Ambos";
+
+            try
+            {
+                await ExportarYEnviarMovimientos(desde, hasta, destinatario, tipoMovimiento);
+                MessageBox.Show("El archivo fue exportado y enviado exitosamente.");
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al exportar y enviar movimientos: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
             }
             finally
             {
-                // Intentar eliminar el archivo temporal
-                if (File.Exists(rutaExcel))
-                {
-                    try
-                    {
-                        File.Delete(rutaExcel);
-                    }
-                    catch { /* Ignorar errores de eliminación */ }
-                }
+                lblEstado.Visible = false;
+                btnDescargarInforme.Enabled = true;
             }
-        }
-        private void btnDescargarInforme_Click(object sender, EventArgs e)
-        {
-            DateTime desde = dtpDesde.Value;
-            DateTime hasta = dtpHasta.Value;
-            string destinatario = "sr.elyisus@gmail.com";
-            string tipoMovimiento = cmbTIpoOperacion.SelectedItem != null ? cmbTIpoOperacion.SelectedItem.ToString() : "Ambos";
-            ExportarYEnviarMovimientos(desde, hasta, destinatario, tipoMovimiento);
         }
     }
 }

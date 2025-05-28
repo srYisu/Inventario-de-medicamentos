@@ -65,6 +65,7 @@
             lblDesde = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lbHasta = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnDescargarInforme = new Guna.UI2.WinForms.Guna2Button();
+            lblEstado = new Guna.UI2.WinForms.Guna2HtmlLabel();
             ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).BeginInit();
             panelNaranja.SuspendLayout();
             panelRojo.SuspendLayout();
@@ -202,6 +203,7 @@
             // 
             dtpDesde.Checked = true;
             dtpDesde.CustomizableEdges = customizableEdges9;
+            dtpDesde.FillColor = Color.FromArgb(164, 124, 44);
             dtpDesde.Font = new Font("Segoe UI", 9F);
             dtpDesde.Format = DateTimePickerFormat.Long;
             dtpDesde.Location = new Point(99, 136);
@@ -217,6 +219,7 @@
             // 
             dtpHasta.Checked = true;
             dtpHasta.CustomizableEdges = customizableEdges11;
+            dtpHasta.FillColor = Color.FromArgb(164, 124, 44);
             dtpHasta.Font = new Font("Segoe UI", 9F);
             dtpHasta.Format = DateTimePickerFormat.Long;
             dtpHasta.Location = new Point(337, 136);
@@ -319,11 +322,23 @@
             btnDescargarInforme.Text = "Descargar Informe";
             btnDescargarInforme.Click += btnDescargarInforme_Click;
             // 
+            // lblEstado
+            // 
+            lblEstado.BackColor = Color.Transparent;
+            lblEstado.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblEstado.ForeColor = Color.White;
+            lblEstado.Location = new Point(1141, 238);
+            lblEstado.Name = "lblEstado";
+            lblEstado.Size = new Size(139, 23);
+            lblEstado.TabIndex = 61;
+            lblEstado.Text = "guna2HtmlLabel1";
+            // 
             // FormInformes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
+            Controls.Add(lblEstado);
             Controls.Add(btnDescargarInforme);
             Controls.Add(lbHasta);
             Controls.Add(lblDesde);
@@ -364,5 +379,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel lbHasta;
         private Guna.UI2.WinForms.Guna2Button btnDescargarInforme;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblEstado;
     }
 }

@@ -31,6 +31,8 @@ namespace InventarioMedicamentos
             AplicarEsquinasRedondeadas(panelNaranja, 10);
             AplicarEsquinasRedondeadas(panelRojo, 10);
             this.navegador = navegador;
+            txtMedicamento.ReadOnly = true;
+            txtUnidades.ReadOnly = true;
         }
         private void AplicarEsquinasRedondeadas(Panel panel, int radio)
         {

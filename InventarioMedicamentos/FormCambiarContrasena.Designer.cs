@@ -253,6 +253,7 @@
             btnConfirmar.Size = new Size(138, 29);
             btnConfirmar.TabIndex = 4;
             btnConfirmar.Text = "Confirmar";
+            btnConfirmar.Click += btnConfirmar_Click;
             // 
             // txtContrasenaNueva
             // 

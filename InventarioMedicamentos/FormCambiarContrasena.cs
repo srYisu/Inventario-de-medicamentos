@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventarioMedicamentos.usuarios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +15,12 @@ namespace InventarioMedicamentos
     public partial class FormCambiarContrasena : Form
     {
         private FormPrincipal navegador;
+        private usuariosConsultas usuariosConsultas;
         public FormCambiarContrasena(FormPrincipal navegador)
         {
             InitializeComponent();
             this.navegador = navegador;
+            usuariosConsultas = new usuariosConsultas();
         }
 
         private void PictureBoxSalir_Click(object sender, EventArgs e)
@@ -68,16 +71,26 @@ namespace InventarioMedicamentos
         {
             string nuevaContrasena = txtConfirmarContrasena.Text;
             string confirmarContrasena = txtConfirmarContrasena.Text;
-            txtContrasenaActual.Text = txtContrasenaActual.Text.Trim();
+            string contrasenaActual = txtContrasenaActual.Text.Trim();
             if (nuevaContrasena != confirmarContrasena)
             {
                 MessageBox.Show("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            // Aquí se llamaría al método para cambiar la contraseña en la base de datos
-            // Por ejemplo: usuariosConsultas.CambiarContrasena(UsuarioActual.IdUsuario, nuevaContrasena);
+            else if (contrasenaActual != UsuarioActual.contrasena)
+            {
+                MessageBox.Show("La contraseña actual es incorrecta. Por favor, inténtelo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+                // Aquí se llamaría al método para cambiar la contraseña en la base de datos
+                usuariosConsultas.CambiarContrasena(UsuarioActual.IdUsuario, nuevaContrasena);
             MessageBox.Show("Contraseña cambiada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             navegador.NavegarA(new FormMenu(navegador));
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            cambiarContrasena();
         }
     }
 }

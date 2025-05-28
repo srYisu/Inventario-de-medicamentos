@@ -67,11 +67,11 @@ namespace InventarioMedicamentos
                 }
             }
         }
-        public void EnviarCorreoConExcel(string rutaExcel, string destinatario)
+        public async Task EnviarCorreoConExcel(string rutaExcel, string destinatario)
         {
             MailMessage mail = new MailMessage("licfeliniusronronovich@gmail.com", destinatario);
-            mail.Subject = "Datos exportados";
-            mail.Body = "Adjunto encontrarás el archivo Excel.";
+            mail.Subject = "Informe de movimientos";
+            mail.Body = "Adjunto se encuentra el archivo Excel con los datos solicitados";
 
             mail.Attachments.Add(new Attachment(rutaExcel));
 
