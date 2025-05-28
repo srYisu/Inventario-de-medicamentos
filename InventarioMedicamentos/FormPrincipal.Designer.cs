@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             pnlPrincipal = new Panel();
             SuspendLayout();
             // 
@@ -45,8 +46,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
             Controls.Add(pnlPrincipal);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormPrincipal";
-            Text = "FormPrincipal";
+            Text = "IMSS inventario";
             FormClosing += FormPrincipal_FormClosing;
             ResumeLayout(false);
         }
