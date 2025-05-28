@@ -10,10 +10,12 @@ namespace InventarioMedicamentos.usuarios
     {
         public static int IdUsuario { get; set; } = 0;
         public static string RolUsuario { get; set; } = string.Empty;
+        public static string correo { get; set; } = string.Empty;
         public static void EstablecerUsuario(int id, string rol)
         {
             IdUsuario = id;
             RolUsuario = rol;
+
         }
     }
 }

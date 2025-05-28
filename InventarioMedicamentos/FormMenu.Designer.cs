@@ -229,7 +229,7 @@
             PictureBoxRetiros.BackColor = Color.Transparent;
             PictureBoxRetiros.Cursor = Cursors.Hand;
             PictureBoxRetiros.CustomizableEdges = customizableEdges7;
-            PictureBoxRetiros.Image = (Image)resources.GetObject("PictureBoxRetiros.Image");
+            PictureBoxRetiros.Image = Properties.Resources.iconoRetiros;
             PictureBoxRetiros.ImageRotate = 0F;
             PictureBoxRetiros.Location = new Point(60, 21);
             PictureBoxRetiros.Name = "PictureBoxRetiros";
@@ -346,7 +346,7 @@
             // 
             guna2PictureBox1.BackColor = Color.Transparent;
             guna2PictureBox1.CustomizableEdges = customizableEdges17;
-            guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
+            guna2PictureBox1.Image = Properties.Resources.imssBienestarLogoLarge;
             guna2PictureBox1.ImageRotate = 0F;
             guna2PictureBox1.Location = new Point(84, -116);
             guna2PictureBox1.Name = "guna2PictureBox1";
@@ -449,7 +449,7 @@
             picBoxRetiros2.BackColor = Color.Transparent;
             picBoxRetiros2.Cursor = Cursors.Hand;
             picBoxRetiros2.CustomizableEdges = customizableEdges31;
-            picBoxRetiros2.Image = (Image)resources.GetObject("picBoxRetiros2.Image");
+            picBoxRetiros2.Image = Properties.Resources.iconoRetiros;
             picBoxRetiros2.ImageRotate = 0F;
             picBoxRetiros2.Location = new Point(60, 21);
             picBoxRetiros2.Name = "picBoxRetiros2";

@@ -69,14 +69,14 @@ namespace InventarioMedicamentos
         }
         public void EnviarCorreoConExcel(string rutaExcel, string destinatario)
         {
-            MailMessage mail = new MailMessage("chetosflaminconsalsa@gmail.com", destinatario);
+            MailMessage mail = new MailMessage("licfeliniusronronovich@gmail.com", destinatario);
             mail.Subject = "Datos exportados";
             mail.Body = "Adjunto encontrarás el archivo Excel.";
 
             mail.Attachments.Add(new Attachment(rutaExcel));
 
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-            smtp.Credentials = new NetworkCredential("chetosflaminconsalsa@gmail.com", "ctcf vllt xxry pztg"); // Usa App Password si usas Gmail
+            smtp.Credentials = new NetworkCredential("licfeliniusronronovich@gmail.com", "zeoh kiuc hbzg gncg"); // Usa App Password si usas Gmail
             smtp.EnableSsl = true;
 
             smtp.Send(mail);

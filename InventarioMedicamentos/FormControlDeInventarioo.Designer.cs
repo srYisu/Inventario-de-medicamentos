@@ -48,17 +48,17 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormControlDeInventarioo));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormControlDeInventarioo));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             dgvMedicamentos = new Guna.UI2.WinForms.Guna2DataGridView();
             btnLimpiar = new Guna.UI2.WinForms.Guna2Button();
             btnEliminar = new Guna.UI2.WinForms.Guna2Button();
@@ -72,17 +72,17 @@
             txtMedicamento = new Guna.UI2.WinForms.Guna2TextBox();
             panelNaranja = new Guna.UI2.WinForms.Guna2Panel();
             panelRojo = new Guna.UI2.WinForms.Guna2Panel();
+            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             lblTitulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             cmbUnidades = new Guna.UI2.WinForms.Guna2ComboBox();
             PictureBoxSalir = new Guna.UI2.WinForms.Guna2PictureBox();
             txtFechaCaducidad = new Guna.UI2.WinForms.Guna2TextBox();
             txtBusqueda = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvMedicamentos).BeginInit();
             panelNaranja.SuspendLayout();
             panelRojo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).BeginInit();
             SuspendLayout();
             // 
             // dgvMedicamentos
@@ -336,6 +336,19 @@
             panelRojo.Size = new Size(1586, 84);
             panelRojo.TabIndex = 8;
             // 
+            // guna2PictureBox1
+            // 
+            guna2PictureBox1.BackColor = Color.Transparent;
+            guna2PictureBox1.CustomizableEdges = customizableEdges13;
+            guna2PictureBox1.Image = Properties.Resources.imssBienestarLogoLarge;
+            guna2PictureBox1.ImageRotate = 0F;
+            guna2PictureBox1.Location = new Point(13, -114);
+            guna2PictureBox1.Name = "guna2PictureBox1";
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            guna2PictureBox1.Size = new Size(329, 200);
+            guna2PictureBox1.TabIndex = 54;
+            guna2PictureBox1.TabStop = false;
+            // 
             // lblTitulo
             // 
             lblTitulo.BackColor = Color.Transparent;
@@ -426,19 +439,6 @@
             txtBusqueda.TabIndex = 50;
             txtBusqueda.TextChanged += txtBusqueda_TextChanged;
             // 
-            // guna2PictureBox1
-            // 
-            guna2PictureBox1.BackColor = Color.Transparent;
-            guna2PictureBox1.CustomizableEdges = customizableEdges13;
-            guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
-            guna2PictureBox1.ImageRotate = 0F;
-            guna2PictureBox1.Location = new Point(13, -114);
-            guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            guna2PictureBox1.Size = new Size(329, 200);
-            guna2PictureBox1.TabIndex = 54;
-            guna2PictureBox1.TabStop = false;
-            // 
             // FormControlDeInventarioo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -468,8 +468,8 @@
             panelNaranja.ResumeLayout(false);
             panelRojo.ResumeLayout(false);
             panelRojo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

@@ -32,7 +32,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCambiarContrasena));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -46,11 +49,9 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCambiarContrasena));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelNaranja = new Guna.UI2.WinForms.Guna2Panel();
             panelRojo = new Guna.UI2.WinForms.Guna2Panel();
+            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             PictureBoxCambiarContrasena = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panelCambiarContrasena = new Guna.UI2.WinForms.Guna2Panel();
@@ -63,13 +64,12 @@
             btnConfirmar = new Guna.UI2.WinForms.Guna2Button();
             txtContrasenaNueva = new Guna.UI2.WinForms.Guna2TextBox();
             PictureBoxSalir = new Guna.UI2.WinForms.Guna2PictureBox();
-            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             panelNaranja.SuspendLayout();
             panelRojo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PictureBoxCambiarContrasena).BeginInit();
             panelCambiarContrasena.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panelNaranja
@@ -95,6 +95,19 @@
             panelRojo.ShadowDecoration.CustomizableEdges = customizableEdges6;
             panelRojo.Size = new Size(1585, 88);
             panelRojo.TabIndex = 8;
+            // 
+            // guna2PictureBox1
+            // 
+            guna2PictureBox1.BackColor = Color.Transparent;
+            guna2PictureBox1.CustomizableEdges = customizableEdges1;
+            guna2PictureBox1.Image = Properties.Resources.imssBienestarLogoLarge;
+            guna2PictureBox1.ImageRotate = 0F;
+            guna2PictureBox1.Location = new Point(12, -113);
+            guna2PictureBox1.Name = "guna2PictureBox1";
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2PictureBox1.Size = new Size(329, 200);
+            guna2PictureBox1.TabIndex = 54;
+            guna2PictureBox1.TabStop = false;
             // 
             // PictureBoxCambiarContrasena
             // 
@@ -276,19 +289,6 @@
             PictureBoxSalir.TabStop = false;
             PictureBoxSalir.Click += PictureBoxSalir_Click;
             // 
-            // guna2PictureBox1
-            // 
-            guna2PictureBox1.BackColor = Color.Transparent;
-            guna2PictureBox1.CustomizableEdges = customizableEdges1;
-            guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
-            guna2PictureBox1.ImageRotate = 0F;
-            guna2PictureBox1.Location = new Point(12, -113);
-            guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2PictureBox1.Size = new Size(329, 200);
-            guna2PictureBox1.TabIndex = 54;
-            guna2PictureBox1.TabStop = false;
-            // 
             // FormCambiarContrasena
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -303,11 +303,11 @@
             panelNaranja.ResumeLayout(false);
             panelRojo.ResumeLayout(false);
             panelRojo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)PictureBoxCambiarContrasena).EndInit();
             panelCambiarContrasena.ResumeLayout(false);
             panelCambiarContrasena.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).EndInit();
-            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ResumeLayout(false);
         }
 

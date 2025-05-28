@@ -55,13 +55,15 @@ namespace InventarioMedicamentos
             usuariosConsultas inicioSesion = new usuariosConsultas();
             string rolUsuarioEnUso;
             int idUsuarioEnUso;
+            string correoEnUso;
 
-            bool accesoConcedido = inicioSesion.IniciarSesion(usuario, contraseña, out rolUsuarioEnUso, out idUsuarioEnUso);
+            bool accesoConcedido = inicioSesion.IniciarSesion(usuario, contraseña, out rolUsuarioEnUso, out idUsuarioEnUso, out correoEnUso);
 
             if (accesoConcedido)
             {
                 UsuarioActual.IdUsuario = idUsuarioEnUso;
                 UsuarioActual.RolUsuario = rolUsuarioEnUso;
+                UsuarioActual.correo = correoEnUso;
                 navegador.NavegarA(new FormMenu(navegador));
             }
             else

@@ -35,6 +35,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
@@ -49,11 +51,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             PictureBoxSalir = new Guna.UI2.WinForms.Guna2PictureBox();
             panelNaranja = new Guna.UI2.WinForms.Guna2Panel();
             panelRojo = new Guna.UI2.WinForms.Guna2Panel();
+            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             lblTitulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             dgvInformes = new Guna.UI2.WinForms.Guna2DataGridView();
             dtpDesde = new Guna.UI2.WinForms.Guna2DateTimePicker();
@@ -64,12 +65,11 @@
             lblDesde = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lbHasta = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnDescargarInforme = new Guna.UI2.WinForms.Guna2Button();
-            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).BeginInit();
             panelNaranja.SuspendLayout();
             panelRojo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvInformes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvInformes).BeginInit();
             SuspendLayout();
             // 
             // PictureBoxSalir
@@ -109,6 +109,19 @@
             panelRojo.ShadowDecoration.CustomizableEdges = customizableEdges6;
             panelRojo.Size = new Size(1586, 84);
             panelRojo.TabIndex = 8;
+            // 
+            // guna2PictureBox1
+            // 
+            guna2PictureBox1.BackColor = Color.Transparent;
+            guna2PictureBox1.CustomizableEdges = customizableEdges3;
+            guna2PictureBox1.Image = Properties.Resources.imssBienestarLogoLarge;
+            guna2PictureBox1.ImageRotate = 0F;
+            guna2PictureBox1.Location = new Point(3, -117);
+            guna2PictureBox1.Name = "guna2PictureBox1";
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2PictureBox1.Size = new Size(329, 200);
+            guna2PictureBox1.TabIndex = 61;
+            guna2PictureBox1.TabStop = false;
             // 
             // lblTitulo
             // 
@@ -306,19 +319,6 @@
             btnDescargarInforme.Text = "Descargar Informe";
             btnDescargarInforme.Click += btnDescargarInforme_Click;
             // 
-            // guna2PictureBox1
-            // 
-            guna2PictureBox1.BackColor = Color.Transparent;
-            guna2PictureBox1.CustomizableEdges = customizableEdges3;
-            guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
-            guna2PictureBox1.ImageRotate = 0F;
-            guna2PictureBox1.Location = new Point(3, -117);
-            guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2PictureBox1.Size = new Size(329, 200);
-            guna2PictureBox1.TabIndex = 61;
-            guna2PictureBox1.TabStop = false;
-            // 
             // FormInformes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -342,8 +342,8 @@
             panelNaranja.ResumeLayout(false);
             panelRojo.ResumeLayout(false);
             panelRojo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvInformes).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvInformes).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

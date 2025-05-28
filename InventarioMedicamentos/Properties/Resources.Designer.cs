@@ -63,9 +63,29 @@ namespace InventarioMedicamentos.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconoRetiros {
+            get {
+                object obj = ResourceManager.GetObject("iconoRetiros", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imssBienestaarLogo {
             get {
                 object obj = ResourceManager.GetObject("imssBienestaarLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imssBienestarLogoLarge {
+            get {
+                object obj = ResourceManager.GetObject("imssBienestarLogoLarge", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
