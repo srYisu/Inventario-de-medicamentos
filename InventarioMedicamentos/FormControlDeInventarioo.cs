@@ -1,5 +1,6 @@
 ﻿using InventarioMedicamentos.medicamentos;
 using InventarioMedicamentos.movimientos;
+using InventarioMedicamentos.usuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,10 +60,6 @@ namespace InventarioMedicamentos
             path.CloseFigure();
 
             return path;
-        }
-        private void AumentarTamano()
-        {
-            panelNaranja.Size = new Size(1920, 1080);
         }
         private void CargarMedicamentos()
         {
@@ -135,7 +132,7 @@ namespace InventarioMedicamentos
                 }
 
                 // Registrar movimiento (deberías obtener el ID de usuario real)
-                int idUsuario = 2; // Implementar esta función
+                int idUsuario = UsuarioActual.IdUsuario; // Implementar esta función
                 if (idUsuario <= 0)
                 {
                     MessageBox.Show("No se pudo identificar al usuario actual.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -224,7 +221,7 @@ namespace InventarioMedicamentos
             try
             {
                 // Necesitas obtener el ID del usuario que está realizando la edición
-                int idUsuario = /* Obtener el ID del usuario actual */2;
+                int idUsuario = UsuarioActual.IdUsuario;
 
                 // Modifica el método ActualizarMedicamento para aceptar el idUsuario
                 consultasMedicamentos.ActualizarMedicamento(medicamentoId, descripcion, unidad, nuevoFondoFijo, fechaCaducidad, idUsuario);
@@ -330,23 +327,7 @@ namespace InventarioMedicamentos
 
         private void FormControlDeInventarioo_Resize(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                panelNaranja.Size = new Size(1920, 92);
-                panelRojo.Size = new Size(1920, 84);
-                lblTitulo.Location = new Point(650, 8);
-                dgvMedicamentos.Size = new Size(1200, 800);
-                PictureBoxSalir.Location = new Point(25, 950);
 
-            }
-            else if (this.WindowState == FormWindowState.Normal)
-            {
-                panelNaranja.Size = new Size(1589, 92);
-                panelRojo.Size = new Size(1597, 84);
-                lblTitulo.Location = new Point(509, 8);
-                dgvMedicamentos.Size = new Size(862, 697);
-                PictureBoxSalir.Location = new Point(12, 812);
-            }
         }
 
         private void PictureBoxSalir_Click(object sender, EventArgs e)

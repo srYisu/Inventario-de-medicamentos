@@ -1,6 +1,7 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using InventarioMedicamentos.medicamentos;
 using InventarioMedicamentos.movimientos;
+using InventarioMedicamentos.usuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -126,7 +127,7 @@ namespace InventarioMedicamentos
             if (consultasMedicamentos.RestarMedicamento(medicamentoId, resultado))
             {
                 // Aquí podrías agregar también el movimiento
-                int idUsuario = 2; // Ejemplo, puede venir del login
+                int idUsuario = UsuarioActual.IdUsuario; // Ejemplo, puede venir del login
                 string tipo = "Retiro";
                 DateTime fechaHora = DateTime.Now;
                 mov.GuardarMovimiento(medicamentoId, idUsuario, fechaHora, tipo, retiro);

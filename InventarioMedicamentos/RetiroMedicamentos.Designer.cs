@@ -28,16 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -45,12 +43,16 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RetiroMedicamentos));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RetiroMedicamentos));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelNaranja = new Guna.UI2.WinForms.Guna2Panel();
             panelRojo = new Guna.UI2.WinForms.Guna2Panel();
             lblTitulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -65,31 +67,34 @@
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             txtUnidades = new Guna.UI2.WinForms.Guna2TextBox();
             txtBuscador = new Guna.UI2.WinForms.Guna2TextBox();
+            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             panelNaranja.SuspendLayout();
             panelRojo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMedicamentos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panelNaranja
             // 
             panelNaranja.BackColor = Color.FromArgb(163, 126, 51);
             panelNaranja.Controls.Add(panelRojo);
-            panelNaranja.CustomizableEdges = customizableEdges3;
+            panelNaranja.CustomizableEdges = customizableEdges5;
             panelNaranja.Location = new Point(-1, -4);
             panelNaranja.Name = "panelNaranja";
-            panelNaranja.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            panelNaranja.ShadowDecoration.CustomizableEdges = customizableEdges6;
             panelNaranja.Size = new Size(1586, 92);
             panelNaranja.TabIndex = 61;
             // 
             // panelRojo
             // 
             panelRojo.BackColor = Color.FromArgb(105, 32, 58);
+            panelRojo.Controls.Add(guna2PictureBox1);
             panelRojo.Controls.Add(lblTitulo);
-            panelRojo.CustomizableEdges = customizableEdges1;
+            panelRojo.CustomizableEdges = customizableEdges3;
             panelRojo.Location = new Point(0, 0);
             panelRojo.Name = "panelRojo";
-            panelRojo.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            panelRojo.ShadowDecoration.CustomizableEdges = customizableEdges4;
             panelRojo.Size = new Size(1586, 84);
             panelRojo.TabIndex = 8;
             // 
@@ -173,7 +178,7 @@
             // btnCancelar
             // 
             btnCancelar.BorderRadius = 10;
-            btnCancelar.CustomizableEdges = customizableEdges5;
+            btnCancelar.CustomizableEdges = customizableEdges7;
             btnCancelar.DisabledState.BorderColor = Color.DarkGray;
             btnCancelar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnCancelar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -183,7 +188,7 @@
             btnCancelar.ForeColor = Color.White;
             btnCancelar.Location = new Point(223, 311);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnCancelar.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnCancelar.Size = new Size(138, 29);
             btnCancelar.TabIndex = 57;
             btnCancelar.Text = "Cancelar";
@@ -192,7 +197,7 @@
             // btnRetirar
             // 
             btnRetirar.BorderRadius = 10;
-            btnRetirar.CustomizableEdges = customizableEdges7;
+            btnRetirar.CustomizableEdges = customizableEdges9;
             btnRetirar.DisabledState.BorderColor = Color.DarkGray;
             btnRetirar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnRetirar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -202,7 +207,7 @@
             btnRetirar.ForeColor = Color.White;
             btnRetirar.Location = new Point(79, 311);
             btnRetirar.Name = "btnRetirar";
-            btnRetirar.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnRetirar.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnRetirar.Size = new Size(138, 29);
             btnRetirar.TabIndex = 56;
             btnRetirar.Text = "Retirar";
@@ -222,7 +227,7 @@
             // txtCantidadRetirar
             // 
             txtCantidadRetirar.BorderRadius = 6;
-            txtCantidadRetirar.CustomizableEdges = customizableEdges9;
+            txtCantidadRetirar.CustomizableEdges = customizableEdges11;
             txtCantidadRetirar.DefaultText = "";
             txtCantidadRetirar.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtCantidadRetirar.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -235,7 +240,7 @@
             txtCantidadRetirar.Name = "txtCantidadRetirar";
             txtCantidadRetirar.PlaceholderText = "";
             txtCantidadRetirar.SelectedText = "";
-            txtCantidadRetirar.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            txtCantidadRetirar.ShadowDecoration.CustomizableEdges = customizableEdges12;
             txtCantidadRetirar.Size = new Size(352, 29);
             txtCantidadRetirar.TabIndex = 53;
             // 
@@ -253,7 +258,7 @@
             // txtMedicamento
             // 
             txtMedicamento.BorderRadius = 6;
-            txtMedicamento.CustomizableEdges = customizableEdges11;
+            txtMedicamento.CustomizableEdges = customizableEdges13;
             txtMedicamento.DefaultText = "";
             txtMedicamento.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtMedicamento.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -266,19 +271,19 @@
             txtMedicamento.Name = "txtMedicamento";
             txtMedicamento.PlaceholderText = "";
             txtMedicamento.SelectedText = "";
-            txtMedicamento.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            txtMedicamento.ShadowDecoration.CustomizableEdges = customizableEdges14;
             txtMedicamento.Size = new Size(352, 29);
             txtMedicamento.TabIndex = 50;
             // 
             // PictureBoxSalir
             // 
             PictureBoxSalir.Cursor = Cursors.Hand;
-            PictureBoxSalir.CustomizableEdges = customizableEdges13;
+            PictureBoxSalir.CustomizableEdges = customizableEdges15;
             PictureBoxSalir.Image = (Image)resources.GetObject("PictureBoxSalir.Image");
             PictureBoxSalir.ImageRotate = 0F;
             PictureBoxSalir.Location = new Point(12, 780);
             PictureBoxSalir.Name = "PictureBoxSalir";
-            PictureBoxSalir.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            PictureBoxSalir.ShadowDecoration.CustomizableEdges = customizableEdges16;
             PictureBoxSalir.Size = new Size(70, 70);
             PictureBoxSalir.SizeMode = PictureBoxSizeMode.StretchImage;
             PictureBoxSalir.TabIndex = 64;
@@ -299,7 +304,7 @@
             // txtUnidades
             // 
             txtUnidades.BorderRadius = 6;
-            txtUnidades.CustomizableEdges = customizableEdges15;
+            txtUnidades.CustomizableEdges = customizableEdges17;
             txtUnidades.DefaultText = "";
             txtUnidades.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtUnidades.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -312,14 +317,14 @@
             txtUnidades.Name = "txtUnidades";
             txtUnidades.PlaceholderText = "";
             txtUnidades.SelectedText = "";
-            txtUnidades.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            txtUnidades.ShadowDecoration.CustomizableEdges = customizableEdges18;
             txtUnidades.Size = new Size(352, 29);
             txtUnidades.TabIndex = 65;
             // 
             // txtBuscador
             // 
             txtBuscador.BorderRadius = 6;
-            txtBuscador.CustomizableEdges = customizableEdges17;
+            txtBuscador.CustomizableEdges = customizableEdges19;
             txtBuscador.DefaultText = "";
             txtBuscador.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBuscador.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -332,10 +337,23 @@
             txtBuscador.Name = "txtBuscador";
             txtBuscador.PlaceholderText = "";
             txtBuscador.SelectedText = "";
-            txtBuscador.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            txtBuscador.ShadowDecoration.CustomizableEdges = customizableEdges20;
             txtBuscador.Size = new Size(352, 29);
             txtBuscador.TabIndex = 67;
             txtBuscador.TextChanged += txtBuscador_TextChanged;
+            // 
+            // guna2PictureBox1
+            // 
+            guna2PictureBox1.BackColor = Color.Transparent;
+            guna2PictureBox1.CustomizableEdges = customizableEdges1;
+            guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
+            guna2PictureBox1.ImageRotate = 0F;
+            guna2PictureBox1.Location = new Point(13, -116);
+            guna2PictureBox1.Name = "guna2PictureBox1";
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2PictureBox1.Size = new Size(329, 200);
+            guna2PictureBox1.TabIndex = 68;
+            guna2PictureBox1.TabStop = false;
             // 
             // RetiroMedicamentos
             // 
@@ -362,6 +380,7 @@
             panelRojo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMedicamentos).EndInit();
             ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).EndInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -387,5 +406,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2TextBox txtUnidades;
         private Guna.UI2.WinForms.Guna2TextBox txtBuscador;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
     }
 }

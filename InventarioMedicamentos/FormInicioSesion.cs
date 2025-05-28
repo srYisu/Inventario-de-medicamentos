@@ -37,8 +37,9 @@ namespace InventarioMedicamentos
             }
             usuariosConsultas inicioSesion = new usuariosConsultas();
             string rol;
+            int o;
 
-            bool accesoConcedido = inicioSesion.IniciarSesion(usuario, contraseña, out rol);
+            bool accesoConcedido = inicioSesion.IniciarSesion(usuario, contraseña, out rol, out o);
 
             if (accesoConcedido)
             {

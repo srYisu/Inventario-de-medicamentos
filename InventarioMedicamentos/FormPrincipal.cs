@@ -16,12 +16,19 @@ namespace InventarioMedicamentos
         public FormPrincipal()
         {
             InitializeComponent();
-            gestor.CargarPantalla(pnlPrincipal, new FormMenu(this));
+            gestor.CargarPantalla(pnlPrincipal, new FormInicioDeSesion(this));
+            this.MaximizeBox = false; // Desactiva el botón de maximizar
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         public void NavegarA(Form nuevaPantalla)
         {
             gestor.CargarPantalla(pnlPrincipal, nuevaPantalla);
+        }
+
+        private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

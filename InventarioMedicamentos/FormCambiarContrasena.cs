@@ -13,16 +13,16 @@ namespace InventarioMedicamentos
 {
     public partial class FormCambiarContrasena : Form
     {
-        public FormCambiarContrasena()
+        private FormPrincipal navegador;
+        public FormCambiarContrasena(FormPrincipal navegador)
         {
             InitializeComponent();
+            this.navegador = navegador;
         }
 
         private void PictureBoxSalir_Click(object sender, EventArgs e)
         {
-          //  FormMenu formMenu = new FormMenu();
-          //  formMenu.Show();
-            this.Hide();
+            navegador.NavegarA(new FormMenu(navegador));
         }
 
         private void FormCambiarContrasena_Load(object sender, EventArgs e)
@@ -63,6 +63,21 @@ namespace InventarioMedicamentos
             path.CloseFigure();
 
             return path;
+        }
+        private void cambiarContrasena()
+        {
+            string nuevaContrasena = txtConfirmarContrasena.Text;
+            string confirmarContrasena = txtConfirmarContrasena.Text;
+            txtContrasenaActual.Text = txtContrasenaActual.Text.Trim();
+            if (nuevaContrasena != confirmarContrasena)
+            {
+                MessageBox.Show("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            // Aquí se llamaría al método para cambiar la contraseña en la base de datos
+            // Por ejemplo: usuariosConsultas.CambiarContrasena(UsuarioActual.IdUsuario, nuevaContrasena);
+            MessageBox.Show("Contraseña cambiada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            navegador.NavegarA(new FormMenu(navegador));
         }
     }
 }

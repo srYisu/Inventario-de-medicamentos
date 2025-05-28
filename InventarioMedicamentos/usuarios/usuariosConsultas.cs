@@ -17,16 +17,22 @@ namespace InventarioMedicamentos.usuarios
         {
             conexion = new Conexion();
         }
-        public bool IniciarSesion(string usuario, string contraseña, out string tipo)
+        public bool IniciarSesion(string usuario, string contraseña, out string tipo, out int id)
         {
             tipo = string.Empty;
+            id = -1; // Valor por defecto (invalido)
 
             using (MySqlConnection conn = conexion.ObtenerConexion())
             {
                 try
                 {
                     conn.Open();
-                    string query = "SELECT tipo FROM usuarios WHERE nombre = @usuario AND contraseña = @contraseña AND disponible = 1";
+                    // Consulta modificada para obtener tanto 'tipo' como 'id_usuario'
+                    string query = @"SELECT id_usuario, tipo 
+                            FROM usuarios 
+                            WHERE nombre = @usuario 
+                            AND contraseña = @contraseña 
+                            AND disponible = 1";
 
                     using (MySqlCommand comando = new MySqlCommand(query, conn))
                     {
@@ -37,12 +43,14 @@ namespace InventarioMedicamentos.usuarios
                         {
                             if (lector.Read())
                             {
+                                // Obtenemos ambos valores desde la base de datos
+                                id = lector.GetInt32("id_usuario");
                                 tipo = lector.GetString("tipo");
                                 return true;
                             }
                             else
                             {
-                                return false;
+                                return false; // Usuario no encontrado o credenciales incorrectas
                             }
                         }
                     }
@@ -132,6 +140,22 @@ namespace InventarioMedicamentos.usuarios
                     cmd.Parameters.AddWithValue("@contrasena", contrasena);
                     cmd.Parameters.AddWithValue("@disponible", disponible);
 
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+        public bool CambiarContrasena(int idUsuario, string nuevaContrasena)
+        {
+            using (MySqlConnection conn = conexion.ObtenerConexion())
+            {
+                conn.Open();
+                string query = @"UPDATE usuarios 
+                         SET contraseña = @nuevaContrasena 
+                         WHERE id_usuario = @idUsuario";
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    cmd.Parameters.AddWithValue("@nuevaContrasena", nuevaContrasena);
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }

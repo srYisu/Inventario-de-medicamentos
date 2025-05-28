@@ -44,19 +44,21 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormControlDeInventarioo));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormControlDeInventarioo));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             dgvMedicamentos = new Guna.UI2.WinForms.Guna2DataGridView();
             btnLimpiar = new Guna.UI2.WinForms.Guna2Button();
             btnEliminar = new Guna.UI2.WinForms.Guna2Button();
@@ -75,10 +77,12 @@
             PictureBoxSalir = new Guna.UI2.WinForms.Guna2PictureBox();
             txtFechaCaducidad = new Guna.UI2.WinForms.Guna2TextBox();
             txtBusqueda = new Guna.UI2.WinForms.Guna2TextBox();
+            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvMedicamentos).BeginInit();
             panelNaranja.SuspendLayout();
             panelRojo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             SuspendLayout();
             // 
             // dgvMedicamentos
@@ -121,7 +125,7 @@
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
             dgvMedicamentos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvMedicamentos.RowHeadersVisible = false;
-            dgvMedicamentos.Size = new Size(862, 697);
+            dgvMedicamentos.Size = new Size(862, 639);
             dgvMedicamentos.TabIndex = 42;
             dgvMedicamentos.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvMedicamentos.ThemeStyle.AlternatingRowsStyle.Font = new Font("Segoe UI", 9F);
@@ -313,21 +317,22 @@
             // 
             panelNaranja.BackColor = Color.FromArgb(163, 126, 51);
             panelNaranja.Controls.Add(panelRojo);
-            panelNaranja.CustomizableEdges = customizableEdges15;
+            panelNaranja.CustomizableEdges = customizableEdges17;
             panelNaranja.Location = new Point(-1, -5);
             panelNaranja.Name = "panelNaranja";
-            panelNaranja.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            panelNaranja.Size = new Size(1586, 92);
+            panelNaranja.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            panelNaranja.Size = new Size(1585, 92);
             panelNaranja.TabIndex = 44;
             // 
             // panelRojo
             // 
             panelRojo.BackColor = Color.FromArgb(105, 32, 58);
+            panelRojo.Controls.Add(guna2PictureBox1);
             panelRojo.Controls.Add(lblTitulo);
-            panelRojo.CustomizableEdges = customizableEdges13;
+            panelRojo.CustomizableEdges = customizableEdges15;
             panelRojo.Location = new Point(0, 0);
             panelRojo.Name = "panelRojo";
-            panelRojo.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            panelRojo.ShadowDecoration.CustomizableEdges = customizableEdges16;
             panelRojo.Size = new Size(1586, 84);
             panelRojo.TabIndex = 8;
             // 
@@ -346,7 +351,7 @@
             // 
             cmbUnidades.BackColor = Color.Transparent;
             cmbUnidades.BorderRadius = 6;
-            cmbUnidades.CustomizableEdges = customizableEdges17;
+            cmbUnidades.CustomizableEdges = customizableEdges19;
             cmbUnidades.DrawMode = DrawMode.OwnerDrawFixed;
             cmbUnidades.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbUnidades.FocusedColor = Color.FromArgb(94, 148, 255);
@@ -357,19 +362,19 @@
             cmbUnidades.Items.AddRange(new object[] { "AMP", "TAB" });
             cmbUnidades.Location = new Point(50, 254);
             cmbUnidades.Name = "cmbUnidades";
-            cmbUnidades.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            cmbUnidades.ShadowDecoration.CustomizableEdges = customizableEdges20;
             cmbUnidades.Size = new Size(352, 36);
             cmbUnidades.TabIndex = 46;
             // 
             // PictureBoxSalir
             // 
             PictureBoxSalir.Cursor = Cursors.Hand;
-            PictureBoxSalir.CustomizableEdges = customizableEdges19;
+            PictureBoxSalir.CustomizableEdges = customizableEdges21;
             PictureBoxSalir.Image = (Image)resources.GetObject("PictureBoxSalir.Image");
             PictureBoxSalir.ImageRotate = 0F;
             PictureBoxSalir.Location = new Point(12, 779);
             PictureBoxSalir.Name = "PictureBoxSalir";
-            PictureBoxSalir.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            PictureBoxSalir.ShadowDecoration.CustomizableEdges = customizableEdges22;
             PictureBoxSalir.Size = new Size(70, 70);
             PictureBoxSalir.SizeMode = PictureBoxSizeMode.StretchImage;
             PictureBoxSalir.TabIndex = 48;
@@ -379,7 +384,7 @@
             // txtFechaCaducidad
             // 
             txtFechaCaducidad.BorderRadius = 6;
-            txtFechaCaducidad.CustomizableEdges = customizableEdges21;
+            txtFechaCaducidad.CustomizableEdges = customizableEdges23;
             txtFechaCaducidad.DefaultText = "";
             txtFechaCaducidad.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtFechaCaducidad.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -392,7 +397,7 @@
             txtFechaCaducidad.Name = "txtFechaCaducidad";
             txtFechaCaducidad.PlaceholderText = "";
             txtFechaCaducidad.SelectedText = "";
-            txtFechaCaducidad.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            txtFechaCaducidad.ShadowDecoration.CustomizableEdges = customizableEdges24;
             txtFechaCaducidad.Size = new Size(352, 29);
             txtFechaCaducidad.TabIndex = 49;
             txtFechaCaducidad.TextChanged += txtFechaCaducidad_TextChanged;
@@ -403,7 +408,7 @@
             // txtBusqueda
             // 
             txtBusqueda.BorderRadius = 6;
-            txtBusqueda.CustomizableEdges = customizableEdges23;
+            txtBusqueda.CustomizableEdges = customizableEdges25;
             txtBusqueda.DefaultText = "";
             txtBusqueda.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBusqueda.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -416,10 +421,23 @@
             txtBusqueda.Name = "txtBusqueda";
             txtBusqueda.PlaceholderText = "";
             txtBusqueda.SelectedText = "";
-            txtBusqueda.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            txtBusqueda.ShadowDecoration.CustomizableEdges = customizableEdges26;
             txtBusqueda.Size = new Size(352, 29);
             txtBusqueda.TabIndex = 50;
             txtBusqueda.TextChanged += txtBusqueda_TextChanged;
+            // 
+            // guna2PictureBox1
+            // 
+            guna2PictureBox1.BackColor = Color.Transparent;
+            guna2PictureBox1.CustomizableEdges = customizableEdges13;
+            guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
+            guna2PictureBox1.ImageRotate = 0F;
+            guna2PictureBox1.Location = new Point(13, -114);
+            guna2PictureBox1.Name = "guna2PictureBox1";
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            guna2PictureBox1.Size = new Size(329, 200);
+            guna2PictureBox1.TabIndex = 54;
+            guna2PictureBox1.TabStop = false;
             // 
             // FormControlDeInventarioo
             // 
@@ -451,6 +469,7 @@
             panelRojo.ResumeLayout(false);
             panelRojo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).EndInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -475,5 +494,6 @@
         private Guna.UI2.WinForms.Guna2PictureBox PictureBoxSalir;
         private Guna.UI2.WinForms.Guna2TextBox txtFechaCaducidad;
         private Guna.UI2.WinForms.Guna2TextBox txtBusqueda;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
     }
 }

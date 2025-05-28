@@ -22,11 +22,15 @@ namespace InventarioMedicamentos
     {
         private usuariosConsultas usuarios;
         private Conexion conexion;
-        public FormInicioDeSesion()
+        private FormPrincipal navegador;
+        public FormInicioDeSesion(FormPrincipal navegador)
         {
             InitializeComponent();
             usuarios = new usuariosConsultas();
             conexion = new Conexion();
+            this.MaximizeBox = false; // Desactiva el botón de maximizar
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.navegador = navegador;
         }
 
         private void FormInicioDeSesion_Load(object sender, EventArgs e)
@@ -49,24 +53,16 @@ namespace InventarioMedicamentos
                 return;
             }
             usuariosConsultas inicioSesion = new usuariosConsultas();
-            string rol;
+            string rolUsuarioEnUso;
+            int idUsuarioEnUso;
 
-            bool accesoConcedido = inicioSesion.IniciarSesion(usuario, contraseña, out rol);
+            bool accesoConcedido = inicioSesion.IniciarSesion(usuario, contraseña, out rolUsuarioEnUso, out idUsuarioEnUso);
 
             if (accesoConcedido)
             {
-                switch (rol)
-                {
-                    case "Administrador":
-                        MessageBox.Show("Acceso concedido: puede gestionar todo el sistema.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        break;
-                    case "Supervisor":
-                        MessageBox.Show("Acceso concedido: puede gestionar el inventario.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        break;
-                    default:
-                        MessageBox.Show("Acceso concedido: puede retirar medicamentos.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        break;
-                }
+                UsuarioActual.IdUsuario = idUsuarioEnUso;
+                UsuarioActual.RolUsuario = rolUsuarioEnUso;
+                navegador.NavegarA(new FormMenu(navegador));
             }
             else
             {

@@ -43,10 +43,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1600, 900);
+            ClientSize = new Size(1584, 861);
             Controls.Add(pnlPrincipal);
             Name = "FormPrincipal";
             Text = "FormPrincipal";
+            FormClosing += FormPrincipal_FormClosing;
             ResumeLayout(false);
         }
 

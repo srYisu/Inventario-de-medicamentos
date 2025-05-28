@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventarioMedicamentos.usuarios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,8 @@ namespace InventarioMedicamentos
         {
             InitializeComponent();
             this.navegador = navegador;
+            MostrarConfiguraciónUsuarios();
+            MostrarControlInventario();
         }
 
         private void FormMenu_Load(object sender, EventArgs e)
@@ -30,7 +33,33 @@ namespace InventarioMedicamentos
             AplicarEsquinasRedondeadas(panelInventario, 25);
             AplicarEsquinasRedondeadas(panelInformes, 25);
             AplicarEsquinasRedondeadas(pnlRetiros, 25);
+            AplicarEsquinasRedondeadas(pnlParaEncargados, 30);
             lblInformes.Cursor = Cursors.Hand;
+        }
+        private void MostrarConfiguraciónUsuarios()
+        {
+            if (UsuarioActual.RolUsuario == "Administrador")
+            {
+                pbbtnAgUsuariosAdmin.Visible = true;
+            }
+            else
+            {
+                pbbtnAgUsuariosAdmin.Visible = false;
+            }
+
+        }
+        private void MostrarControlInventario()
+        {
+            if (UsuarioActual.RolUsuario == "Administrador" || UsuarioActual.RolUsuario == "Supervisor")
+            {
+                panelBotones.Visible = true;
+                pnlParaEncargados.Visible = false;
+            }
+            else
+            {
+                panelBotones.Visible = false;
+                pnlParaEncargados.Visible = true;
+            }
         }
         private void AplicarEsquinasRedondeadas(Panel panel, int radio)
         {
@@ -87,9 +116,7 @@ namespace InventarioMedicamentos
 
         private void PictureBoxSalir_Click(object sender, EventArgs e)
         {
-            FormInicioDeSesion formInicioDeSesion = new FormInicioDeSesion();
-            formInicioDeSesion.Show();
-            this.Hide();
+            navegador.NavegarA(new FormInicioDeSesion(navegador));
         }
 
         private void labelInventario_Click(object sender, EventArgs e)
@@ -99,9 +126,7 @@ namespace InventarioMedicamentos
 
         private void pbbtnCambiarContrasena_Click(object sender, EventArgs e)
         {
-            FormCambiarContrasena formCambiarContrasena = new FormCambiarContrasena();
-            formCambiarContrasena.Show();
-            this.Hide();
+            navegador.NavegarA(new FormCambiarContrasena(navegador));
         }
 
         private void pbbtnAgUsuariosAdmin_Click(object sender, EventArgs e)
@@ -115,6 +140,31 @@ namespace InventarioMedicamentos
         }
 
         private void lblRetiros_Click(object sender, EventArgs e)
+        {
+            navegador.NavegarA(new RetiroMedicamentos(navegador));
+        }
+
+
+        private void FormMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+        }
+
+        private void picBoxInformes2_Click(object sender, EventArgs e)
+        {
+            navegador.NavegarA(new FormInformes(navegador));
+        }
+
+        private void lblInformes2_Click(object sender, EventArgs e)
+        {
+            navegador.NavegarA(new FormInformes(navegador));
+        }
+
+        private void picBoxRetiros2_Click(object sender, EventArgs e)
+        {
+            navegador.NavegarA(new RetiroMedicamentos(navegador));
+        }
+
+        private void lblRetiros2_Click(object sender, EventArgs e)
         {
             navegador.NavegarA(new RetiroMedicamentos(navegador));
         }

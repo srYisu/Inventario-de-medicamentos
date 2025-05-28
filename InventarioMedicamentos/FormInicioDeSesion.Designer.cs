@@ -38,30 +38,24 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInicioDeSesion));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelLogin = new Guna.UI2.WinForms.Guna2Panel();
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             pictureBoxLogo = new Guna.UI2.WinForms.Guna2PictureBox();
-            linkOlvidaste = new LinkLabel();
             txtContrasena = new Guna.UI2.WinForms.Guna2TextBox();
             btnIniciarSesion = new Guna.UI2.WinForms.Guna2Button();
             txtUsuario = new Guna.UI2.WinForms.Guna2TextBox();
             panelNaranja = new Guna.UI2.WinForms.Guna2Panel();
             panelRojo = new Guna.UI2.WinForms.Guna2Panel();
-            PictureBoxCambiarContrasena = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             panelNaranja.SuspendLayout();
             panelRojo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)PictureBoxCambiarContrasena).BeginInit();
             SuspendLayout();
             // 
             // panelLogin
@@ -70,12 +64,11 @@
             panelLogin.Controls.Add(guna2HtmlLabel3);
             panelLogin.Controls.Add(guna2HtmlLabel2);
             panelLogin.Controls.Add(pictureBoxLogo);
-            panelLogin.Controls.Add(linkOlvidaste);
             panelLogin.Controls.Add(txtContrasena);
             panelLogin.Controls.Add(btnIniciarSesion);
             panelLogin.Controls.Add(txtUsuario);
             panelLogin.CustomizableEdges = customizableEdges9;
-            panelLogin.Location = new Point(159, 116);
+            panelLogin.Location = new Point(651, 238);
             panelLogin.Name = "panelLogin";
             panelLogin.ShadowDecoration.CustomizableEdges = customizableEdges10;
             panelLogin.Size = new Size(281, 383);
@@ -87,7 +80,7 @@
             guna2HtmlLabel3.BackColor = Color.Transparent;
             guna2HtmlLabel3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel3.ForeColor = Color.FromArgb(21, 79, 58);
-            guna2HtmlLabel3.Location = new Point(20, 233);
+            guna2HtmlLabel3.Location = new Point(20, 243);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             guna2HtmlLabel3.Size = new Size(82, 22);
             guna2HtmlLabel3.TabIndex = 8;
@@ -98,7 +91,7 @@
             guna2HtmlLabel2.BackColor = Color.Transparent;
             guna2HtmlLabel2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel2.ForeColor = Color.FromArgb(21, 79, 58);
-            guna2HtmlLabel2.Location = new Point(20, 173);
+            guna2HtmlLabel2.Location = new Point(20, 183);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             guna2HtmlLabel2.Size = new Size(57, 22);
             guna2HtmlLabel2.TabIndex = 7;
@@ -117,16 +110,6 @@
             pictureBoxLogo.TabIndex = 5;
             pictureBoxLogo.TabStop = false;
             // 
-            // linkOlvidaste
-            // 
-            linkOlvidaste.AutoSize = true;
-            linkOlvidaste.Location = new Point(70, 290);
-            linkOlvidaste.Name = "linkOlvidaste";
-            linkOlvidaste.Size = new Size(141, 15);
-            linkOlvidaste.TabIndex = 6;
-            linkOlvidaste.TabStop = true;
-            linkOlvidaste.Text = "¿Olvidaste tu contraseña?";
-            // 
             // txtContrasena
             // 
             txtContrasena.BorderRadius = 6;
@@ -139,7 +122,7 @@
             txtContrasena.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtContrasena.Font = new Font("Segoe UI", 9F);
             txtContrasena.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtContrasena.Location = new Point(20, 255);
+            txtContrasena.Location = new Point(20, 265);
             txtContrasena.Name = "txtContrasena";
             txtContrasena.PlaceholderText = "";
             txtContrasena.SelectedText = "";
@@ -179,7 +162,7 @@
             txtUsuario.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtUsuario.Font = new Font("Segoe UI", 9F);
             txtUsuario.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtUsuario.Location = new Point(20, 196);
+            txtUsuario.Location = new Point(20, 206);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.PlaceholderText = "";
             txtUsuario.SelectedText = "";
@@ -191,44 +174,30 @@
             // 
             panelNaranja.BackColor = Color.FromArgb(163, 126, 51);
             panelNaranja.Controls.Add(panelRojo);
-            panelNaranja.CustomizableEdges = customizableEdges15;
+            panelNaranja.CustomizableEdges = customizableEdges13;
             panelNaranja.Location = new Point(0, -9);
             panelNaranja.Name = "panelNaranja";
-            panelNaranja.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            panelNaranja.Size = new Size(599, 101);
+            panelNaranja.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            panelNaranja.Size = new Size(1590, 101);
             panelNaranja.TabIndex = 9;
             // 
             // panelRojo
             // 
             panelRojo.BackColor = Color.FromArgb(105, 32, 58);
-            panelRojo.Controls.Add(PictureBoxCambiarContrasena);
             panelRojo.Controls.Add(guna2HtmlLabel1);
-            panelRojo.CustomizableEdges = customizableEdges13;
+            panelRojo.CustomizableEdges = customizableEdges11;
             panelRojo.Location = new Point(0, 0);
             panelRojo.Name = "panelRojo";
-            panelRojo.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            panelRojo.Size = new Size(599, 88);
+            panelRojo.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            panelRojo.Size = new Size(1587, 88);
             panelRojo.TabIndex = 8;
-            // 
-            // PictureBoxCambiarContrasena
-            // 
-            PictureBoxCambiarContrasena.CustomizableEdges = customizableEdges11;
-            PictureBoxCambiarContrasena.Image = (Image)resources.GetObject("PictureBoxCambiarContrasena.Image");
-            PictureBoxCambiarContrasena.ImageRotate = 0F;
-            PictureBoxCambiarContrasena.Location = new Point(1514, 12);
-            PictureBoxCambiarContrasena.Name = "PictureBoxCambiarContrasena";
-            PictureBoxCambiarContrasena.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            PictureBoxCambiarContrasena.Size = new Size(60, 60);
-            PictureBoxCambiarContrasena.SizeMode = PictureBoxSizeMode.StretchImage;
-            PictureBoxCambiarContrasena.TabIndex = 47;
-            PictureBoxCambiarContrasena.TabStop = false;
             // 
             // guna2HtmlLabel1
             // 
             guna2HtmlLabel1.BackColor = Color.Transparent;
             guna2HtmlLabel1.Font = new Font("Segoe UI Semibold", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel1.ForeColor = Color.White;
-            guna2HtmlLabel1.Location = new Point(159, 15);
+            guna2HtmlLabel1.Location = new Point(651, 18);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             guna2HtmlLabel1.Size = new Size(285, 67);
             guna2HtmlLabel1.TabIndex = 0;
@@ -238,7 +207,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(598, 522);
+            ClientSize = new Size(1584, 861);
             Controls.Add(panelNaranja);
             Controls.Add(panelLogin);
             Name = "FormInicioDeSesion";
@@ -250,7 +219,6 @@
             panelNaranja.ResumeLayout(false);
             panelRojo.ResumeLayout(false);
             panelRojo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)PictureBoxCambiarContrasena).EndInit();
             ResumeLayout(false);
         }
 
@@ -261,12 +229,10 @@
         private Guna.UI2.WinForms.Guna2TextBox txtContrasena;
         private Guna.UI2.WinForms.Guna2Button btnIniciarSesion;
         private Guna.UI2.WinForms.Guna2PictureBox pictureBoxLogo;
-        private LinkLabel linkOlvidaste;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2Panel panelNaranja;
         private Guna.UI2.WinForms.Guna2Panel panelRojo;
-        private Guna.UI2.WinForms.Guna2PictureBox PictureBoxCambiarContrasena;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
     }
 }
