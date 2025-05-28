@@ -77,7 +77,7 @@ namespace InventarioMedicamentos.movimientos
                          WHERE m.fecha BETWEEN @desde AND @hasta";
 
                 // Agrega condición por tipo de operación si se especifica (excepto para "Ambos")
-                if (!string.IsNullOrEmpty(operacion) && operacion != "Ambos")
+                if (!string.IsNullOrEmpty(operacion) && operacion != "Todos")
                 {
                     query += " AND m.tipo_movimiento = @operacion";
                 }
@@ -87,7 +87,7 @@ namespace InventarioMedicamentos.movimientos
                 cmd.Parameters.AddWithValue("@desde", desde.Date);
                 cmd.Parameters.AddWithValue("@hasta", hasta.Date.AddDays(1).AddSeconds(-1)); // Para incluir todo el día hasta
 
-                if (!string.IsNullOrEmpty(operacion) && operacion != "Ambos")
+                if (!string.IsNullOrEmpty(operacion) && operacion != "Todos")
                 {
                     cmd.Parameters.AddWithValue("@operacion", operacion);
                 }

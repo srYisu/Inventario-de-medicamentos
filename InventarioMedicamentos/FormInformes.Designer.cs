@@ -262,7 +262,7 @@
             cmbTIpoOperacion.Font = new Font("Segoe UI", 10F);
             cmbTIpoOperacion.ForeColor = Color.FromArgb(68, 88, 112);
             cmbTIpoOperacion.ItemHeight = 30;
-            cmbTIpoOperacion.Items.AddRange(new object[] { "Ingreso", "Retiro", "Ambos" });
+            cmbTIpoOperacion.Items.AddRange(new object[] { "Ingreso", "Retiro", "Eliminado", "Todos" });
             cmbTIpoOperacion.Location = new Point(99, 238);
             cmbTIpoOperacion.Name = "cmbTIpoOperacion";
             cmbTIpoOperacion.ShadowDecoration.CustomizableEdges = customizableEdges16;

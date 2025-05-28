@@ -44,7 +44,7 @@ namespace InventarioMedicamentos
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            //conexion.PruebaConexion();
+            // conexion.PruebaConexion();
             string contraseña = txtContrasena.Text;
             string usuario = txtUsuario.Text;
 
@@ -114,6 +114,11 @@ namespace InventarioMedicamentos
         }
 
         private void panelNaranja_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
         {
 
         }

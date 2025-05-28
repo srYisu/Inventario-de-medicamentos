@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Guna.UI2.Native.WinApi;
 
 namespace InventarioMedicamentos
 {
@@ -170,6 +171,8 @@ namespace InventarioMedicamentos
 
         private void EliminarMedicamento()
         {
+            int idUsuario = UsuarioActual.IdUsuario;
+            DateTime fechaHora = DateTime.Now;
             if (dgvMedicamentos.SelectedRows.Count > 0)
             {
                 DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar este medicamento?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -177,9 +180,11 @@ namespace InventarioMedicamentos
                 {
                     DataGridViewRow row = dgvMedicamentos.SelectedRows[0];
                     int id = Convert.ToInt32(row.Cells[0].Value);
+                    int cantidad = Convert.ToInt32(row.Cells[3].Value);
                     try
                     {
                         consultasMedicamentos.EliminarMedicamento(id);
+                        mov.GuardarMovimiento(id, idUsuario, fechaHora, "Eliminado", cantidad);
                         MessageBox.Show("Medicamento eliminado correctamente.");
                         CargarMedicamentos();
                     }

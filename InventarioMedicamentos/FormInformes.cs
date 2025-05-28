@@ -36,6 +36,7 @@ namespace InventarioMedicamentos
             dtpDesde.Value = DateTime.Now;
             dtpHasta.Value = DateTime.Now;
             lblEstado.Visible = false;
+            btnDescargarInforme.Enabled = false;
         }
 
         private void FormInformes_Load(object sender, EventArgs e)
@@ -99,9 +100,10 @@ namespace InventarioMedicamentos
             string movimiento = "";
             if (string.IsNullOrEmpty(cmbTIpoOperacion.Text))
             {
-                movimiento = "Ambos";
+                movimiento = "Todos";
             }
             else { movimiento = cmbTIpoOperacion.SelectedItem.ToString(); }
+            btnDescargarInforme.Enabled = true;
 
             dgvInformes.DataSource = movimientos.ConsultarMovimientosConFiltro(desde, hasta, movimiento);
             // Hacer todas las celdas de solo lectura
@@ -142,7 +144,7 @@ namespace InventarioMedicamentos
                      WHERE m.fecha BETWEEN @desde AND @hasta";
 
                     // Agregar filtro por tipo si es necesario
-                    if (!string.IsNullOrEmpty(tipoMovimiento) && tipoMovimiento != "Ambos")
+                    if (!string.IsNullOrEmpty(tipoMovimiento) && tipoMovimiento != "Todos")
                     {
                         query += " AND m.tipo_movimiento = @tipoMovimiento";
                     }
@@ -158,7 +160,7 @@ namespace InventarioMedicamentos
                         cmd.Parameters.AddWithValue("@desde", fechaDesde);
                         cmd.Parameters.AddWithValue("@hasta", fechaHasta.AddDays(1).AddSeconds(-1));
 
-                        if (!string.IsNullOrEmpty(tipoMovimiento) && tipoMovimiento != "Ambos")
+                        if (!string.IsNullOrEmpty(tipoMovimiento) && tipoMovimiento != "Todos")
                         {
                             cmd.Parameters.AddWithValue("@tipoMovimiento", tipoMovimiento);
                         }
@@ -210,7 +212,7 @@ namespace InventarioMedicamentos
             DateTime desde = dtpDesde.Value;
             DateTime hasta = dtpHasta.Value;
             string destinatario = UsuarioActual.correo;
-            string tipoMovimiento = cmbTIpoOperacion.SelectedItem != null ? cmbTIpoOperacion.SelectedItem.ToString() : "Ambos";
+            string tipoMovimiento = cmbTIpoOperacion.SelectedItem != null ? cmbTIpoOperacion.SelectedItem.ToString() : "Todos";
 
             try
             {

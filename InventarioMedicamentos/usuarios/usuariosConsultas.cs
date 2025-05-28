@@ -20,6 +20,7 @@ namespace InventarioMedicamentos.usuarios
         }
         public bool IniciarSesion(string usuario, string contraseña, out string tipo, out int id, out string correo, out string contrasena)
         {
+            //conexion.PruebaConexion();
             tipo = string.Empty;
             id = -1; // Valor por defecto (invalido)
             correo = string.Empty; // Valor por defecto (invalido)

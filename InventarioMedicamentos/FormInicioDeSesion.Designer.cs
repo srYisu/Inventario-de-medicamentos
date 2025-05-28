@@ -169,6 +169,7 @@
             txtUsuario.ShadowDecoration.CustomizableEdges = customizableEdges8;
             txtUsuario.Size = new Size(241, 27);
             txtUsuario.TabIndex = 2;
+            txtUsuario.TextChanged += txtUsuario_TextChanged;
             // 
             // panelNaranja
             // 
