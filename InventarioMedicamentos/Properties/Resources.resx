@@ -121,10 +121,13 @@
   <data name="iconoRetiros" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconoRetiros.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="imssBienestarLogoLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imssBienestarLogoLarge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="imssBienestaarLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imssBienestaarLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imssBienestarLogoLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imssBienestarLogoLarge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="buscar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\buscar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

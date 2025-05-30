@@ -44,35 +44,38 @@ namespace InventarioMedicamentos
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            // conexion.PruebaConexion();
-            string contraseña = txtContrasena.Text;
-            string usuario = txtUsuario.Text;
-
-            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contraseña))
+            if (conexion.ComprobarConexion())
             {
-                MessageBox.Show("Por favor, ingrese su usuario y contraseña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            usuariosConsultas inicioSesion = new usuariosConsultas();
-            string rolUsuarioEnUso;
-            int idUsuarioEnUso;
-            string correoEnUso;
-            string contrasenaEnUso;
+                // conexion.PruebaConexion();
+                string contraseña = txtContrasena.Text;
+                string usuario = txtUsuario.Text;
 
-            bool accesoConcedido = inicioSesion.IniciarSesion(usuario, contraseña, out rolUsuarioEnUso, out idUsuarioEnUso, out correoEnUso, out contrasenaEnUso);
+                if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contraseña))
+                {
+                    MessageBox.Show("Por favor, ingrese su usuario y contraseña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                usuariosConsultas inicioSesion = new usuariosConsultas();
+                string rolUsuarioEnUso;
+                int idUsuarioEnUso;
+                string correoEnUso;
+                string contrasenaEnUso;
 
-            if (accesoConcedido)
-            {
-                MessageBox.Show("Inicio de sesión exitoso.");
-                UsuarioActual.IdUsuario = idUsuarioEnUso;
-                UsuarioActual.RolUsuario = rolUsuarioEnUso;
-                UsuarioActual.correo = correoEnUso;
-                UsuarioActual.contrasena = contrasenaEnUso;
-                navegador.NavegarA(new FormMenu(navegador));
-            }
-            else
-            {
-                MessageBox.Show("Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                bool accesoConcedido = inicioSesion.IniciarSesion(usuario, contraseña, out rolUsuarioEnUso, out idUsuarioEnUso, out correoEnUso, out contrasenaEnUso);
+
+                if (accesoConcedido)
+                {
+                    MessageBox.Show("Inicio de sesión exitoso.");
+                    UsuarioActual.IdUsuario = idUsuarioEnUso;
+                    UsuarioActual.RolUsuario = rolUsuarioEnUso;
+                    UsuarioActual.correo = correoEnUso;
+                    UsuarioActual.contrasena = contrasenaEnUso;
+                    navegador.NavegarA(new FormMenu(navegador));
+                }
+                else
+                {
+                    MessageBox.Show("Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

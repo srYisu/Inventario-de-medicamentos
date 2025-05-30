@@ -59,6 +59,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             dgvMedicamentos = new Guna.UI2.WinForms.Guna2DataGridView();
             btnLimpiar = new Guna.UI2.WinForms.Guna2Button();
             btnEliminar = new Guna.UI2.WinForms.Guna2Button();
@@ -78,11 +80,13 @@
             PictureBoxSalir = new Guna.UI2.WinForms.Guna2PictureBox();
             txtFechaCaducidad = new Guna.UI2.WinForms.Guna2TextBox();
             txtBusqueda = new Guna.UI2.WinForms.Guna2TextBox();
+            guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvMedicamentos).BeginInit();
             panelNaranja.SuspendLayout();
             panelRojo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
             SuspendLayout();
             // 
             // dgvMedicamentos
@@ -113,7 +117,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvMedicamentos.DefaultCellStyle = dataGridViewCellStyle3;
             dgvMedicamentos.GridColor = Color.FromArgb(231, 229, 255);
-            dgvMedicamentos.Location = new Point(694, 138);
+            dgvMedicamentos.Location = new Point(694, 155);
             dgvMedicamentos.Name = "dgvMedicamentos";
             dgvMedicamentos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -430,7 +434,7 @@
             txtBusqueda.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBusqueda.Font = new Font("Segoe UI", 9F);
             txtBusqueda.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBusqueda.Location = new Point(694, 103);
+            txtBusqueda.Location = new Point(694, 108);
             txtBusqueda.Name = "txtBusqueda";
             txtBusqueda.PlaceholderText = "";
             txtBusqueda.SelectedText = "";
@@ -439,11 +443,26 @@
             txtBusqueda.TabIndex = 50;
             txtBusqueda.TextChanged += txtBusqueda_TextChanged;
             // 
+            // guna2PictureBox2
+            // 
+            guna2PictureBox2.BackColor = Color.Transparent;
+            guna2PictureBox2.CustomizableEdges = customizableEdges27;
+            guna2PictureBox2.Image = Properties.Resources.buscar;
+            guna2PictureBox2.ImageRotate = 0F;
+            guna2PictureBox2.Location = new Point(1052, 108);
+            guna2PictureBox2.Name = "guna2PictureBox2";
+            guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            guna2PictureBox2.Size = new Size(44, 29);
+            guna2PictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            guna2PictureBox2.TabIndex = 55;
+            guna2PictureBox2.TabStop = false;
+            // 
             // FormControlDeInventarioo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
+            Controls.Add(guna2PictureBox2);
             Controls.Add(txtBusqueda);
             Controls.Add(txtFechaCaducidad);
             Controls.Add(PictureBoxSalir);
@@ -470,6 +489,7 @@
             panelRojo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).EndInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -495,5 +515,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtFechaCaducidad;
         private Guna.UI2.WinForms.Guna2TextBox txtBusqueda;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
     }
 }

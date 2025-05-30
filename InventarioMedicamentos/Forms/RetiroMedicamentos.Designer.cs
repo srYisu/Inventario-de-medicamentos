@@ -53,6 +53,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelNaranja = new Guna.UI2.WinForms.Guna2Panel();
             panelRojo = new Guna.UI2.WinForms.Guna2Panel();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -68,11 +70,13 @@
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             txtUnidades = new Guna.UI2.WinForms.Guna2TextBox();
             txtBuscador = new Guna.UI2.WinForms.Guna2TextBox();
+            guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             panelNaranja.SuspendLayout();
             panelRojo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvMedicamentos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
             SuspendLayout();
             // 
             // panelNaranja
@@ -355,11 +359,26 @@
             txtBuscador.TabIndex = 67;
             txtBuscador.TextChanged += txtBuscador_TextChanged;
             // 
+            // guna2PictureBox2
+            // 
+            guna2PictureBox2.BackColor = Color.Transparent;
+            guna2PictureBox2.CustomizableEdges = customizableEdges21;
+            guna2PictureBox2.Image = Properties.Resources.buscar;
+            guna2PictureBox2.ImageRotate = 0F;
+            guna2PictureBox2.Location = new Point(1052, 106);
+            guna2PictureBox2.Name = "guna2PictureBox2";
+            guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            guna2PictureBox2.Size = new Size(44, 29);
+            guna2PictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            guna2PictureBox2.TabIndex = 68;
+            guna2PictureBox2.TabStop = false;
+            // 
             // RetiroMedicamentos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
+            Controls.Add(guna2PictureBox2);
             Controls.Add(txtBuscador);
             Controls.Add(guna2HtmlLabel2);
             Controls.Add(txtUnidades);
@@ -381,6 +400,7 @@
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvMedicamentos).EndInit();
             ((System.ComponentModel.ISupportInitialize)PictureBoxSalir).EndInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -407,5 +427,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtUnidades;
         private Guna.UI2.WinForms.Guna2TextBox txtBuscador;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
     }
 }
